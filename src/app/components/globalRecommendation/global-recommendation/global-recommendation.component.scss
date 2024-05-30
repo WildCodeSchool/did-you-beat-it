@@ -1,7 +1,33 @@
+.recommendation-container {
+    background-color: #171515;
+    color: #ffffff;
+    padding: 3rem;
+}
+
+h2 {
+    padding-bottom: 2rem;
+    font-size: 54px;
+    font-weight: bold;
+}
+
+h3 {
+    font-size: 22px;
+    font-weight: bold;
+}
+
 .recommendation-sections {
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     justify-content: space-between;
 }
 
+.section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.see-more-recommendations {
+    color: #9D4EDD;
+}
