@@ -18,7 +18,7 @@ h3 {
 .recommendation-sections {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: space-between;
 }
 
@@ -30,4 +30,25 @@ h3 {
 
 .see-more-recommendations {
     color: #9D4EDD;
+}
+
+section:not(:last-child) {
+    padding-right: 2rem;
+}
+
+@media screen and (max-width: 900px){
+    .recommendation-container {
+        padding: 2rem;
+    }
+    h2 {
+        font-size: 34px;
+    }
+    .recommendation-sections {
+        flex-wrap: wrap;
+    }
+
+    section:not(:last-child) {
+        padding-right: 0rem;
+        padding-bottom: 2rem;
+    }
 }
