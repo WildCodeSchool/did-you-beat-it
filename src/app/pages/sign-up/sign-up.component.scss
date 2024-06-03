@@ -1,0 +1,115 @@
+@import "../../../import.scss";
+
+* {
+    @include defaultStyles;
+}
+
+.container {
+    width: 100%;
+    max-width: 30%;
+    margin: rem(60) auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+
+    .card {
+        width: 100%;
+        min-height: 90vh;
+        background-color: $cardColors;
+        padding: rem(40) rem(20) rem(20) rem(20);
+        border-radius: rem(5);
+
+        h2 {
+            font-size: rem($fontSize_title);
+            margin-bottom: rem(20);
+            text-align: center;
+            color: #FFFFFF;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: rem(20);
+
+            .form-group {
+                width: 100%;
+                margin-bottom: rem(32);
+
+                input {
+                    width: calc(100% - rem(20));
+                    padding: rem(10);
+                    margin-top: rem(5);
+                    border: rem(1) solid #ccc;
+                }
+            }
+
+            button {
+                width: 50%;
+                padding: rem(10);
+                background-color: $mainColors;
+                color: white;
+                border: none;
+                border-radius: rem(5);
+                margin-top: rem(15);
+            }
+
+            .form-links {
+                margin-top: rem(24);
+                text-align: center;
+            }
+
+            .form-links a {
+                color: $mainColors;
+                text-decoration: none;
+            }
+
+            .form-links a:hover {
+                text-decoration: underline;
+            }
+
+            .form-links p {
+                margin: rem(15) 0 0 0;
+                color: #FFFFFF;
+            }
+        }
+    }
+
+}
+
+@media only screen and (max-width: 900px) {
+    .container {
+        max-width: 80%;
+
+        .card {
+            min-height: 80vh;
+
+            input {
+                width: calc(100% - rem(16));
+            }
+
+            button {
+                width: 60%;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .container {
+        max-width: 90%;
+
+        .card {
+            min-height: 70vh;
+
+            input {
+                width: calc(100% - rem(12));
+            }
+
+            button {
+                width: 70%;
+            }
+        }
+    }
+}
