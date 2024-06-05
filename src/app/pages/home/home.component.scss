@@ -107,10 +107,18 @@ section {
 
 
 
-@media screen and (max-width: 1024px){
+@media screen and (min-width: 768px) and (max-width: 1024px){
+  #homepage__introduction{
+    max-width: 80%;
+  }
+
   .homepage__introduction--title-wrapper{
     max-width: 80%;
     text-align: center;
     margin: 0 auto;
+  }
+
+  .homepage__introduction--column-img{
+    margin: 0 2rem;
   }
 }
