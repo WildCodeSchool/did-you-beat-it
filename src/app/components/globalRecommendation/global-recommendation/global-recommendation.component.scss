@@ -1,7 +1,7 @@
 .recommendation-container {
     background-color: #171515;
     color: #ffffff;
-    padding: 3rem;
+    padding: 2.5rem;
 }
 
 h2 {
@@ -36,9 +36,9 @@ section:not(:last-child) {
     padding-right: 2rem;
 }
 
-@media screen and (max-width: 900px){
+@media screen and (max-width: 1024px){
     .recommendation-container {
-        padding: 2rem;
+        padding: 1.5rem;
     }
     h2 {
         font-size: 34px;
@@ -46,9 +46,17 @@ section:not(:last-child) {
     .recommendation-sections {
         flex-wrap: wrap;
     }
-
     section:not(:last-child) {
         padding-right: 0rem;
         padding-bottom: 2rem;
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px){
+    .recommendation-sections {
+        flex-wrap: wrap;
+    }
+    section {
+        max-width: 45vw;
     }
 }
