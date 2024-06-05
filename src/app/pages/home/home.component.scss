@@ -22,7 +22,7 @@ section {
   max-width: 1100px;
   margin: 0 auto;
 
-  .homepage__introduction--title-wrapper{
+  .homepage__introduction--title-wrapper, .homepage__lastgame{
     margin-bottom: 2rem;
 
     .homepage__introduction--text{
@@ -58,6 +58,11 @@ section {
 
   .homepage__introduction--column:nth-last-of-type(1){
     flex-direction: row-reverse;
+  }
+
+  .homepage__lastgame{
+    text-align: center;
+    min-height: 100vh;
   }
 }
 
