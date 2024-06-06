@@ -37,12 +37,20 @@ section:not(:last-child) {
     padding-right: 2rem;
 }
 
-@media screen and (max-width: 1024px){
-    .recommendation-container {
+@media screen and (min-width: 769px) and (max-width: 1024px){
+    .recommendation-container{
+        padding: 0;
         max-width: 80%;
-        margin: 0 auto;
-        
     }
+
+    .recommendation-sections {
+        flex-wrap: wrap;
+        align-content: center;
+    }
+    section {
+        max-width: 80%;
+    }
+
     h2 {
         font-size: 34px;
     }
@@ -54,21 +62,6 @@ section:not(:last-child) {
         padding-right: 0rem;
         padding-bottom: 2rem;
     }
-}
-
-@media screen and (min-width: 769px) and (max-width: 1024px){
-    .recommendation-container{
-        padding: 0;
-    }
-
-    .recommendation-sections {
-        flex-wrap: wrap;
-        align-content: center;
-    }
-    section {
-        max-width: 80%;
-    }
-
     
 }
 
@@ -78,7 +71,7 @@ section:not(:last-child) {
         margin: 0 auto;
     }
     h2 {
-        font-size: 34px;
+        font-size: 24px;
     }
     .recommendation-sections {
         flex-wrap: wrap;
