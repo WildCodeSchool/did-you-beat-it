@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+
+import { HomepageBannerComponent } from '../../homepage-banner/homepage-banner.component';
+
 import { GlobalRecommendationComponent } from '../../components/globalRecommendation/global-recommendation/global-recommendation.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink, GlobalRecommendationComponent],
+  imports: [RouterLink, HomepageBannerComponent, GlobalRecommendationComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
