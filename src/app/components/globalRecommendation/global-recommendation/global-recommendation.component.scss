@@ -1,7 +1,7 @@
 .recommendation-container {
     background-color: #171515;
     color: #ffffff;
-    padding: 2.5rem;
+
 }
 
 h2 {
@@ -38,13 +38,16 @@ section:not(:last-child) {
 
 @media screen and (max-width: 1024px){
     .recommendation-container {
-        padding: 1.5rem;
+        max-width: 80%;
+        margin: 0 auto;
+        
     }
     h2 {
         font-size: 34px;
     }
     .recommendation-sections {
         flex-wrap: wrap;
+        flex-direction: column;
     }
     section:not(:last-child) {
         padding-right: 0rem;
@@ -53,10 +56,15 @@ section:not(:last-child) {
 }
 
 @media screen and (min-width: 769px) and (max-width: 1024px){
+    .recommendation-container{
+        padding: 0;
+    }
+
     .recommendation-sections {
         flex-wrap: wrap;
+        align-content: center;
     }
     section {
-        max-width: 45vw;
+        max-width: 80%;
     }
 }
