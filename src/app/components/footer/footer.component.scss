@@ -1,0 +1,25 @@
+.footer-list{
+    text-align: center;
+    background-color: #2E2A31;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 70px;
+    font-size: 16px;
+    li {
+        color: #FFF;
+    }
+}
+li {
+    color: #FFF;
+}
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
