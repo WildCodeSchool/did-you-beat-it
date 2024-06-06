@@ -9,8 +9,7 @@
     color: white;
     background-color: $mainColor;
     border-radius: rem(10);
-    width: 10%;
-
+    width: 120px;
 }
 
 .btn-edit {
@@ -22,22 +21,19 @@
     color: $mainColor;
     background-color: white;
     border-radius: rem(10);
-    width: 10%;
-    max-width: 10%;
+    width: 120px;
 }
 
 @media screen and (min-width: 769px) and (max-width: 1024px) {
 
     .btn {
         font-size: rem(12);
-        width: 15%;
-        max-width: 15%;
+        width: 120px;
     }
 
     .btn-edit {
         font-size: rem(12);
-        width: 15%;
-        max-width: 15%;
+        width: 120px;
     }
 
 }
@@ -45,12 +41,10 @@
 @media screen and (max-width: 768px) {
     .btn {
         font-size: rem(12);
-        width: 20%;
-        max-width: 20%;
+        width: 120px;
     }
     .btn-edit {
         font-size: rem(12);
-        width: 20%;
-        max-width: 20%;
+        width: 120px;
     }
 }
