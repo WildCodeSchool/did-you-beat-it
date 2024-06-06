@@ -10,6 +10,9 @@
   font-size: inherit;
 }
 
+
+// FONT STYLE 
+
 @font-face {
   font-family: Inter;
   src: url('assets/fonts/Inter/Inter-VariableFont_slnt\,wght.ttf') format('truetype');
@@ -23,6 +26,7 @@ a:visited {
   text-decoration: none;
 }
 
+
 button,
 input {
   font-family: inherit;
@@ -33,13 +37,25 @@ input {
   outline: none;
 }
 
-ul,
-li {
-  list-style: none;
+$mainColor: #fff;
+$secondaryColor: #171515;
+$purple: #9D4EDD;
+$titleFont: "Roboto", sans-serif;
+$mainFont: "Inter", sans-serif;
+
+h1,
+h2,
+h3,
+p {
+  color: $mainColor;
 }
 
-span {
-  color: $mainColor;
+h1, h2, h3 {
+  font-family: $titleFont;
+}
+
+p, a, span, button, input {
+  font-family: $mainFont;
 }
 
 h1 {
@@ -55,5 +71,14 @@ h2 {
 h3 {
   font-weight: 600;
   font-size: 1rem;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+span {
+  color: $mainColor;
 }
 
