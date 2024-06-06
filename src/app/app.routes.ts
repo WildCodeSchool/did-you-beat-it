@@ -13,8 +13,4 @@ export const routes: Routes = [
     redirectTo: '/home',
     pathMatch: 'full',
   },
-  {
-    path: 'inscription',
-    component: SignUpComponent,
-  },
 ];
