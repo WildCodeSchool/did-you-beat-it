@@ -17,4 +17,8 @@ export const routes: Routes = [
     path: 'connexion',
     component: LoginComponent,
   },
+  {
+    path: 'inscription',
+    component: SignUpComponent,
+  },
 ];
