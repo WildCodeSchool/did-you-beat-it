@@ -12,5 +12,5 @@ import { CustomButtonComponent } from '../../components/custom-button/custom-but
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
-btnText = 'Login';
+btnText = 'Se connecter';
 }
