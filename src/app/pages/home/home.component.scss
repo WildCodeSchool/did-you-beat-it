@@ -1,11 +1,4 @@
 @use "../../../import" as *;
-
-h1,
-h2,
-p {
-  color: #fff;
-}
-
 h1{
   margin-bottom: 0.6rem;
 }
@@ -15,7 +8,7 @@ h2 {
 }
 
 
-section {
+#homepage__introduction {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -66,7 +59,7 @@ section {
 
 // mobile version 
 @media (max-width: 768px){
-  section{
+  #homepage__introduction{
       margin: 0 2rem;
     text-align: center;
     max-width: 90%;
