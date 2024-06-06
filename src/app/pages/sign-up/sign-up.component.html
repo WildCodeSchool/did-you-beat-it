@@ -21,7 +21,7 @@
                 <input type="text" id="confirm_password" name="confirm_password" placeholder="Confirmez le mot de passe"
                     required minlength="8" pattern="^(?=.\d)(?=.[a-z])(?=.[A-Z])(?=.[!@#$%^&*]).{8,}$">
             </div>
-           <app-custom-button [text]="textButton" [class]="'btn'"></app-custom-button>
+           <app-custom-button [btnType]="'submit'" [text]="textButton" [class]="'btn'"></app-custom-button>
         </form>
     </div>
 </div>
