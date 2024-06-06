@@ -1,4 +1,4 @@
-ul{
+.footer-list{
     text-align: center;
     background-color: #2E2A31;
     height: 50px;
@@ -7,6 +7,9 @@ ul{
     justify-content: center;
     gap: 70px;
     font-size: 16px;
+    li {
+        color: #FFF;
+    }
 }
 li {
     color: #FFF;
@@ -20,3 +23,5 @@ section {
     max-width: 1200px;
     margin: 0 auto;
   }
+
+
