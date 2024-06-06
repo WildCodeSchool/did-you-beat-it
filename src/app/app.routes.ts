@@ -14,11 +14,7 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'connexion',
-    component: LoginComponent,
-  },
-  {
-    path: 'inscription',
+    path: 'signup',
     component: SignUpComponent,
   },
 ];
