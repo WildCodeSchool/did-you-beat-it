@@ -12,7 +12,7 @@
                     pattern="^(?=.\d)(?=.[a-z])(?=.[A-Z])(?=.[!@#$%^&*]).{8,}$">
                
             </div>
-            <button type="submit">Se connecter</button>
+            <app-custom-button [btnType]="'submit'" [class]="'btn'" [text]="btnText"></app-custom-button>
 
             <div class="form-links">
                 <a [routerLink]="['/']">Mot de passe oublié ?</a>
