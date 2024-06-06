@@ -11,6 +11,16 @@
   font-size: inherit;
 }
 
+
+// FONT STYLE 
+
+@font-face {
+  font-family: Inter;
+  src: url('assets/fonts/Inter/Inter-VariableFont_slnt\,wght.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+}
+
 a,
 a:visited {
   color: inherit;
@@ -19,7 +29,6 @@ a:visited {
 
 button,
 input {
-  font-family: inherit;
   font-size: inherit;
   color: inherit;
   background-color: transparent;
