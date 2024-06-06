@@ -7,7 +7,7 @@
 .container {
     width: 100%;
     max-width: 30%;
-    margin: rem(50) auto;
+    margin: rem(0) auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,6 +17,7 @@
         width: 100%;
         min-height: 90vh;
         background-color: $cardColor;
+        margin: rem(10);
         padding: rem(40) rem(20) rem(20) rem(20);
         border-radius: rem(5);
 
@@ -74,7 +75,6 @@
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
     .container {
         max-width: 80%;
-        margin: rem(30) auto;
 
         .card {
             min-height: 80vh;
@@ -95,7 +95,6 @@
 @media only screen and (max-width: 768px) {
     .container {
         max-width: 90%;
-        margin: rem(20) auto;
 
         .card {
             min-height: 70vh;
