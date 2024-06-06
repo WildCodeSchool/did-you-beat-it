@@ -7,8 +7,12 @@ h2 {
   margin: 0.5rem 0 1.5rem;
 }
 
+p{
+  font-size: 18px;
+}
 
-#homepage__introduction {
+
+#homepage__introduction, #homepage__recommandation {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -25,13 +29,13 @@ h2 {
 
   .homepage__introduction--column{
     display: flex; 
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: stretch;
     margin-bottom: 4rem;
 
     .homepage__introduction--column-img{
-      width: 300px;
-      height: 300px;
+      width: 360px;
+      height: 360px;
       object-fit: cover;
     }
   
@@ -49,7 +53,7 @@ h2 {
     }
   }
 
-  .homepage__introduction--column:nth-last-of-type(1){
+  .homepage__introduction--column:nth-last-of-type(2){
     flex-direction: row-reverse;
   }
 }
@@ -58,9 +62,9 @@ h2 {
 
 
 // mobile version 
-@media (max-width: 768px){
-  #homepage__introduction{
-      margin: 0 2rem;
+@media screen and (max-width: 768px){
+  #homepage__introduction, #homepage__recommandation{
+    margin: 0 auto;
     text-align: center;
     max-width: 90%;
 
