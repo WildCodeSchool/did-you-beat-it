@@ -3,6 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CustomButtonComponent } from '../../components/custom-button/custom-button.component';
 
+type signUpForm = {
+username:string;
+email:string;
+password:string;
+confirmPassword:string;
+};
 @Component({
   selector: 'app-sign-up',
   standalone: true,
@@ -12,4 +18,10 @@ import { CustomButtonComponent } from '../../components/custom-button/custom-but
 })
 export class SignUpComponent {
   textButton = 'S\'inscrire';
+   signUp : signUpForm = {
+    username : '',
+    email : '',
+    password : '',
+    confirmPassword : '',
+  };
 }
