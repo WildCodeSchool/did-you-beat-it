@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CardGameSmallComponent } from '../components/cardGameSmall/card-game-small/card-game-small.component';
+import { CardGameSmallComponent } from '../cardGameSmall/card-game-small/card-game-small.component';
 
 @Component({
   selector: 'app-last-game-home',
