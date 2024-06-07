@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { CustomButtonComponent } from '../../components/custom-button/custom-button.component';
-interface UserLogin {
+
+type loginForm = {
   email : string;
   password:string;
 }
@@ -17,7 +18,7 @@ interface UserLogin {
 export class LoginComponent {
 btnText = 'Connexion';
 
-newUser: UserLogin = {
+newUser: loginForm = {
   email: "",
   password: "",
 }
