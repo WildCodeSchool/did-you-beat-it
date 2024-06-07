@@ -18,6 +18,16 @@ $fontSize_title: 26;
     padding: 0;
     font-family: $defaultFont;
 }
+@mixin center-flex-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    max-width: 1200px;
+    margin: 0;
+  }
+  
 
 //Function 
 @function rem($pxVal) {
