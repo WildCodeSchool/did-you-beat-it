@@ -41,6 +41,7 @@
                     width: 100%;
                     padding: rem(10);
                     margin-top: rem(5);
+                    color: #FFFFFF;
                 }
                 input::placeholder {
                     color: white; 
@@ -48,15 +49,6 @@
                
             }
 
-            button {
-                width: 50%;
-                padding: rem(10);
-                background-color: $mainColor;
-                color: white;
-                border: none;
-                border-radius: rem(5);
-                margin-top: rem(15);
-            }
         }
     }
 
@@ -75,9 +67,6 @@
                 margin-bottom: rem(15);
             }
 
-            button {
-                width: 60%;
-            }
 
         }
     }
@@ -96,9 +85,6 @@
                 margin-bottom: rem(10);
             }
 
-            button {
-                width: 70%;
-            }
         }
     }
 }
