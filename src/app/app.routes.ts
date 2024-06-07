@@ -4,6 +4,7 @@ import { CguComponent } from './pages/cgu/cgu.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { AproposComponent } from './pages/apropos/apropos.component';
 
+
 export const routes: Routes = [
   {
     path: 'home',

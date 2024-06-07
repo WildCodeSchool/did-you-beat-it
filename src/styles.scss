@@ -27,6 +27,16 @@ a:visited {
 }
 
 
+button,
+input {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background-color: $inputColor;
+  border: none;
+  outline: none;
+}
+
 $mainColor: #fff;
 $secondaryColor: #171515;
 $purple: #9D4EDD;
@@ -63,15 +73,6 @@ h3 {
   font-size: 1rem;
 }
 
-button,
-input {
-  font-size: inherit;
-  color: inherit;
-  background-color: transparent;
-  border: none;
-  outline: none;
-}
-
 ul,
 li {
   list-style: none;
@@ -80,4 +81,5 @@ li {
 span {
   color: $mainColor;
 }
+
 
