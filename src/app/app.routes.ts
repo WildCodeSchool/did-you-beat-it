@@ -1,8 +1,10 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
+import { LoginComponent } from './pages/login/login.component';
 import { CguComponent } from './pages/cgu/cgu.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { AproposComponent } from './pages/apropos/apropos.component';
+
 
 
 export const routes: Routes = [
@@ -14,6 +16,10 @@ export const routes: Routes = [
     path: '',
     redirectTo: '/home',
     pathMatch: 'full',
+  },
+  {
+    path: 'connexion',
+    component: LoginComponent ,
   },
   {
     path: 'inscription',
