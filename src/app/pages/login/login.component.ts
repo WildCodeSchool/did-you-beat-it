@@ -3,7 +3,10 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { CustomButtonComponent } from '../../components/custom-button/custom-button.component';
-
+interface UserLogin {
+  email : string;
+  password:string;
+}
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -13,4 +16,9 @@ import { CustomButtonComponent } from '../../components/custom-button/custom-but
 })
 export class LoginComponent {
 btnText = 'Connexion';
+
+newUser: UserLogin = {
+  email: "",
+  password: "",
+}
 }
