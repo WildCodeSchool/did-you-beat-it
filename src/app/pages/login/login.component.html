@@ -1,7 +1,7 @@
 <div class="container">
     <div class="card">
         <h2>Se connecter</h2>
-        <form #loginForm="ngForm">
+        <form #loginForm="ngForm" (ngSubmit)="loginForm.valid" >
             <div class="form-group">
                 <input type="text" id="email" name="email" [(ngModel)]="newUser.email" #email="ngModel"
                     placeholder="Email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
