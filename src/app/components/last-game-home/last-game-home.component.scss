@@ -1,0 +1,61 @@
+@use "../../import" as *;
+@use "../../styles.scss";
+
+h2{
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 54px;
+}
+
+h4{
+    color: #fff;
+}
+
+#last_games--wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 4rem;
+    margin-bottom: 2em;
+
+}
+
+a{
+    display: block;    
+}
+
+.button__more, a, a:visited {
+    color: #9D4EDD;
+    margin: 2rem auto;
+    text-align: center;
+    cursor: pointer;
+}
+
+
+@media screen and (max-width: 768px){
+    h2{
+        font-size: 34px;
+    }
+
+    #last_games--wrapper{
+        grid-template-columns: 1fr;
+        margin-bottom: 0;
+    }
+
+    .last__games--column{
+        display: flex;
+        flex-direction: column;
+        row-gap: 40px;
+        margin-bottom: 2rem;
+
+        .last__game--item{
+            margin-bottom: 1rem;
+        }
+    }
+
+    .button__more, a, a:visited {
+
+        margin: 0 auto 1rem ;
+    }
+
+
+}

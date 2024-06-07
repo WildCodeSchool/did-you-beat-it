@@ -1,4 +1,8 @@
 .card-game {
+    padding-top: 1rem;
+}
+
+.card-game__wrapper{
     display: flex;
     flex-direction: row;
     padding-top: 1rem;
@@ -16,6 +20,7 @@
         font-size: 22px;
         font-weight: bold;
         text-wrap: wrap;
+        color: #fff;
     }
     p {
         font-family: 'Inter';
@@ -28,5 +33,21 @@
 @media screen and (max-width: 768px){
     .game-infos{
         text-align: left;
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px){
+    .game-image-small-card {
+        height: 100px;
+        width: 100px;
+    }
+    .game-infos {
+        padding-left: 1rem;
+        h4 {
+            font-size: 18px;
+        }
+        p {
+            font-size: 16px;
+        }
     }
 }

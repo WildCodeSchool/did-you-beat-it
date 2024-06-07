@@ -17,12 +17,13 @@ p{
 }
 
 
-#homepage__introduction, #homepage__recommandation {
+#homepage__introduction, #homepage__recommandation, #homepage__lastgame {
   display: flex;
   flex-direction: column;
   height: 100%;
   max-width: 1100px;
-  margin: 0 auto;
+  width: 80%;
+  margin: 0 auto ;
 
   .homepage__introduction--title-wrapper{
     margin-bottom: 2rem;
@@ -46,6 +47,7 @@ p{
   
     .homepage__introduction--text-wrapper{
       max-width: 550px;
+      padding: 1em;
   
       .column__title{
         margin-top: 0;
@@ -60,6 +62,10 @@ p{
 
   .homepage__introduction--column:nth-last-of-type(2){
     flex-direction: row-reverse;
+  }
+
+  #homepage__recommandation{
+   width: 100%;
   }
 }
 
@@ -81,7 +87,7 @@ p{
     }
     
     .homepage__introduction--column{
-      flex-direction: column;
+      flex-direction: column !important;
       align-items: center;
       margin-bottom: 2rem;
   
@@ -100,9 +106,6 @@ p{
         margin-bottom: 2rem;
       }
     }
-    .homepage__introduction--column:nth-last-of-type(1){
-      flex-direction: column;
-    }
   }
   
 }
@@ -110,8 +113,9 @@ p{
 
 
 @media screen and (min-width: 768px) and (max-width: 1024px){
-  #homepage__introduction{
+  #homepage__introduction, #homepage__lastgame{
     max-width: 80%;
+    align-items: center;
   }
 
   .homepage__introduction--title-wrapper{
@@ -120,7 +124,18 @@ p{
     margin: 0 auto;
   }
 
-  .homepage__introduction--column-img{
-    margin: 0 2rem;
+  .homepage__introduction--column{
+    align-items: center;
+  }
+
+  .homepage__introduction--column-img:first-of-type{
+    margin-right: 2rem;
+  }
+  .home__second--img{
+    margin-left: 2rem;
+  }
+
+  #homepage__lastgame{
+    margin-bottom: 2rem;
   }
 }
