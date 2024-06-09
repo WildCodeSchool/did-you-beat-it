@@ -1,0 +1,35 @@
+[
+    {
+        "name": "game1",
+        "platformes": "playstation",
+        "score": 5,
+        "genre":"action",
+        "année":2018
+        
+    },
+    {
+        "name": "game2",
+        "platformes": "console",
+        "score": 4,
+        "genre":"action",
+        "année":2017
+        
+    },
+    {
+        "name": "game3",
+        "platformes": "playstation",
+        "score": 2,
+        "genre":"jeux de role",
+        "année":2016
+        
+    },
+    {
+        "name": "game4",
+        "platformes": "playstation",
+        "score": 1,
+        "genre":"jeux de role",
+        "année":2015
+        
+    }
+   
+]
