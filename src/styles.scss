@@ -46,11 +46,12 @@ $mainFont: "Inter", sans-serif;
 h1,
 h2,
 h3,
+h4,
 p {
   color: $mainColor;
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4 {
   font-family: $titleFont;
 }
 
