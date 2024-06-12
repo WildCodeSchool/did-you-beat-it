@@ -1,35 +1,200 @@
 [
     {
         "name": "game1",
-        "platformes": "playstation",
+        "img":"assets/pictures/game1.png",
+        "platformes": "Linux",
         "score": 5,
-        "genre":"action",
-        "année":2018
+        "genre":"Fighting",
+        "year":2018
         
     },
     {
         "name": "game2",
-        "platformes": "console",
+        "img":"assets/pictures/game2.png",
+        "platformes": "Nintendo DS",
         "score": 4,
-        "genre":"action",
-        "année":2017
+        "genre":"Fighting",
+        "year":2017
         
     },
     {
         "name": "game3",
-        "platformes": "playstation",
+        "img":"assets/pictures/game3.png",
+        "platformes": "BlackBerry OS",
         "score": 2,
-        "genre":"jeux de role",
-        "année":2016
+        "genre":"Shooter",
+        "year":2016
         
     },
     {
         "name": "game4",
-        "platformes": "playstation",
-        "score": 1,
-        "genre":"jeux de role",
-        "année":2015
+        "img":"assets/pictures/game4.png",
+        "platformes": "BlackBerry OS",
+        "score": 2,
+        "genre":"Shooter",
+        "year":2016
+        
+    },
+    {
+        "name": "game5",
+        "img":"assets/pictures/game1.png",
+        "platformes": "BlackBerry OS",
+        "score": 5,
+        "genre":"Fighting",
+        "year":2018
+        
+    },
+    {
+        "name": "game6",
+        "img":"assets/pictures/game2.png",
+        "platformes": "Nintendo DS",
+        "score": 4,
+        "genre":"Fighting",
+        "year":2017
+        
+    },
+    {
+        "name": "game7",
+        "img":"assets/pictures/game3.png",
+        "platformes": "BlackBerry OS",
+        "score": 2,
+        "genre":"Shooter",
+        "year":2016
+        
+    },
+    {
+        "name": "game8",
+        "img":"assets/pictures/game4.png",
+        "platformes": "BlackBerry OS",
+        "score": 2,
+        "genre":"Shooter",
+        "year":2016
+        
+    },
+    {
+        "name": "game9",
+        "img":"assets/pictures/game1.png",
+        "platformes": "BlackBerry OS",
+        "score": 5,
+        "genre":"Point-and-click",
+        "year":2018
+        
+    },
+    {
+        "name": "game10",
+        "img":"assets/pictures/game2.png",
+        "platformes": "Nintendo DS",
+        "score": 4,
+        "genre":"Point-and-click",
+        "year":2017
+        
+    },
+    {
+        "name": "game11",
+        "img":"assets/pictures/game3.png",
+        "platformes": "Linux",
+        "score": 2,
+        "genre":"Shooter",
+        "year":2016
+        
+    },
+    {
+        "name": "game1",
+        "img":"assets/pictures/game1.png",
+        "platformes": "Linux",
+        "score": 5,
+        "genre":"Point-and-click",
+        "year":2018
+        
+    },
+    {
+        "name": "game2",
+        "img":"assets/pictures/game2.png",
+        "platformes": "Nintendo DS",
+        "score": 4,
+        "genre":"Point-and-click",
+        "year":2017
+        
+    },
+    {
+        "name": "game3",
+        "img":"assets/pictures/game3.png",
+        "platformes": "Linux",
+        "score": 2,
+        "genre":"Shooter",
+        "year":2016
+        
+    },
+    {
+        "name": "game4",
+        "img":"assets/pictures/game4.png",
+        "platformes": "Linux",
+        "score": 2,
+        "genre":"Shooter",
+        "year":2016
+        
+    },
+    {
+        "name": "game5",
+        "img":"assets/pictures/game1.png",
+        "platformes": "Linux",
+        "score": 5,
+        "genre":"Point-and-click",
+        "year":2018
+        
+    },
+    {
+        "name": "game6",
+        "img":"assets/pictures/game2.png",
+        "platformes": "Nintendo DS",
+        "score": 4,
+        "genre":"Point-and-click",
+        "year":2017
+        
+    },
+    {
+        "name": "game7",
+        "img":"assets/pictures/game3.png",
+        "platformes": "Linux",
+        "score": 2,
+        "genre":"Shooter",
+        "year":2016
+        
+    },
+    {
+        "name": "game8",
+        "img":"assets/pictures/game4.png",
+        "platformes": "Linux",
+        "score": 2,
+        "genre":"Shooter",
+        "year":2016
+        
+    },
+    {
+        "name": "game9",
+        "img":"assets/pictures/game1.png",
+        "platformes": "Linux",
+        "score": 5,
+        "genre":"Point-and-click",
+        "year":2018
+        
+    },
+    {
+        "name": "game10",
+        "img":"assets/pictures/game2.png",
+        "platformes": "Nintendo DS",
+        "score": 4,
+        "genre":"Point-and-click",
+        "year":2017
+        
+    },
+    {
+        "name": "game11",
+        "img":"assets/pictures/game3.png",
+        "platformes": "Linux",
+        "score": 2,
+        "genre":"Shooter",
+        "year":2016
         
     }
-   
 ]

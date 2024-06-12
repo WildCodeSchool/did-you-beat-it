@@ -1,7 +1,8 @@
-interface game {
+export interface game {
     name: string,
+    img:string,
     platformes: string,
     score: number,
     genre:string,
-    année:number 
+    year:number 
 }
