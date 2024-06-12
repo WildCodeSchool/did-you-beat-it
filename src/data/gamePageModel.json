@@ -1,0 +1,29 @@
+{
+    "gameId": "1",
+    "title": "Persona 3 Reloded",
+    "developer": "Atlus",
+    "Editor": "Sega",
+    "Platform": {
+        "1": "PC",
+        "2": "PS5",
+        "3": "Xbox Series X",
+        "4": "Xbox Series S"
+    },
+    "Genres": {
+        "1": "RPG",
+        "2": "JRPG",
+        "3": "Action",
+        "4": "Adventure"
+    },
+    "releaseDate": "2024-02-02",
+    "description": "Step into the shoes of a transfer student thrust into an unexpected fate when entering the hour hidden between one day and the next. Awaken an incredible power and chase the mysteries of the Dark Hour, fight for your friends, and leave a mark on their memories forever. Persona 3 Reload is a captivating reimagining of the genre-defining RPG, reborn for the modern era.",
+    "cover": "https://i.redd.it/gl0jcz2p9tjb1.jpg",
+    "banner": "https://images2.alphacoders.com/134/1348285.png",
+    "screenshots": [
+        "https://cdn.wccftech.com/wp-content/uploads/2023/06/Persona-3-Reload-scaled.jpg",
+        "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2023/07/persona-3-reload-akihiko-sanada-polydeuces1.jpg",
+        "https://pbs.twimg.com/media/F1elmYVXgAAAUrs.jpg:large",
+        "https://www.dexerto.com/cdn-image/wp-content/uploads/2024/02/02/persona-3-reload-all-trophies-and-achievements.jpg?width=3840&quality=60&format=auto"
+    ],
+    "rating": "4"
+}
