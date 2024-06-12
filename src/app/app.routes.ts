@@ -5,6 +5,7 @@ import { CguComponent } from './pages/cgu/cgu.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { AproposComponent } from './pages/apropos/apropos.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
+import { GamePageComponent } from './pages/game-page/game-page.component';
 
 
 
@@ -38,4 +39,8 @@ export const routes: Routes = [
     path:'apropos',
     component: AproposComponent,
   },
+  {
+    path: 'game-page',
+    component: GamePageComponent,
+  }
 ];
