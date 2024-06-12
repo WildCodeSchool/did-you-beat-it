@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { HomepageBannerComponent } from '../../components/homepage-banner/homepage-banner.component';
 import { RouterLink } from '@angular/router';
 
@@ -10,5 +10,11 @@ import { RouterLink } from '@angular/router';
   styleUrl: './game-page.component.scss'
 })
 export class GamePageComponent {
+  @Input() gamePageModel: any;
 
+  constructor() {}
+
+  ngOnInit() : void {
+
+  }
 }
