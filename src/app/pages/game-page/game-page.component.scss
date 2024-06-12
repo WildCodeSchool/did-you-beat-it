@@ -5,3 +5,65 @@
     width: 80%;
     margin: 0 auto;
 }
+
+.game__infos {
+    display: flex;
+    width: 100%;
+
+    &--wrapper{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-left: 20px;
+
+        .game__infos--titlebtn{
+            display: flex;
+            align-items: center;
+
+            .game__infos--btn{
+                margin-left: 20px; 
+                color: #fff;
+                background-color: $mainColor;
+                font-size: 20px;
+                font-weight: 700;
+                height: 40px;
+                width: 40px;
+                border-radius: 50%;
+
+                &:hover{
+                    background-color: #fff;
+                    color: $mainColor;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .game__infos--details{
+            display: flex;
+            margin-top: 0.5rem;
+            width: 660px;
+            justify-content: space-between;
+            
+            .game__infos--details_release{
+                display: flex;
+                
+
+                :first-child{
+                    padding-left: 0;
+                }
+
+                :nth-child(2), :nth-child(3){
+                    padding-left: 8px;
+                }
+            }
+
+            .game__infos--details_platforms{
+                display: flex;
+            }
+        }
+
+        .game__infos--genre{
+            margin: 0.5rem 0 1rem;
+        }
+    }
+}
