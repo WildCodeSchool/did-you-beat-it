@@ -1,1 +1,20 @@
-<p>profile-edit works!</p>
+<div class="navigation-container">
+    <div class="return-to-profile">
+        <img src="../../../assets/pictures/arrow-left.svg" alt="return-arrow">
+        <a [routerLink]="['/edit']">Retour</a>
+    </div>
+    <ul class="edit-menu">
+        <li>
+            <img src="../../../assets/pictures/pencil.svg" alt="pencil">
+            <a [routerLink]="['/edit']">Modifier le profil</a>
+        </li>
+        <li>
+            <img src="../../../assets/pictures/bell-notification.svg" alt="bell">
+            <a [routerLink]="['/edit']">Notifications</a>
+        </li>
+        <li>
+            <img src="../../../assets/pictures/padlock-close.svg" alt="closed padlock">
+            <a [routerLink]="['/edit']">Sécurité</a>
+        </li>
+    </ul>
+</div>
