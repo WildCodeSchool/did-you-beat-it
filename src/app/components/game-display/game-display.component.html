@@ -6,7 +6,7 @@
     <div class="select-display">
         <div class="select-item">
             <p>Platforme</p>
-            <select id="console1" name="console1" class="selecteur">
+        <select [(ngModel)]="selectedPlatform" (change)="onPlatformChange()" class="selecteur">
                 <option value=""></option>
                 <option value="BlackBerry OS">BlackBerry OS</option>
                 <option value="Linux">Linux</option>  
@@ -15,7 +15,7 @@
         </div>
         <div class="select-item">
             <p>Score</p>
-            <select id="console1"  name="console1" class="selecteur">
+            <select [(ngModel)]="selectedScore" (change)="onScoreChange()" class="selecteur">
                 <option value=""></option>
                 <option value="5">5 Étoile</option>
                 <option value="4">4 Étoile</option>
@@ -36,13 +36,14 @@
         <div class="select-item">
             <p>Année</p>
             <select id="console1" name="console1" class="selecteur">
+                <option value=""></option>
                 <option value="{{year}}" *ngFor="let year of years">{{year}}</option>
             </select>
         </div>
     </div>
 </div>
 <section class="game-section">
-    <div class="card-game" *ngFor="let game of games">
+    <div class="card-game" *ngFor="let game of filtredGames">
         <a [routerLink]="['/jeux']">
             <img src="{{game.img}}" alt="gameImage" class="game-image">
             <p class="game-name">{{game.name}}</p>
