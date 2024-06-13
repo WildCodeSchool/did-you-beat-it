@@ -2,6 +2,7 @@
 
 .edit-page-container {
     display: flex;
+
     min-height: calc(100vh - 50px - 50px);
 }
 
@@ -9,7 +10,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-     a {
+    a {
         margin-left: 2rem;
     }
 }
@@ -35,4 +36,33 @@
 .active {
     color: $mainColor;
     font-weight: bold;
+}
+
+
+@media  screen and (max-width: 1024px) {
+    .edit-page-container {
+        flex-direction: column;
+    }
+    .navigation-container {
+        width: 100%;
+        border: none;
+        .return-to-profile {
+            display: none;
+        }
+        .edit-menu {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            overflow: auto;
+            li {
+                img {
+                    display: none;
+                }
+                a {
+                    margin-left: 0;
+                }
+            }
+        }
+    }
+    
 }
