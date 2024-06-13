@@ -1,0 +1,28 @@
+
+.navbar-vertical {
+    height: 89.1vh;
+    width: 200px;
+    background-color: #292729;
+    color: white;
+    padding: 20px;
+    
+}
+
+.navbar-vertical ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar-vertical li {
+    margin-bottom: 10px;
+}
+
+.navbar-vertical a {
+    text-decoration: none;
+
+}
+
+.navbar-vertical a.active {
+    color: #9D4EDD; 
+}

@@ -15,6 +15,7 @@
     <ul class="menu" *ngIf="isConnected == true">
       <li><a [routerLink]="['/jeux']" (click)="closeMenu()">Jeux</a></li>
       <li><a [routerLink]="['/profil']" (click)="closeMenu()">Profil</a></li>
+      <li><a [routerLink]="['/admin']" (click)="closeMenu()">Admin</a></li>
       <li><a [routerLink]="['/home']" (click)="closeMenu()">Déconnexion</a></li>
     </ul>
 </nav>
