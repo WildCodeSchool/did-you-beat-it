@@ -1,9 +1,33 @@
+@use "../../../import" as *;
+
 .edit-page-container {
     display: flex;
-    height: 100%;
+    min-height: calc(100vh - 50px - 50px);
+}
+
+.edit-menu li, .return-to-profile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+     a {
+        margin-left: 2rem;
+    }
 }
 
 .navigation-container {
-    width: 415px;
-    border-right: solid 1px white;
+    width: 350px;
+    border-right: solid 1px $borderColor;
+    .return-to-profile {
+        margin: 2rem 1rem;
+    }
+    .edit-menu {
+        li {
+            margin: 2rem;
+            img {
+                height: 60px;
+                width: 60px;
+                object-fit: contain;
+            }
+        }
+    }
 }
