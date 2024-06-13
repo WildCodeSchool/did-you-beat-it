@@ -1,8 +1,8 @@
 <div class="edit-page-container">
-    <div class="navigation-container">
+    <nav class="navigation-container">
         <div class="return-to-profile">
             <img src="../../../assets/pictures/arrow-left.svg" alt="return-arrow">
-            <a [routerLink]="['/edit']">Retour</a>
+            <a [routerLink]="['/édition']">Retour</a>
         </div>
         <ul class="edit-menu">
             <li>
@@ -15,10 +15,10 @@
             </li>
             <li>
                 <img src="../../../assets/pictures/padlock-close.svg" alt="closed padlock">
-                <a [routerLink]="['./security']" routerLinkActive="active">Sécurité</a>
+                <a [routerLink]="['./sécurité']" routerLinkActive="active">Sécurité</a>
             </li>
         </ul>
-    </div>
+    </nav>
 
     <router-outlet></router-outlet>
 </div>
