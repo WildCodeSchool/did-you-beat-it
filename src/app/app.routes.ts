@@ -39,17 +39,17 @@ export const routes: Routes = [
     component: ContactComponent,
   },
  {
-    path:'à-propos',
+    path:'a-propos',
     component: AproposComponent,
   },
   {
-    path:'édition',
+    path:'edition',
     component: ProfileEditComponent,
     children: [
       {path:'profil', component: EditInformationsComponent},
       {path:'notifications', component: EditNotificationsComponent},
-      {path:'sécurité', component: EditSecurityComponent},
-      {path: '', redirectTo: '/édition/profil', pathMatch: 'full'},
+      {path:'securite', component: EditSecurityComponent},
+      {path: '', redirectTo: '/edition/profil', pathMatch: 'full'},
     ]
   },
   {
