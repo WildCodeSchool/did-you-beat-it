@@ -9,7 +9,7 @@ import { ProfileEditComponent } from './pages/profile-edit/profile-edit.componen
 import { EditInformationsComponent } from './components/edit-informations/edit-informations.component';
 import { EditNotificationsComponent } from './components/edit-notifications/edit-notifications.component';
 import { EditSecurityComponent } from './components/edit-security/edit-security.component';
-
+import { AdminComponent } from './pages/admin/admin.component';
 
 
 export const routes: Routes = [
@@ -52,4 +52,8 @@ export const routes: Routes = [
       {path: '', redirectTo: '/édition/profil', pathMatch: 'full'},
     ]
   },
+  {
+    path: 'admin',
+    component: AdminComponent,
+  }
 ];
