@@ -7,21 +7,13 @@
     <label class='menu-button-container' for="menu-toggle">
     <div class='menu-button'></div>
   </label>
-    <ul class="menu" *ngIf="isConnected == false">
+    <ul class="menu">
       <li><a [routerLink]="['/jeux']" (click)="closeMenu()">Jeux</a></li>
-      <li><a [routerLink]="['/connexion']" (click)="closeMenu()">Se connecter</a></li>
-      <li><a [routerLink]="['/inscription']" (click)="closeMenu()">S'inscrire</a></li>
-    </ul>
-    <ul class="menu" *ngIf="isConnected == true && isAdmin == false">
-      <li><a [routerLink]="['/jeux']" (click)="closeMenu()">Jeux</a></li>
-      <li><a [routerLink]="['/profil']" (click)="closeMenu()">Profil</a></li>
-      <li><a [routerLink]="['/home']" (click)="closeMenu()">Déconnexion</a></li>
-    </ul>
-    <ul class="menu" *ngIf="isConnected == true && isAdmin == true">
-      <li><a [routerLink]="['/jeux']" (click)="closeMenu()">Jeux</a></li>
-      <li><a [routerLink]="['/profil']" (click)="closeMenu()">Profil</a></li>
-      <li><a [routerLink]="['/admin']" (click)="closeMenu()">Admin</a></li>
-      <li><a [routerLink]="['/home']" (click)="closeMenu()">Déconnexion</a></li>
+      <li *ngIf="isConnected == true"><a [routerLink]="['/profil']" (click)="closeMenu()">Profil</a></li>
+      <li *ngIf="isConnected == false"><a [routerLink]="['/connexion']" (click)="closeMenu()">Se connecter</a></li>
+      <li *ngIf="isConnected == false"><a [routerLink]="['/inscription']" (click)="closeMenu()">S'inscrire</a></li>
+      <li *ngIf="isConnected == true && isAdmin == true"><a [routerLink]="['/admin']" (click)="closeMenu()">Admin</a></li>
+      <li *ngIf="isConnected == true"><a [routerLink]="['/home']" (click)="closeMenu()">Déconnexion</a></li>
     </ul>
 </nav>
 </header>
