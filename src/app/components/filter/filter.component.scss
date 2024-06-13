@@ -1,0 +1,54 @@
+@import '../../../import';
+.container {
+    width: 25%;
+    max-width: 30%;
+    margin-left: rem(30);
+    padding: rem(20);
+}
+h1 {
+    font-size: rem(25);
+}
+
+.card {
+    padding: rem(20);
+    border: 1px solid #ccc;
+}
+
+.status {
+    margin-top: rem(20);
+    margin-bottom: rem(30);
+    width: 100%;
+    display: flex;
+    gap: rem(30);
+}
+
+.status label {
+    color: white;
+}
+
+.status input {
+    padding: rem(10) rem(20);
+    color: white;
+    border-radius: rem(4);
+}
+
+.filterBy .filter {
+    margin-bottom: rem(15);
+}
+
+.filterBy label {
+    display: block;
+    margin-bottom: rem(10);
+    color: white;
+}
+
+.filterBy select {
+    width: 100%;
+    padding: rem(5);
+    border: rem(1) solid #ccc;
+    border-radius: rem(4);
+    margin-bottom: rem(10);
+}
+
+
+
