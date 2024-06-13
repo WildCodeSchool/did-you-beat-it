@@ -1,5 +1,5 @@
 <header>
-<nav class="top-nav">
+<nav class="top-nav" >
     <div>
       <a [routerLink]="['/home']"><img src="..\..\assets\pictures\did-you-beat-it--high-resolution-logo-transparent.svg" alt="logo" id="logo"></a>
     </div>
@@ -7,10 +7,15 @@
     <label class='menu-button-container' for="menu-toggle">
     <div class='menu-button'></div>
   </label>
-    <ul class="menu">
-      <li><a [routerLink]="['/jeux']">Jeux</a></li>
-      <li><a [routerLink]="['/connexion']">Se connecter</a></li>
-      <li><a [routerLink]="['/inscription']">S'inscrire</a></li>
+    <ul class="menu" *ngIf="isConnected == false">
+      <li><a [routerLink]="['/jeux']" (click)="closeMenu()">Jeux</a></li>
+      <li><a [routerLink]="['/connexion']" (click)="closeMenu()">Se connecter</a></li>
+      <li><a [routerLink]="['/inscription']" (click)="closeMenu()">S'inscrire</a></li>
+    </ul>
+    <ul class="menu" *ngIf="isConnected == true">
+      <li><a [routerLink]="['/jeux']" (click)="closeMenu()">Jeux</a></li>
+      <li><a [routerLink]="['/profil']" (click)="closeMenu()">Profil</a></li>
+      <li><a [routerLink]="['/home']" (click)="closeMenu()">Déconnexion</a></li>
     </ul>
 </nav>
 </header>
