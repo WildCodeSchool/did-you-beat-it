@@ -1,15 +1,17 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Game } from './games-mock';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GamesApiService {
 
+
   constructor(private http: HttpClient) { }
 
-  getGamesInfos(): Observable<any> {
-    return this.http.get('../../data/gamePageModel.json')
+  getGamesInfos(): Observable<Game> {
+    return this.http.get<Game>('../../assets/gameModel.json')
   }
 }

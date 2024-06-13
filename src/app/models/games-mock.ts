@@ -3,8 +3,8 @@ export class Game {
     title: string;
     developer: string;
     publisher: string;
-    platform: {};
-    genres: {};
+    platform: [];
+    genres: [];
     releaseDate: string;
     description: string;
     cover: string;
@@ -12,7 +12,7 @@ export class Game {
     screenshots: [];
     rating: number;
 
-    constructor(id: number, title: string, developer: string, publisher: string, platform: {}, genres: {}, releaseDate: string, description: string, cover: string, banner: string, screenshots: [], rating: number) {
+    constructor(id: number, title: string, developer: string, publisher: string, platform: [], genres: [], releaseDate: string, description: string, cover: string, banner: string, screenshots: [], rating: number) {
         this.id = id;
         this.title = title;
         this.developer = developer;

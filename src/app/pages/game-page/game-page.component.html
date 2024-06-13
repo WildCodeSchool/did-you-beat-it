@@ -3,38 +3,35 @@
 <main id="game">
     <section class="game__infos">
         <div class="game__cover--wrapper">
-            <img src="" class="game__cover--img" alt="">
-            <img src="" class="game__cover--rating" alt="rating">
+            <img src=" {{ game?.cover }} " class="game__cover--img" alt="{{game?.title}} cover">
+            <img src="" class="game__cover--rating" alt="{{ game?.rating }}">
         </div>
         <div class="game__infos--wrapper">
             <div class="game__infos--titlebtn">
-                <h1 class="game__infos--title">{{ gamePageModel.title }}</h1>
+                <h1 class="game__infos--title">{{ game?.title }}</h1>
                 <button class="game__infos--btn">+</button>
             </div>
             <div class="game__infos--details">
                 <div class="game__infos--details_release">
-                    <p class="game__infos--details--release">Release Date |</p>
-                    <p class="game__infos--details--developer"> Developer |</p>
-                    <p class="game__infos--details--publisher">Publisher</p>
+                    <p class="game__infos--details--release">{{ game?.releaseDate}} |</p>
+                    <p class="game__infos--details--developer"> {{ game?.developer }} |</p>
+                    <p class="game__infos--details--publisher"> {{ game?.publisher }} </p>
                 </div>
                 <div class="game__infos--details_platforms">
-                    <p class="game__infos--details--platform">Platform</p>
+                    <li *ngFor="let platform of game?.platform" class="game__infos--details--platform"> {{ platform }} </li>
                 </div>
             </div> 
             <div class="game__infos--genre">
-                <p class="game__infos--details--genre">Genre</p>
+                <li *ngFor="let genre of game?.genres" class="game__infos--details--genre"> {{genre}} </li>
             </div>
             <p class="game__infos--description">
-                Description
+                {{ game?.description }}
             </p>
         </div>
     </section>
     <section class="game__galery">
-        <div class="game__galery--carousel">
-            <img src="" class="game__galery--img" alt="">
-            <img src="" class="game__galery--img" alt="">
-            <img src="" class="game__galery--img" alt="">
-            <img src="" class="game__galery--img" alt="">
+        <div *ngFor="let screenshot of game?.screenshots" class="game__galery--carousel">
+            <img src="{{ screenshot }}" class="game__galery--img" alt="{{game?.title}} image">
         </div>
     </section>
     <section class="game__comments">
