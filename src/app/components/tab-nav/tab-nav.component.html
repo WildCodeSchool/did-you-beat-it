@@ -8,6 +8,15 @@
 
     @if (currentSection === 'liste-des-jeux') {
     <!-- Afficher la liste des jeux ajoutés par l'utilisateur -->
+     <div class="filter">
+
+     </div>
+        <div class="game">
+            <app-card-game-small></app-card-game-small>
+            <app-card-game-small></app-card-game-small>
+            <app-card-game-small></app-card-game-small>
+         </div>
+
     } @else if(currentSection === 'statistiques') {
     <!-- Afficher les graphs -->
     } @else if(currentSection === 'amis') {
