@@ -14,7 +14,6 @@ export class CustomButtonComponent {
   @Input() btnType : string = '';
   @Input() class: string | undefined;
   @Input() conditionalClass?: string;
-  @Input() route? : string[];
   @Input() onClick?: () => any;
 
   handleClick() {
