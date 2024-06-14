@@ -1,13 +1,30 @@
 <div class="container">
 
     <nav class="tab-nav">
-        <a  [ngClass]="{ 'active': currentSection === 'liste-des-jeux' }" (click)="showSection('liste-des-jeux')">Liste des Jeux</a>
-        <a  [ngClass]="{ 'active': currentSection === 'statistiques' }" (click)="showSection('statistiques')">Statistiques</a>
-        <a  [ngClass]="{ 'active': currentSection === 'amis' }" (click)="showSection('amis')">Amis</a>
+        <a [ngClass]="{ 'active': currentSection === 'liste-des-jeux' }" (click)="showSection('liste-des-jeux')">Liste
+            des Jeux</a>
+        <a [ngClass]="{ 'active': currentSection === 'statistiques' }"
+            (click)="showSection('statistiques')">Statistiques</a>
+        <a [ngClass]="{ 'active': currentSection === 'amis' }" (click)="showSection('amis')">Amis</a>
     </nav>
 
     @if (currentSection === 'liste-des-jeux') {
     <!-- Afficher la liste des jeux ajoutés par l'utilisateur -->
+    <div class="filter">
+        <!-- Afficher le filte -->
+    </div>
+    <div class="game">
+        <ul>
+            <li><app-card-game-small></app-card-game-small></li>
+            <li><app-card-game-small></app-card-game-small></li>
+            <li><app-card-game-small></app-card-game-small></li>
+            <li><app-card-game-small></app-card-game-small></li>
+            <li><app-card-game-small></app-card-game-small></li>
+            <li><app-card-game-small></app-card-game-small></li>
+        </ul>
+    </div>
+
+
     } @else if(currentSection === 'statistiques') {
     <!-- Afficher les graphs -->
     } @else if(currentSection === 'amis') {
