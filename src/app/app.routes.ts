@@ -55,7 +55,7 @@ export const routes: Routes = [
       {path:'profil', component: EditInformationsComponent},
       {path:'notifications', component: EditNotificationsComponent},
       {path:'securite', component: EditSecurityComponent},
-      {path: '', redirectTo: '/edition/profil', pathMatch: 'full'},
+      {path: 'edit', redirectTo: '/edition/profil', pathMatch: 'full'},
     ]
   },
   {
