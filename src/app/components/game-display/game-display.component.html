@@ -1,0 +1,52 @@
+<div class="game-filter">
+    <h2 class="game-title">Liste des jeux</h2>
+    <!--div class="select-display">
+        <input class="filter-name">
+    </div-->
+    <div class="select-display">
+        <div class="select-item">
+            <h3>Platforme</h3>
+        <select [(ngModel)]="selectedPlatform" (change)="applyFilters()" class="selecteur">
+                <option value=""></option>
+                <option value="BlackBerry OS">BlackBerry OS</option>
+                <option value="Linux">Linux</option>  
+                <option value="Nintendo DS">Nintendo DS</option>  
+            </select>
+        </div>
+        <div class="select-item">
+            <h3>Score</h3>
+            <select [(ngModel)]="selectedScore" (change)="applyFilters()" class="selecteur">
+                <option value=""></option>
+                <option value="5">5 Étoile</option>
+                <option value="4">4 Étoile</option>
+                <option value="3">3 Étoile</option>
+                <option value="2">2 Étoile</option> 
+                <option value="1">1 Étoile</option> 
+            </select>
+        </div>
+        <div class="select-item">
+            <h3>Genre</h3>
+            <select [(ngModel)]="selectedGenre" (change)="applyFilters()" class="selecteur">
+                <option value=""></option>
+                <option value="Fighting">Fighting</option>
+                <option value="Shooter">Shooter</option>  
+                <option value="Point-and-click">Point-and-click</option>  
+            </select>
+        </div>
+        <div class="select-item">
+            <h3>Année</h3>
+            <select [(ngModel)]="selectedYear" (change)="applyFilters()" class="selecteur">
+                <option value=""></option>
+                <option value="{{year}}" *ngFor="let year of years">{{year}}</option>
+            </select>
+        </div>
+    </div>
+</div>
+<ul class="game-section">
+    <li class="card-game" *ngFor="let game of filteredGames">
+        <a [routerLink]="['/jeux']">
+            <img src="{{game.img}}" alt="gameImage" class="game-image">
+            <h3 class="game-name">{{game.name}}</h3>
+        </a>
+    </li>
+</ul>
