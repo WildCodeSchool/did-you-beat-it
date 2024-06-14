@@ -44,7 +44,7 @@
 </div>
 <ul class="game-section">
     <li class="card-game" *ngFor="let game of filteredGames">
-        <a [routerLink]="['/jeux']">
+        <a [routerLink]="['/page-jeu']">
             <img src="{{game.img}}" alt="gameImage" class="game-image">
             <h3 class="game-name">{{game.name}}</h3>
         </a>
