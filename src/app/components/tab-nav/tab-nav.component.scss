@@ -2,6 +2,7 @@
 
 .container {
     max-width: 100%;
+    margin-top: rem(20);
 }
 
 .tab-nav {
@@ -53,13 +54,17 @@
     width: 20%;
     margin-right: rem(20);
 }
+
 .game {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 1fr signifie une fraction égale de l'espace disponible */
-    gap: 10px; /* espace entre les éléments */
-    margin-left: rem(20);
+    margin: 0 auto;
     max-width: 70%;
     width: 70%;
+}
+
+.game ul {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: rem(20); 
 }
 
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
@@ -71,7 +76,7 @@
         width: 30%;
         font-size: rem(12);
     }
-    .game {
+    .game ul{
         display: grid;
         grid-template-columns: repeat(2, 1fr); 
         gap: rem(10);
@@ -90,7 +95,7 @@
         font-size: rem(10); 
       }
 
-      .game {
+      .game ul {
         display: grid;
         grid-template-columns: repeat(1, 1fr); 
         gap: rem(10);
