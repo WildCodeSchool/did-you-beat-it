@@ -5,6 +5,7 @@ import { CguComponent } from './pages/cgu/cgu.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { AproposComponent } from './pages/apropos/apropos.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 import { GamePageComponent } from './pages/game-page/game-page.component';
 
 import { ProfileEditComponent } from './pages/profile-edit/profile-edit.component';
@@ -23,6 +24,10 @@ export const routes: Routes = [
     path: '',
     redirectTo: '/home',
     pathMatch: 'full',
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
   },
   {
     path: 'connexion',
