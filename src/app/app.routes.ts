@@ -26,7 +26,7 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'profile',
+    path: 'profil',
     component: ProfileComponent,
   },
   {
@@ -60,7 +60,7 @@ export const routes: Routes = [
       {path:'profil', component: EditInformationsComponent},
       {path:'notifications', component: EditNotificationsComponent},
       {path:'securite', component: EditSecurityComponent},
-      {path: 'edit', redirectTo: '/edition/profil', pathMatch: 'full'},
+      {path: '', redirectTo: '/edition/profil', pathMatch: 'full'},
     ]
   },
   {
