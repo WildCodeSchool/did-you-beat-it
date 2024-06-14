@@ -40,7 +40,7 @@ export const routes: Routes = [
     component: AproposComponent,
   },
   {
-    path: 'game-page',
+    path: 'page-jeu',
     component: GamePageComponent,
   }
 ];

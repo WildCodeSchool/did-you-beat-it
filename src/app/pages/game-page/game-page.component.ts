@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Inject, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { HomepageBannerComponent } from '../../components/homepage-banner/homepage-banner.component';
@@ -21,7 +21,6 @@ export class GamePageComponent {
   
   ngOnInit() : void {
     this.gamesApiService.getGamesInfos().subscribe(GamesFromJSON => {
-      console.log(GamesFromJSON);
       this.game = GamesFromJSON;
     })
   }
