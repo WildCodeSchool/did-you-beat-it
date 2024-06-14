@@ -22,7 +22,6 @@
 
 a,
 a:visited {
-  color: inherit;
   text-decoration: none;
 }
 
@@ -46,11 +45,12 @@ $mainFont: "Inter", sans-serif;
 h1,
 h2,
 h3,
-p {
+h4,
+p, a {
   color: $mainColor;
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4 {
   font-family: $titleFont;
 }
 

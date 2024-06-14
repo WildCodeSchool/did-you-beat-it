@@ -1,5 +1,5 @@
 <header>
-<nav class="top-nav">
+<nav class="top-nav" >
     <div>
       <a [routerLink]="['/home']"><img src="..\..\assets\pictures\did-you-beat-it--high-resolution-logo-transparent.svg" alt="logo" id="logo"></a>
     </div>
@@ -8,9 +8,12 @@
     <div class='menu-button'></div>
   </label>
     <ul class="menu">
-      <li><a [routerLink]="['/jeux']">Jeux</a></li>
-      <li><a [routerLink]="['/connexion']">Se connecter</a></li>
-      <li><a [routerLink]="['/inscription']">S'inscrire</a></li>
+      <li><a [routerLink]="['/jeux']" (click)="closeMenu()">Jeux</a></li>
+      <li *ngIf="isConnected == true"><a [routerLink]="['/profil']" (click)="closeMenu()">Profil</a></li>
+      <li *ngIf="isConnected == false"><a [routerLink]="['/connexion']" (click)="closeMenu()">Se connecter</a></li>
+      <li *ngIf="isConnected == false"><a [routerLink]="['/inscription']" (click)="closeMenu()">S'inscrire</a></li>
+      <li *ngIf="isConnected == true && isAdmin == true"><a [routerLink]="['/admin']" (click)="closeMenu()">Admin</a></li>
+      <li *ngIf="isConnected == true"><a [routerLink]="['/home']" (click)="closeMenu()">Déconnexion</a></li>
     </ul>
 </nav>
 </header>

@@ -18,4 +18,5 @@ export class HomeComponent {
   isConnected(){
     return !true;
   }
+
 }

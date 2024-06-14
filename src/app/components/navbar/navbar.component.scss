@@ -12,6 +12,7 @@ html, body {
 * {
   font-family: "Raleway";
   box-sizing: border-box;
+  z-index: 10;
 }
 
 .top-nav {
@@ -54,8 +55,8 @@ html, body {
 }
 
 #logo{
-  height: 150px;
-  width: 150px;
+  max-height: 30%;
+  max-width: 200px;
 }
 
 .menu-button,
@@ -94,7 +95,7 @@ html, body {
   transform: rotate(-405deg);
 }
 
-@media (max-width: 700px) {
+@media (max-width: 768px) {
   .menu-button-container {
     display: flex;
   }
