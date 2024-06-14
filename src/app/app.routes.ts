@@ -47,7 +47,7 @@ export const routes: Routes = [
   {
     path: 'page-jeu',
     component: GamePageComponent,
-  }
+  },
   {
     path:'edition',
     component: ProfileEditComponent,
