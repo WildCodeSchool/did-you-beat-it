@@ -5,7 +5,7 @@
     </div-->
     <div class="select-display">
         <div class="select-item">
-            <p>Platforme</p>
+            <h3>Platforme</h3>
         <select [(ngModel)]="selectedPlatform" (change)="applyFilters()" class="selecteur">
                 <option value=""></option>
                 <option value="BlackBerry OS">BlackBerry OS</option>
@@ -14,7 +14,7 @@
             </select>
         </div>
         <div class="select-item">
-            <p>Score</p>
+            <h3>Score</h3>
             <select [(ngModel)]="selectedScore" (change)="applyFilters()" class="selecteur">
                 <option value=""></option>
                 <option value="5">5 Étoile</option>
@@ -25,7 +25,7 @@
             </select>
         </div>
         <div class="select-item">
-            <p>Genre</p>
+            <h3>Genre</h3>
             <select [(ngModel)]="selectedGenre" (change)="applyFilters()" class="selecteur">
                 <option value=""></option>
                 <option value="Fighting">Fighting</option>
@@ -34,7 +34,7 @@
             </select>
         </div>
         <div class="select-item">
-            <p>Année</p>
+            <h3>Année</h3>
             <select [(ngModel)]="selectedYear" (change)="applyFilters()" class="selecteur">
                 <option value=""></option>
                 <option value="{{year}}" *ngFor="let year of years">{{year}}</option>
@@ -42,11 +42,11 @@
         </div>
     </div>
 </div>
-<section class="game-section">
-    <div class="card-game" *ngFor="let game of filteredGames">
+<ul class="game-section">
+    <li class="card-game" *ngFor="let game of filteredGames">
         <a [routerLink]="['/jeux']">
             <img src="{{game.img}}" alt="gameImage" class="game-image">
-            <p class="game-name">{{game.name}}</p>
+            <h3 class="game-name">{{game.name}}</h3>
         </a>
-    </div>
-</section>
+    </li>
+</ul>

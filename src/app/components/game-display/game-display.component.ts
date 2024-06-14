@@ -30,39 +30,14 @@ export class GameDisplayComponent {
       return matchesPlatform && matchesScore && matchesGenre && matchesYear;
     });
   }
-
-  /*onPlatformChange(){
-    if(this.selectedPlatform ===""){
-      this.filtredGames=this.games
-    }
-    else{
-      this.filtredGames=this.games.filter((item:game) => {
-        return item.platforme===this.selectedPlatform
-      })
-    }
-    
-  }
-  onScoreChange(){
-    if(this.selectedScore===""){
-      this.filtredGames=this.games
-    }
-    else{
-      this.filtredGames=this.games.filter((item:game) => {
-        return String(item.score)===this.selectedScore
-      })
-      console.log(this.filtredGames)
-    }
-  }*/
   ngOnInit(): void {
     this.gameService.getGames().subscribe(x=>{
       this.filteredGames = this.games = x
   
     });
-
-    //1950 -> 2023
-    const dateActuelle = new Date();
-    const anneeActuelle = dateActuelle.getFullYear();
-   for ( let item =anneeActuelle;item>=1950;item--) {
+    const CurrentDate = new Date();
+    const CurrentYear = CurrentDate.getFullYear();
+   for ( let item =CurrentYear;item>=1950;item--) {
       this.years.push(item);
     }
 
