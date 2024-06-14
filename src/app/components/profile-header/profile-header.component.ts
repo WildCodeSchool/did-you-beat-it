@@ -1,12 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { CustomButtonComponent } from '../custom-button/custom-button.component';
+import { RouterLink } from '@angular/router';
 
 
 @Component({
   selector: 'app-profile-header',
   standalone: true,
-  imports: [CommonModule, CustomButtonComponent],
+  imports: [CommonModule, CustomButtonComponent, RouterLink],
   templateUrl: './profile-header.component.html',
   styleUrl: './profile-header.component.scss'
 })
