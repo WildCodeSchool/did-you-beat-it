@@ -12,8 +12,8 @@ import { RouterLink } from '@angular/router';
 })
 export class NavbarComponent {
 
-  isConnected: boolean = true;
-  isAdmin: boolean =true;
+  isConnected: boolean = !true;
+  isAdmin: boolean = !true;
 
   closeMenu() {
     const menuToggle = document.getElementById('menu-toggle') as HTMLInputElement;

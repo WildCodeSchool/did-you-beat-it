@@ -13,6 +13,10 @@ $borderColor: #858585;
 $defaultFont: 'Inter';
 $fontSize_title: 26;
 
+li{
+    color: #fff;
+}
+
 //Mixin
 @mixin defaultStyles {
     margin: 0;

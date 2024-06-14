@@ -1,0 +1,63 @@
+<app-homepage-banner></app-homepage-banner>
+
+<article id="game">
+    <section class="game__infos">
+        <div class="game__cover--wrapper">
+            <img src=" {{ game?.cover }} " class="game__cover--img" alt="{{game?.title}} cover">
+            <img src="" class="game__cover--rating" alt="{{ game?.rating }}">
+        </div>
+        <div class="game__infos--wrapper">
+            <div class="game__infos--titlebtn">
+                <h1 class="game__infos--title">{{ game?.title }}</h1>
+                <button class="game__infos--btn">+</button>
+            </div>
+            <div class="game__infos--details">
+                <div class="game__infos--details_release">
+                    <p class="game__infos--details--release">{{ game?.releaseDate}} |</p>
+                    <p class="game__infos--details--developer"> {{ game?.developer }} |</p>
+                    <p class="game__infos--details--publisher"> {{ game?.publisher }} </p>
+                </div>
+                <div class="game__infos--details_platforms">
+                    <li *ngFor="let platform of game?.platform" class="game__infos--details--platform"> {{ platform }} </li>
+                </div>
+            </div> 
+            <div class="game__infos--genre">
+                <li *ngFor="let genre of game?.genres" class="game__infos--details--genre"> {{genre}} </li>
+            </div>
+            <p class="game__infos--description">
+                {{ game?.description }}
+            </p>
+        </div>
+    </section>
+    <section class="game__galery">
+        <div *ngFor="let screenshot of game?.screenshots" class="game__galery--carousel">
+            <img src="{{ screenshot }}" class="game__galery--img" alt="{{game?.title}} image">
+        </div>
+    </section>
+    <section class="game__comments">
+        <div class="game__comments--wrapper">
+            <div class="game__comments--list">
+                <div class="game__comments--title__sort">
+                    <h2>Commentaires</h2>
+                    <button class="game__comments--sorting">v Les plus récents - Tri</button>
+                </div> 
+                <div class="game__comments--list--comment">
+                    <div class="game__comments--author--infos">
+                        <img src="../../../assets/pictures/profile_comment.png" alt="author avatar" class="game__comments--author--img">
+                        <div class="game__comments--author--details">
+                            <p class="game__comments--list--comment--author">AxelPentaKill9</p>
+                            <div class="game__comments--completion">
+                                <span class="game__comments--list--comment--stars">4</span>
+                                <p class="game__comments--list--comment--completion">| Complété sur PC</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="game__comments--list--comment--text">The narrative here is really, really good. Now that I've played 3, 4 and 5 I'm really surprised by just how strong the stories for these games are. I was a bit incredulous when I heard that the Persona series usually involves high school students but I've really come to appreciate the depth that Atlus brings to these characters and their stories...</p>
+                    <hr/>
+                </div>
+                <button class="game__comments--list--morebtn">Voir plus de commentaires</button>
+            </div>
+        </div>
+    </section>
+
+</article>

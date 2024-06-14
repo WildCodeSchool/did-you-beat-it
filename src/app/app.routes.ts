@@ -6,6 +6,8 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { AproposComponent } from './pages/apropos/apropos.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { GamePageComponent } from './pages/game-page/game-page.component';
+
 import { ProfileEditComponent } from './pages/profile-edit/profile-edit.component';
 import { EditInformationsComponent } from './components/edit-informations/edit-informations.component';
 import { EditNotificationsComponent } from './components/edit-notifications/edit-notifications.component';
@@ -48,13 +50,17 @@ export const routes: Routes = [
     component: AproposComponent,
   },
   {
+    path: 'page-jeu',
+    component: GamePageComponent,
+  },
+  {
     path:'edition',
     component: ProfileEditComponent,
     children: [
       {path:'profil', component: EditInformationsComponent},
       {path:'notifications', component: EditNotificationsComponent},
       {path:'securite', component: EditSecurityComponent},
-      {path: '', redirectTo: '/edition/profil', pathMatch: 'full'},
+      {path: 'edit', redirectTo: '/edition/profil', pathMatch: 'full'},
     ]
   },
   {
