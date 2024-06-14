@@ -1,0 +1,103 @@
+@import '../../../import';
+
+.container {
+    max-width: 100%;
+    margin-top: rem(20);
+}
+
+.tab-nav {
+    margin: 0 auto;
+    position: relative;
+    width: 60%;
+    height: 7vh;
+    border-radius: rem(8);
+    font-size: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.tab-nav a {
+    font-size: rem(15);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: $mainColor;
+    background-color: white;
+    cursor: pointer;
+    transition: background-color 0.5s ease;
+    border-radius: rem(8);
+}
+
+.tab-nav a.active {
+    background-color: $mainColor;
+    color: white;
+}
+
+.tab-nav a:nth-child(1) {
+    width: 20%;
+}
+
+.tab-nav a:nth-child(2) {
+    width: 20%;
+}
+
+.tab-nav a:nth-child(3) {
+    width: 20%;
+}
+
+.filter {
+    max-width: 30%;
+    width: 20%;
+    margin-right: rem(20);
+}
+
+.game {
+    margin: 0 auto;
+    max-width: 70%;
+    width: 70%;
+}
+
+.game ul {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: rem(20); 
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+    .tab-nav {
+        width: 80%;
+    }
+
+    .tab-nav a {
+        width: 30%;
+        font-size: rem(12);
+    }
+    .game ul{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); 
+        gap: rem(10);
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .tab-nav {
+        width: 90%;
+        flex-wrap: wrap; 
+      }
+    
+      .tab-nav a {
+        width: 45%; 
+        margin-bottom: rem(10); 
+        font-size: rem(10); 
+      }
+
+      .game ul {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr); 
+        gap: rem(10);
+    }
+}
