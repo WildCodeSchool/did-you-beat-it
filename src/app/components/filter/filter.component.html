@@ -1,5 +1,17 @@
-<div class="container">
+@if(filterVisible) {
+<div class="fond" (click)="toggleFilters()"></div>
+}
+
+<div class="toggle-button">
+    <app-custom-button [btnType]="'button'" [class]="'btn-edit'" [text]="'Filtrer'"
+        (click)="toggleFilters()"></app-custom-button>
+</div>
+
+<div class="container" [ngClass]="{'viewMobile': filterVisible}">
     <div class="card">
+        @if(filterVisible) {
+        <button class="close-button" (click)="toggleFilters()">X</button>
+        }
         <h1>Filtrer Par</h1>
         <div class="status">
             <label for="enCours">
@@ -29,12 +41,11 @@
                 </select>
             </div>
             <div class="filter">
-                <label for="filter3">Filtrer par année:</label>
-                <select id="filter3">
+                <label for="filter4">Filtrer par année:</label>
+                <select id="filter4">
                     <option value="option1">----</option>
                 </select>
             </div>
         </div>
-    
     </div>
 </div>
