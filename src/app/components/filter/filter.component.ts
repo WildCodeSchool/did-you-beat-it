@@ -1,17 +1,19 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
+import { CustomButtonComponent } from '../custom-button/custom-button.component';
 
 @Component({
   selector: 'app-filter',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, CustomButtonComponent],
   templateUrl: './filter.component.html',
   styleUrl: './filter.component.scss'
 })
 export class FilterComponent {
-  filtersVisible: boolean = false;
+  filterVisible: boolean = true;
 
   toggleFilters() {
-    this.filtersVisible = !this.filtersVisible;
+    this.filterVisible = !this.filterVisible;
   }
+
 }
