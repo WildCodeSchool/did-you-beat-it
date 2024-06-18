@@ -14,17 +14,17 @@
         }
         <h1>Filtrer Par</h1>
         <div class="status">
-            <label for="enCours">
-                <input type="checkbox" id="enCours" [(ngModel)]="filters.enCours"> En cours
+            <label for="inProgress">
+                <input type="checkbox" id="inProgress" [(ngModel)]="filters.inProgress"> En cours
             </label>
-            <label for="terminer">
-                <input type="checkbox" id="terminer" [(ngModel)]="filters.terminer"> Terminer
+            <label for="completed">
+                <input type="checkbox" id="completed" [(ngModel)]="filters.completed"> Terminé
             </label>
         </div>
         <div class="filterBy">
             <div class="filter">
-                <label for="filter_plateforme">Filtrer par plateformes:</label>
-                <select id="filter_plateforme" [(ngModel)]="filters.plateforme">
+                <label for="filter_platform">Filtrer par plateformes:</label>
+                <select id="filter_platform" [(ngModel)]="filters.platform">
                     <option value="">----</option>
                 </select>
             </div>
@@ -41,8 +41,8 @@
                 </select>
             </div>
             <div class="filter">
-                <label for="filter_annee">Filtrer par année:</label>
-                <select id="filter_annee" [(ngModel)]="filters.annee">
+                <label for="filter_year">Filtrer par année:</label>
+                <select id="filter_year" [(ngModel)]="filters.year">
                     <option value="">----</option>
                 </select>
             </div>

@@ -13,12 +13,12 @@ import { FormsModule } from '@angular/forms';
 export class FilterComponent {
   filterVisible: boolean = true;
   filters = {
-    enCours: false,
-    terminer: false,
-    plateforme: '',
+    inProgress: false,
+    completed: false,
+    platform: '',
     genre: '',
     score: '',
-    annee: ''
+    year: ''
   };;
 
   toggleFilters() {
@@ -26,12 +26,12 @@ export class FilterComponent {
   }
   resetFilters() {
     this.filters = {
-      enCours: false,
-      terminer: false,
-      plateforme: '',
+      inProgress: false,
+      completed: false,
+      platform: '',
       genre: '',
       score: '',
-      annee: ''
+      year: ''
     };
   }
 
