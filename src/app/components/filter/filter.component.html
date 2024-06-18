@@ -15,37 +15,45 @@
         <h1>Filtrer Par</h1>
         <div class="status">
             <label for="enCours">
-                <input type="checkbox" id="enCours"> En cours
+                <input type="checkbox" id="enCours" [(ngModel)]="filters.enCours"> En cours
             </label>
             <label for="terminer">
-                <input type="checkbox" id="terminer"> Terminer
+                <input type="checkbox" id="terminer" [(ngModel)]="filters.terminer"> Terminer
             </label>
         </div>
         <div class="filterBy">
             <div class="filter">
-                <label for="filter1">Filtrer par plateformes:</label>
-                <select id="filter1">
-                    <option value="option1">----</option>
+                <label for="filter_plateforme">Filtrer par plateformes:</label>
+                <select id="filter_plateforme" [(ngModel)]="filters.plateforme">
+                    <option value="">----</option>
                 </select>
             </div>
             <div class="filter">
-                <label for="filter2">Filtrer par genre:</label>
-                <select id="filter2">
-                    <option value="option1">----</option>
+                <label for="filter_genre">Filtrer par genre:</label>
+                <select id="filter_genre" [(ngModel)]="filters.genre">
+                    <option value="">----</option>
                 </select>
             </div>
             <div class="filter">
-                <label for="filter3">Filtrer par score:</label>
-                <select id="filter3">
-                    <option value="option1">----</option>
+                <label for="filter_score">Filtrer par score:</label>
+                <select id="filter_score" [(ngModel)]="filters.score">
+                    <option value="">----</option>
                 </select>
             </div>
             <div class="filter">
-                <label for="filter4">Filtrer par année:</label>
-                <select id="filter4">
-                    <option value="option1">----</option>
+                <label for="filter_annee">Filtrer par année:</label>
+                <select id="filter_annee" [(ngModel)]="filters.annee">
+                    <option value="">----</option>
                 </select>
             </div>
         </div>
+        @if(filterVisible) {
+            <div class="btn">
+                <app-custom-button [btnType]="'button'" [class]="'btn'" [text]="'Appliquer'"></app-custom-button>
+                <app-custom-button [btnType]="'button'" [class]="'btn'" [text]="'Annuler'"
+                (click)="resetFilters()"></app-custom-button>
+            </div>
+
+            }
     </div>
 </div>
