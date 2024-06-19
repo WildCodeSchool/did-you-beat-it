@@ -1,0 +1,18 @@
+@import "../../../import.scss";
+
+* {
+    @include defaultStyles;
+}
+
+.edit-information-subpage {
+    margin: 2rem;
+}
+
+.modify-informations {
+    h2 {
+        font-size: 32px;
+        font-weight: bold;
+        color: $mainColor;
+        margin-bottom: 2rem;
+    }
+}
