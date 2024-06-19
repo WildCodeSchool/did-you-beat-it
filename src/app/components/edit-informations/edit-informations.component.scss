@@ -15,4 +15,25 @@
         color: $mainColor;
         margin-bottom: 2rem;
     }
+    form {
+        .form-group {
+            h3 {
+                margin: 0.5rem 0;
+            }
+            input {
+                background-color: $cardColor;
+                width: 100%;
+                height: 2rem;
+            }
+            .biography {
+                height: 4rem;
+                width: 100%;
+                background-color: $cardColor;
+                border: none;
+            }
+            .confirm_password {
+                margin-bottom: 2rem;
+            }
+        }
+    }
 }

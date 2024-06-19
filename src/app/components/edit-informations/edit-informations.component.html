@@ -39,15 +39,15 @@
 
             <div class="form-group">
                 <h3>Biographie</h3>
-                <input type="text" id="biography" name="biography" placeholder="Biographie"
-                    [(ngModel)]="update.biography" #username="ngModel">
+                <textarea type="text" id="biography" name="biography" class="biography" placeholder="Biographie"
+                    [(ngModel)]="update.biography" #username="ngModel"></textarea>
             </div>
 
             <div class="form-group">
                 <h3>Mot de passe</h3>
                 <input type="text" id="password" name="password" placeholder="Mot de passe"
                     [(ngModel)]="update.password" required minlength="8"
-                    pattern="^(?=.\d)(?=.[a-z])(?=.[A-Z])(?=.[!@#$%^&*]).{8,}$" #password="ngModel">
+                    pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,}$" #password="ngModel">
                 @if (password.errors && password.errors['required'] && password.touched) {
                 <p [ngStyle]="{color: 'red'}">Le mot de passe est requis</p>
                 } @else if(password.errors && password.errors['pattern']) {
@@ -63,9 +63,9 @@
 
             <div class="form-group">
                 <h3>Confirmez le mot de passe</h3>
-                <input type="text" id="confirm_password" name="confirm_password" [(ngModel)]="update.confirmPassword"
+                <input type="text" id="confirm_password" name="confirm_password" class="confirm_password" [(ngModel)]="update.confirmPassword"
                     placeholder="Confirmez le mot de passe" required minlength="8"
-                    pattern="^(?=.\d)(?=.[a-z])(?=.[A-Z])(?=.[!@#$%^&*]).{8,}$" #confirmPassword="ngModel">
+                    pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,16}$" #confirmPassword="ngModel">
                 @if (confirmPassword.errors && confirmPassword.errors['required'] && confirmPassword.touched) {
                 <p [ngStyle]="{color: 'red'}">Veuillez confirmez le mot de passe</p>
                 } @else if(confirmPassword.errors && confirmPassword.errors['pattern'] ) {
@@ -80,7 +80,5 @@
             </div>
             <app-custom-button [btnType]="'submit'" [text]="textButton" [class]="'btn'"></app-custom-button>
         </form>
-
-
     </div>
 </section>

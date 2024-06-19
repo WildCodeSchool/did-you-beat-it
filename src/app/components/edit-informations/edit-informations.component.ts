@@ -29,4 +29,7 @@ export class EditInformationsComponent {
     confirmPassword : '',
   };
 
+  onFileSelected(event: any):any {
+
+  }
 }
