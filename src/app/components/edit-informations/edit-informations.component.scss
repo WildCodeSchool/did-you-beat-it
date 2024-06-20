@@ -25,7 +25,6 @@
 
 .modify-informations {
     h2 {
-        font-size: 32px;
         font-weight: bold;
         color: $mainColor;
         margin: 2rem 0;
@@ -51,4 +50,9 @@
             }
         }
     }
+}
+
+.button {
+    display: flex;
+    justify-content: end;
 }
