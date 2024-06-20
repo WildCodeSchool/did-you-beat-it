@@ -10,6 +10,7 @@
     background-color: $mainColor;
     border-radius: rem(10);
     width: 120px;
+    cursor: pointer;
 }
 
 .btn-edit {
@@ -22,6 +23,7 @@
     background-color: white;
     border-radius: rem(10);
     width: 120px;
+    cursor: pointer;
 }
 
 @media screen and (min-width: 769px) and (max-width: 1024px) {

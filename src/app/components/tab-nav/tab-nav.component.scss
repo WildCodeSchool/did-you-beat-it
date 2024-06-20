@@ -2,6 +2,7 @@
 
 .container {
     max-width: 100%;
+    margin-top: rem(20);
 }
 
 .tab-nav {
@@ -47,6 +48,25 @@
 .tab-nav a:nth-child(3) {
     width: 20%;
 }
+.content_list_game {
+    display: flex;
+    margin-top: rem(20);
+}
+.filter {
+    max-width: 30%;
+    margin-top: rem(10);
+}
+
+.game {
+    margin: 0 auto;
+    max-width: 70%;
+}
+
+.game ul {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: rem(20); 
+}
 
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
     .tab-nav {
@@ -56,6 +76,14 @@
     .tab-nav a {
         width: 30%;
         font-size: rem(12);
+    }
+    .filter {
+        margin-top: rem(20);
+    }
+    .game ul{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); 
+        gap: rem(10);
     }
 }
 
@@ -70,4 +98,15 @@
         margin-bottom: rem(10); 
         font-size: rem(10); 
       }
+      .content_list_game {
+        margin-top: rem(30);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .game ul {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr); 
+        gap: rem(10);
+    }
 }
