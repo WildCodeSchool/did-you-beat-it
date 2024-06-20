@@ -5,6 +5,9 @@
         <div class="game__cover--wrapper">
             <img src=" {{ game?.cover }} " class="game__cover--img" alt="{{game?.title}} cover">
             <img src="" class="game__cover--rating" alt="{{ game?.rating }}">
+            @if(isConnected() === true) {
+                <app-custom-button [class]="'btn'" [btnType]="'submit'" [text]="btnText"></app-custom-button>
+            }
         </div>
         <div class="game__infos--wrapper">
             <div class="game__infos--titlebtn">
