@@ -23,3 +23,10 @@ h2 {
     justify-content: end;
     align-items: end;
 }
+
+@media screen and (max-width:768px) {
+    .form-group {
+        flex-direction: column;
+        gap: 2rem;
+    }
+}

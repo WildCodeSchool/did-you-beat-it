@@ -71,3 +71,10 @@
     display: flex;
     justify-content: end;
 }
+
+@media screen and (max-width:768px) {
+    .modify-images {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+}
