@@ -1,7 +1,14 @@
 
+@use "../../../import" as *;
+
+.container {
+    display: flex;
+    
+}
+
 .navbar-vertical {
-    height: calc(100vh - 100px);
-    width: 200px;
+    height: auto;
+    width: 240px;
     background-color: #292729;
     color: white;
     padding: 20px;
@@ -23,6 +30,7 @@
 
 }
 
-.navbar-vertical a.active {
-    color: #9D4EDD; 
+li .active {
+    color: $mainColor;
+    font-weight: bold;
 }

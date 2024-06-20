@@ -1,9 +1,10 @@
 <div class="container">
     <nav class="navbar-vertical">
         <ul>
-            <li><a [routerLink]="['/admin']" (click)="activateLink($event)">Tableau de bord</a></li>
-            <li><a [routerLink]="['/admin']" (click)="activateLink($event)">Utilisateurs</a></li>
-            <li><a [routerLink]="['/admin']" (click)="activateLink($event)">Commentaires</a></li>
+            <li><a [routerLink]="['/admin']" routerLinkActive="active">Tableau de bord</a></li>
+            <li><a [routerLink]="['./utilisateurs']" routerLinkActive="active">Utilisateurs</a></li>
+            <li><a [routerLink]="['./commentaires']" routerLinkActive="active">Commentaires</a></li>
         </ul>
     </nav>
+    <router-outlet></router-outlet>
 </div>
