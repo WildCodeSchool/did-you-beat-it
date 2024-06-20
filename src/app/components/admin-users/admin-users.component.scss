@@ -1,23 +1,23 @@
 @use "../../../import" as *;
 
 .user-section {
-    
-    background-color: #292729;
+
+    background-color: #171515;
     padding: 20px; 
     width: 100%;
     box-sizing: border-box; 
-    margin-top: 2%; 
-    margin-left: 10%; 
-    margin-right: 10%;
+    
 }
 
 .user-container {
+    background-color: #292729;
+    padding: 20px;
     .user-header {
         .user-title {
             h2 {
                 color: #fff;
                 margin-bottom: 1rem;
-                padding-right: 30%;
+                
             }
         }
     }
@@ -53,10 +53,12 @@
     }
 }
 
-.directory {
+.directory{
     color: #fff;
-    margin-bottom: 2%;
-    margin-left: 50%;
-}
+    padding-top: 2%;
+    padding-bottom: 2%;
+    margin: 0 auto;
+    width: max-content;
 
+}
 

@@ -13,9 +13,9 @@ import { EditInformationsComponent } from './components/edit-informations/edit-i
 import { EditNotificationsComponent } from './components/edit-notifications/edit-notifications.component';
 import { EditSecurityComponent } from './components/edit-security/edit-security.component';
 import { AdminComponent } from './pages/admin/admin.component';
-import { AdminCommentairesComponent } from './components/admin-commentaires/admin-commentaires.component';
-import { AdminTableauBordComponent } from './components/admin-tableau-bord/admin-tableau-bord.component';
-import { AdminUtilisateursComponent } from './components/admin-utilisateurs/admin-utilisateurs.component';
+import { AdminCommentsComponent } from './components/admin-comments/admin-comments.component';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
+import { AdminUsersComponent } from './components/admin-users/admin-users.component';
 
 
 export const routes: Routes = [
@@ -70,9 +70,9 @@ export const routes: Routes = [
     path: 'admin',
     component: AdminComponent,
     children:[
-      {path:'admin-tdb', component: AdminTableauBordComponent},
-      {path:'utilisateurs', component: AdminUtilisateursComponent},
-      {path:'commentaires', component: AdminCommentairesComponent},
+      {path:'admin-tdb', component: AdminDashboardComponent},
+      {path:'utilisateurs', component: AdminUsersComponent},
+      {path:'commentaires', component: AdminCommentsComponent},
       {path: '', redirectTo: '/admin/admin-tdb', pathMatch: 'full'},
     ]
   },
