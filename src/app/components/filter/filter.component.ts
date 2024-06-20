@@ -13,8 +13,8 @@ import { FormsModule } from '@angular/forms';
 export class FilterComponent {
   filterVisible: boolean = true;
   filters = {
-    inProgress: false,
-    completed: false,
+    isInProgress: false,
+    isCompleted: false,
     platform: '',
     genre: '',
     score: '',
@@ -26,8 +26,8 @@ export class FilterComponent {
   }
   resetFilters() {
     this.filters = {
-      inProgress: false,
-      completed: false,
+      isInProgress: false,
+      isCompleted: false,
       platform: '',
       genre: '',
       score: '',

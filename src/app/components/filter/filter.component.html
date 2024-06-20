@@ -12,13 +12,13 @@
         @if(filterVisible) {
         <button class="close-button" (click)="toggleFilters()">X</button>
         }
-        <h1>Filtrer Par</h1>
+        <p>Filtrer Par</p>
         <div class="status">
             <label for="inProgress">
-                <input type="checkbox" id="inProgress" [(ngModel)]="filters.inProgress"> En cours
+                <input type="checkbox" id="inProgress" [(ngModel)]="filters.isInProgress"> En cours
             </label>
             <label for="completed">
-                <input type="checkbox" id="completed" [(ngModel)]="filters.completed"> Terminé
+                <input type="checkbox" id="completed" [(ngModel)]="filters.isCompleted"> Terminé
             </label>
         </div>
         <div class="filterBy">
