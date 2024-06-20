@@ -1,0 +1,25 @@
+@import "../../../import.scss";
+
+* {
+    @include defaultStyles;
+}
+
+.edit-security-subpage {
+    margin: 2rem;
+}
+
+.form-group {
+    display: flex;
+    gap: 5rem;
+    margin: 1.5rem 0 3rem;
+}
+
+h2 {
+    font-weight: bold;
+}
+
+.button {
+    display: flex;
+    justify-content: end;
+    align-items: end;
+}
