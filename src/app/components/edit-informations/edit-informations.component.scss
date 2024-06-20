@@ -8,12 +8,27 @@
     margin: 2rem;
 }
 
+.modify-images {
+    display: flex;
+    justify-content: space-between;
+    .image {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+.banner-img {
+    width: 250px;
+    height: auto;
+}
+
 .modify-informations {
     h2 {
         font-size: 32px;
         font-weight: bold;
         color: $mainColor;
-        margin-bottom: 2rem;
+        margin: 2rem 0;
     }
     form {
         .form-group {

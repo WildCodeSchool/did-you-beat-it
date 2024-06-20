@@ -2,11 +2,18 @@
     <div class="modify-images">
         <div class="modify-banner">
             <h2>Bannière</h2>
-            <!-- <input type="file" class="banner-input" (change)="onFileSelected($event)"> -->
+            <div class="image">   
+                <img [src]="bannerImg !=='' ? bannerImg : './assets/pictures/pexels-jahoo-388415.jpg'" alt="bannerImg" class="banner-img">
+                <input type="file" class="banner-input" (change)="onFileSelected($event)">
+                @if (bannerFile) {
+                    <button type="button" class="validation-button" (click)="onUpload()">Upload the file</button>
+                    <app-custom-button [btnType]="'submit'" [text]="uploadButton" [class]="'btn'" (click)="onUpload()"></app-custom-button>
+                }
+            </div> 
         </div>
         <div class="modify-profile-picture">
             <h2>Photo de profil</h2>
-            <!-- <input type="file" class="picture-upload" (change)="console.log(event.target.files)"> -->
+            <!-- <input type="file" class="picture-upload" (change)="onFileSelected($event)"> -->
         </div>
     </div>
     <div class="modify-informations">
