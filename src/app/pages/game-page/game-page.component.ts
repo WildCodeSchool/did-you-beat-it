@@ -6,11 +6,12 @@ import { Game } from '../../models/games-mock';
 import { GamesApiService } from '../../models/games-api.service';
 import { NgFor, NgIf } from '@angular/common';
 import { GameRecommendationComponent } from '../../components/game-recommendation/game-recommendation.component';
+import { RatingComponent } from '../../components/rating/rating.component';
 
 @Component({
   selector: 'app-game-page',
   standalone: true,
-  imports: [HomepageBannerComponent, RouterLink, NgFor, NgIf, GameRecommendationComponent],
+  imports: [HomepageBannerComponent, RouterLink, NgFor, NgIf, GameRecommendationComponent, RatingComponent],
   templateUrl: './game-page.component.html',
   styleUrl: './game-page.component.scss'
 })

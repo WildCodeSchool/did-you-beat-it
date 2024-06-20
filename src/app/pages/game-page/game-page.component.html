@@ -4,7 +4,10 @@
     <section class="game__infos">
         <div class="game__cover--wrapper">
             <img src=" {{ game?.cover }} " class="game__cover--img" alt="{{game?.title}} cover">
-            <img src="" class="game__cover--rating" alt="{{ game?.rating }}">
+            <div class="game__rating--wrapper">
+                <span class="game__rating--note">{{game?.rating}}</span>
+                <app-rating [rating]="game?.rating"></app-rating>
+            </div>
         </div>
         <div class="game__infos--wrapper">
             <div class="game__infos--titlebtn">
@@ -48,6 +51,7 @@
                             <p class="game__comments--list--comment--author">AxelPentaKill9</p>
                             <div class="game__comments--completion">
                                 <span class="game__comments--list--comment--stars">4</span>
+                                <app-rating [rating]="game?.rating"></app-rating>
                                 <p class="game__comments--list--comment--completion">| Complété sur PC</p>
                             </div>
                         </div>
