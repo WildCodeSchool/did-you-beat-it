@@ -2,8 +2,8 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CustomButtonComponent } from '../custom-button/custom-button.component';
-import { HttpClient } from '@angular/common/http';
-import { throwError } from "rxjs";
+import { UploadProfileImagesService } from '../../services/upload-profile-images/upload-profile-images.service';
+import { FileData } from '../../models/file-data.model';
 
 type updateForm = {
   username:string;
@@ -22,10 +22,9 @@ type updateForm = {
 })
 export class EditInformationsComponent {
 
-  private http: HttpClient = inject(HttpClient);
+  private service = inject(UploadProfileImagesService);
 
   textButton: string = 'Sauvegarder';
-  uploadButton: string = 'Sauvegarder l\'image';
 
   update : updateForm = {
     username : '',
@@ -36,40 +35,31 @@ export class EditInformationsComponent {
   };
 
   bannerImg: string = "";
+  profileImg: string = "";
 
   status: "initial" | "uploading" | "success" | "fail" = "initial";
   bannerFile: File | null = null;
+  profileFile: File | null = null;
 
-  onFileSelected(event:any) {
-    const file: File = event.target.files[0];
-    if (file) {
-      this.status = "initial";
-      this.bannerFile = file;
-    }
+  bannerData:FileData = new FileData(this.bannerFile, "");
+  profileData:FileData = new FileData(this.profileFile, "");
+
+  onBannerSelected(event:any) {
+    this.bannerData = this.service.onFileSelected(event, this.bannerFile, this.status);
+    return this.bannerData;
   }
 
-  onUpload() {
-    if (this.bannerFile) {
-      const formData = new FormData();
-  
-      formData.append('file', this.bannerFile, this.bannerFile.name);
-  
-      const upload$ = this.http.post("https://httpbin.org/post", formData);
-  
-      this.status = 'uploading';
-  
-      upload$.subscribe({
-        next: () => {
-          this.status = 'success';
-          console.log(this.status)
-        },
-        error: (error: any) => {
-          this.status = 'fail';
-          console.log(this.status)
-          return throwError(() => error);
-        },
-      });
-    }
+  onUploadBanner():void {
+    return this.service.onUpload(this.bannerData)
+  }
+
+  onProfileSelected(event:any) {
+    this.profileData = this.service.onFileSelected(event, this.profileFile, this.status);
+    return this.profileData;
+  }
+
+  onUploadProfile():void {
+    return this.service.onUpload(this.profileData)
   }
 
 }

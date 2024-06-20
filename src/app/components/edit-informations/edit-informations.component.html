@@ -4,16 +4,21 @@
             <h2>Bannière</h2>
             <div class="image">   
                 <img [src]="bannerImg !=='' ? bannerImg : './assets/pictures/pexels-jahoo-388415.jpg'" alt="bannerImg" class="banner-img">
-                <input type="file" class="banner-input" (change)="onFileSelected($event)">
-                @if (bannerFile) {
-                    <button type="button" class="validation-button" (click)="onUpload()">Upload the file</button>
-                    <app-custom-button [btnType]="'submit'" [text]="uploadButton" [class]="'btn'" (click)="onUpload()"></app-custom-button>
+                <input type="file" class="banner-input" (change)="onBannerSelected($event)">
+                @if (bannerData.uploadedFile) {
+                    <app-custom-button [btnType]="'submit'" [text]="textButton" [class]="'btn'" (click)="onUploadBanner()"></app-custom-button>
                 }
             </div> 
         </div>
         <div class="modify-profile-picture">
             <h2>Photo de profil</h2>
-            <!-- <input type="file" class="picture-upload" (change)="onFileSelected($event)"> -->
+            <div class="image">   
+                <img [src]="profileImg !=='' ? profileImg : './assets/pictures/pexels-jahoo-388415.jpg'" alt="profileImg" class="profile-img">
+                <input type="file" class="profile-input" (change)="onProfileSelected($event)">
+                @if (profileData.uploadedFile) {
+                    <app-custom-button [btnType]="'submit'" [text]="textButton" [class]="'btn'" (click)="onUploadProfile()"></app-custom-button>
+                }
+            </div> 
         </div>
     </div>
     <div class="modify-informations">
