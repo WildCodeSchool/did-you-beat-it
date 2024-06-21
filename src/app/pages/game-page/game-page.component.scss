@@ -87,6 +87,26 @@ h2{
             line-height: 1.5;
         }
     }
+
+    .game__cover--wrapper{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .game__rating--wrapper{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 200px;
+            padding-top: 10px;
+
+            .game__rating--note{
+                margin-right: 5px;
+                font-size: 1.5rem;
+                font-weight: 700;
+            }
+        }
+    }
 }
 
 .game__galery{
@@ -159,9 +179,11 @@ h2{
 
                 .game__comments--completion{
                     display: flex;
+                    align-items: center;
 
                     .game__comments--list--comment--stars{
-                        margin-right: 1rem;
+                        margin-right: 0.2rem;
+                        font-size: 22px;
                     }
 
                 }
