@@ -4,7 +4,7 @@ import { RouterLink } from '@angular/router';
 import { HomepageBannerComponent } from '../../components/homepage-banner/homepage-banner.component';
 import { Game } from '../../models/games-mock';
 import { GamesApiService } from '../../models/games-api.service';
-import { NgFor, NgIf } from '@angular/common';
+import { NgFor, NgIf, NgStyle } from '@angular/common';
 import { GameRecommendationComponent } from '../../components/game-recommendation/game-recommendation.component';
 import { RatingComponent } from '../../components/rating/rating.component';
 
@@ -25,5 +25,17 @@ export class GamePageComponent {
     this.gamesApiService.getGamesInfos().subscribe(GamesFromJSON => {
       this.game = GamesFromJSON;
     })
+  }
+
+  modalOpen = false;
+  modalImage = '';
+
+  openModal(image: string) {
+    this.modalOpen = true;
+    this.modalImage = image;
+  }
+
+  closeModal() {
+    this.modalOpen = false;
   }
 }

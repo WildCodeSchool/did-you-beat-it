@@ -34,9 +34,14 @@
     </section>
     <section class="game__galery">
         <div *ngFor="let screenshot of game?.screenshots" class="game__galery--carousel">
-            <img src="{{ screenshot }}" class="game__galery--img" alt="{{game?.title}} image">
+            <img src="{{ screenshot }}" class="game__galery--img" alt="{{game?.title}} image" (click)="openModal(screenshot)">
         </div>
     </section>
+
+    <div class="modal" [ngStyle]="{'display': modalOpen ? 'block' : 'none'}">
+        <span class="close" (click)="closeModal()">&times;</span>
+        <img class="modal-content" [src]="modalImage" alt="{{game?.title}} image">
+    </div>
     <section class="game__comments">
         <div class="game__comments--wrapper">
             <div class="game__comments--list">
