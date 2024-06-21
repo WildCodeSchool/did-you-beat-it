@@ -8,6 +8,9 @@
                 <span class="game__rating--note">{{game?.rating}}</span>
                 <app-rating [rating]="game?.rating"></app-rating>
             </div>
+            @if(isConnected() === true) {
+                <app-custom-button [class]="'btn'" [btnType]="'submit'" [text]="btnText"></app-custom-button>
+            }
         </div>
         <div class="game__infos--wrapper">
             <div class="game__infos--titlebtn">

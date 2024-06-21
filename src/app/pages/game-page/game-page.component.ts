@@ -7,11 +7,12 @@ import { GamesApiService } from '../../models/games-api.service';
 import { NgFor, NgIf, NgStyle } from '@angular/common';
 import { GameRecommendationComponent } from '../../components/game-recommendation/game-recommendation.component';
 import { RatingComponent } from '../../components/rating/rating.component';
+import { CustomButtonComponent } from '../../components/custom-button/custom-button.component';
 
 @Component({
   selector: 'app-game-page',
   standalone: true,
-  imports: [HomepageBannerComponent, RouterLink, NgFor, NgIf, GameRecommendationComponent, RatingComponent, NgStyle],
+  imports: [HomepageBannerComponent, RouterLink, NgFor, NgIf, GameRecommendationComponent, RatingComponent, NgStyle, CustomButtonComponent],
   templateUrl: './game-page.component.html',
   styleUrl: './game-page.component.scss'
 })
@@ -38,4 +39,11 @@ export class GamePageComponent {
   closeModal() {
     this.modalOpen = false;
   }
+
+  isConnected(){
+    return true;
+  }
+
+  btnText = 'Terminé ?';
+  class = 'game__infos--btn';
 }
