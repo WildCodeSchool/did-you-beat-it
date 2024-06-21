@@ -11,7 +11,7 @@ import { RatingComponent } from '../../components/rating/rating.component';
 @Component({
   selector: 'app-game-page',
   standalone: true,
-  imports: [HomepageBannerComponent, RouterLink, NgFor, NgIf, GameRecommendationComponent, RatingComponent],
+  imports: [HomepageBannerComponent, RouterLink, NgFor, NgIf, GameRecommendationComponent, RatingComponent, NgStyle],
   templateUrl: './game-page.component.html',
   styleUrl: './game-page.component.scss'
 })
