@@ -14,7 +14,7 @@
             <div class="form-group">
                 <input type="text" id="password" name="password" [(ngModel)]="newUser.password" #password="ngModel"
                     placeholder="Mot de passe" required minlength="8"
-                    pattern="^(?=.\d)(?=.[a-z])(?=.[A-Z])(?=.[!@#$%^&*]).{8,}$">
+                    pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$">
                 @if (password.errors && password.errors['required'] && password.touched) {
                 <p [ngStyle]="{color: 'red'}">Le mot de passe est requis</p>
                 } @else if(password.errors && password.errors['pattern']) {

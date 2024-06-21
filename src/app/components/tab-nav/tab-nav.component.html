@@ -9,22 +9,23 @@
     </nav>
 
     @if (currentSection === 'liste-des-jeux') {
-    <!-- Afficher la liste des jeux ajoutés par l'utilisateur -->
-    <div class="filter">
-        <!-- Afficher le filte -->
-    </div>
-    <div class="game">
-        <ul>
-            <li><app-card-game-small></app-card-game-small></li>
-            <li><app-card-game-small></app-card-game-small></li>
-            <li><app-card-game-small></app-card-game-small></li>
-            <li><app-card-game-small></app-card-game-small></li>
-            <li><app-card-game-small></app-card-game-small></li>
-            <li><app-card-game-small></app-card-game-small></li>
-        </ul>
-    </div>
 
-
+    <div class="content_list_game">
+        <div class="filter">
+            <app-filter></app-filter>
+        </div>
+        <!-- Afficher la liste des jeux ajoutés par l'utilisateur -->
+        <div class="game">
+            <ul>
+                <li><app-card-game-small></app-card-game-small></li>
+                <li><app-card-game-small></app-card-game-small></li>
+                <li><app-card-game-small></app-card-game-small></li>
+                <li><app-card-game-small></app-card-game-small></li>
+                <li><app-card-game-small></app-card-game-small></li>
+                <li><app-card-game-small></app-card-game-small></li>
+            </ul>
+        </div>
+    </div>
     } @else if(currentSection === 'statistiques') {
     <!-- Afficher les graphs -->
     } @else if(currentSection === 'amis') {

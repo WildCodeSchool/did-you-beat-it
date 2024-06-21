@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CardGameBigComponent } from '../card-game-big/card-game-big.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-game-recommendation',

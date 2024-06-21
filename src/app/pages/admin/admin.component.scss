@@ -1,17 +1,29 @@
 
+@use "../../../import" as *;
+
+$sidebar-width: 200px;
+
+.container {
+    padding-left: $sidebar-width;
+    
+}
+
 .navbar-vertical {
-    height: calc(100vh - 100px);
-    width: 200px;
+    height: 100vh;
+    padding: 20px;
+    padding-top: 50px;
+    top: 0;
+    left: 0;
+    position: fixed;
+    width: $sidebar-width;
     background-color: #292729;
     color: white;
-    padding: 20px;
-    
+      
 }
 
 .navbar-vertical ul {
     list-style: none;
-    padding: 0;
-    margin: 0;
+
 }
 
 .navbar-vertical li {
@@ -23,6 +35,7 @@
 
 }
 
-.navbar-vertical a.active {
-    color: #9D4EDD; 
+li .active {
+    color: $mainColor;
+    font-weight: bold;
 }

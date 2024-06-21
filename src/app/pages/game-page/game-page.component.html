@@ -4,7 +4,13 @@
     <section class="game__infos">
         <div class="game__cover--wrapper">
             <img src=" {{ game?.cover }} " class="game__cover--img" alt="{{game?.title}} cover">
-            <img src="" class="game__cover--rating" alt="{{ game?.rating }}">
+            <div class="game__rating--wrapper">
+                <span class="game__rating--note">{{game?.rating}}</span>
+                <app-rating [rating]="game?.rating"></app-rating>
+            </div>
+            @if(isConnected() === true) {
+                <app-custom-button [class]="'btn'" [btnType]="'submit'" [text]="btnText"></app-custom-button>
+            }
         </div>
         <div class="game__infos--wrapper">
             <div class="game__infos--titlebtn">
@@ -31,9 +37,14 @@
     </section>
     <section class="game__galery">
         <div *ngFor="let screenshot of game?.screenshots" class="game__galery--carousel">
-            <img src="{{ screenshot }}" class="game__galery--img" alt="{{game?.title}} image">
+            <img src="{{ screenshot }}" class="game__galery--img" alt="{{game?.title}} image" (click)="openModal(screenshot)">
         </div>
     </section>
+
+    <div class="modal" [ngStyle]="{'display': modalOpen ? 'block' : 'none'}">
+        <span class="close" (click)="closeModal()">&times;</span>
+        <img class="modal-content" [src]="modalImage" alt="{{game?.title}} image">
+    </div>
     <section class="game__comments">
         <div class="game__comments--wrapper">
             <div class="game__comments--list">
@@ -48,6 +59,7 @@
                             <p class="game__comments--list--comment--author">AxelPentaKill9</p>
                             <div class="game__comments--completion">
                                 <span class="game__comments--list--comment--stars">4</span>
+                                <app-rating [rating]="game?.rating"></app-rating>
                                 <p class="game__comments--list--comment--completion">| Complété sur PC</p>
                             </div>
                         </div>
@@ -57,6 +69,12 @@
                 </div>
                 <button class="game__comments--list--morebtn">Voir plus de commentaires</button>
             </div>
+        </div>
+    </section>
+    <section class="game__recommandations">
+        <h2>Recommandations</h2>
+        <div class="game__recommandations--wrapper">
+            <app-game-recommendation></app-game-recommendation>
         </div>
     </section>
 
