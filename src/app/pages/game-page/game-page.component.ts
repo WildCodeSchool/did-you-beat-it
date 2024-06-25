@@ -8,11 +8,12 @@ import { NgFor, NgIf, NgStyle } from '@angular/common';
 import { GameRecommendationComponent } from '../../components/game-recommendation/game-recommendation.component';
 import { RatingComponent } from '../../components/rating/rating.component';
 import { CustomButtonComponent } from '../../components/custom-button/custom-button.component';
+import { GameVoteComponent } from '../../components/game-vote/game-vote.component';
 
 @Component({
   selector: 'app-game-page',
   standalone: true,
-  imports: [HomepageBannerComponent, RouterLink, NgFor, NgIf, GameRecommendationComponent, RatingComponent, NgStyle, CustomButtonComponent],
+  imports: [HomepageBannerComponent, RouterLink, NgFor, NgIf, GameRecommendationComponent, RatingComponent, NgStyle, CustomButtonComponent, GameVoteComponent],
   templateUrl: './game-page.component.html',
   styleUrl: './game-page.component.scss'
 })
