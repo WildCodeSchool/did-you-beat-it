@@ -51,11 +51,11 @@ export class GamePageComponent {
     return true;
   }
 
-  addGame(){
+  toggleGamePossessed(){
     this.isGameAdded = !this.isGameAdded;
   }
 
-  finishGame(){
+  toggleGame(){
     this.isGameFinished = !this.isGameFinished;
     this.btnText = this.isGameFinished ? 'Terminé !' : 'Terminé ?';
   }

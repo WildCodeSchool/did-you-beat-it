@@ -21,9 +21,9 @@
                     </div>
                 }
             @if(isConnected() === true && isGameAdded === true && isGameFinished === false) {
-                <app-custom-button [class]="'btn'" [btnType]="'submit'" [text]="btnText" (click)="finishGame()"></app-custom-button>
+                <app-custom-button [class]="'btn'" [btnType]="'submit'" [text]="btnText" (click)="toggleGame()"></app-custom-button>
             } @else if(isGameAdded === true && isGameFinished === true) {
-                <app-custom-button [class]="'btn-finished'" [btnType]="'submit'" [text]="btnText" (click)="finishGame()"></app-custom-button>
+                <app-custom-button [class]="'btn-finished'" [btnType]="'submit'" [text]="btnText" (click)="toggleGame()"></app-custom-button>
             }
         
         </div>
@@ -31,9 +31,9 @@
             <div class="game__infos--titlebtn">
                 <h1 class="game__infos--title">{{ game?.title }}</h1>
                 @if(isConnected() === true && isGameAdded === false) {
-                    <button class="game__infos--btn-plus" (click)="addGame()">+</button>
+                    <button class="game__infos--btn-plus" (click)="toggleGamePossessed()">+</button>
                 } @else if(isConnected() === true && isGameAdded === true) {
-                    <button class="game__infos--btn-minus" (click)="addGame()" >-</button>
+                    <button class="game__infos--btn-minus" (click)="toggleGamePossessed()" >-</button>
                 }
             </div>
             <div class="game__infos--details">
