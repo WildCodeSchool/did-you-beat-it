@@ -1,10 +1,10 @@
-import { NgFor } from '@angular/common';
+import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-game-vote',
   standalone: true,
-  imports: [NgFor],
+  imports: [NgFor, NgIf, CommonModule],
   templateUrl: './game-vote.component.html',
   styleUrl: './game-vote.component.scss'
 })
@@ -13,14 +13,21 @@ export class GameVoteComponent {
   title : string = '';
   @Input() items: string[] = [];
 
+  hasVoted: boolean = !false;
+  votedItem: string | null = null;
+
   constructor() { }
   
   ngOnInit(): void {
 
   }
 
-  vote(item: any): void {
-    console.log('Voted for ', item)
+  vote(item: string): void {
+    if (this.votedItem === item) {
+      this.votedItem = null;
+    } else {
+      this.votedItem = item;
+    }
   }
 
   getItemImagePath(item: string): string {
@@ -44,4 +51,7 @@ export class GameVoteComponent {
     }
     return itemImageMap[item]|| 'assets/pictures/pc-logo.png'
   }
+
+
+  
 }

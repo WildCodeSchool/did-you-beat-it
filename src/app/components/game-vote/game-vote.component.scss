@@ -22,13 +22,18 @@
             cursor: pointer;
             background-color: #292729;
             padding: 0.5rem;
-            border-radius: 15px;
+            border-radius: 10px;
 
             &:hover{
                 background-color: $mainColor;
                 transition: ease-in-out 0.3s;
                 scale: 1.1;
             }
+        }
+
+        .item-voted{
+            background-color: $mainColor;
+            scale: 1.1;
         }
 
         span{
