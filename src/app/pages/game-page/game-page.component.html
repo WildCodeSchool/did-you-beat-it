@@ -8,14 +8,21 @@
                 <span class="game__rating--note">{{game?.rating}}</span>
                 <app-rating [rating]="game?.rating"></app-rating>
             </div>
-            @if(isConnected() === true) {
-                <app-custom-button [class]="'btn'" [btnType]="'submit'" [text]="btnText"></app-custom-button>
+            @if(isConnected() === true && isGameAdded === true && isGameFinished === false) {
+                <app-custom-button [class]="'btn'" [btnType]="'submit'" [text]="btnText" (click)="finishGame()"></app-custom-button>
+            } @else if(isGameAdded === true && isGameFinished === true) {
+                <app-custom-button [class]="'btn-finished'" [btnType]="'submit'" [text]="btnText" (click)="finishGame()"></app-custom-button>
             }
+        
         </div>
         <div class="game__infos--wrapper">
             <div class="game__infos--titlebtn">
                 <h1 class="game__infos--title">{{ game?.title }}</h1>
-                <button class="game__infos--btn">+</button>
+                @if(isConnected() === true && isGameAdded === false) {
+                    <button class="game__infos--btn-plus" (click)="addGame()">+</button>
+                } @else if(isConnected() === true && isGameAdded === true) {
+                    <button class="game__infos--btn-minus" (click)="addGame()" >-</button>
+                }
             </div>
             <div class="game__infos--details">
                 <div class="game__infos--details_release">

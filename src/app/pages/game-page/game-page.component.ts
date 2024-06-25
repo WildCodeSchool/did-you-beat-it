@@ -46,4 +46,16 @@ export class GamePageComponent {
 
   btnText = 'Terminé ?';
   class = 'game__infos--btn';
+
+  isGameAdded: boolean = false;
+  isGameFinished: boolean = false;
+  
+  addGame(){
+    this.isGameAdded = !this.isGameAdded;
+  }
+
+  finishGame(){
+    this.isGameFinished = !this.isGameFinished;
+    this.btnText = this.isGameFinished ? 'Terminé !' : 'Terminé ?';
+  }
 }

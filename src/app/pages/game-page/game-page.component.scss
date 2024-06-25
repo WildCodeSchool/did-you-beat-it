@@ -24,7 +24,7 @@ h2{
             display: flex;
             align-items: center;
 
-            .game__infos--btn{
+            .game__infos--btn-plus{
                 margin-left: 20px; 
                 color: #fff;
                 background-color: $mainColor;
@@ -37,6 +37,23 @@ h2{
                 &:hover{
                     background-color: #fff;
                     color: $mainColor;
+                    cursor: pointer;
+                }
+            }
+            
+            .game__infos--btn-minus{
+                margin-left: 20px; 
+                color: $mainColor;
+                background-color: #fff;
+                font-size: 20px;
+                font-weight: 700;
+                height: 40px;
+                width: 40px;
+                border-radius: 50%;
+
+                &:hover{
+                    background-color: $mainColor;
+                    color: #fff;
                     cursor: pointer;
                 }
             }
