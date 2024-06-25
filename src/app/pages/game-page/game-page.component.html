@@ -54,9 +54,11 @@
             </p>
         </div>
     </section>
-    <section class="game__vote">
-        <app-game-vote [title]="'Sur quelle plateforme ?'" [items]="game?.platform ?? []"></app-game-vote>
-    </section>
+    @if (isConnected() === true && isGameAdded === true && isGameFinished === true){
+        <section class="game__vote">
+            <app-game-vote [title]="'Sur quelle plateforme ?'" [items]="platformsForVoting"></app-game-vote>
+        </section>
+    }
     <section class="game__galery">
         <div *ngFor="let screenshot of game?.screenshots" class="game__galery--carousel">
             <img src="{{ screenshot }}" class="game__galery--img" alt="{{game?.title}} image" (click)="openModal(screenshot)">

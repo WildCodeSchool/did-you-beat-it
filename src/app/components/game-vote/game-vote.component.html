@@ -2,9 +2,9 @@
     <h4 class="game__vote--title">{{title}}</h4>
     <div class="game__vote--selection">
         <ul>
-            <li *ngFor="let item of items" [ngClass]="{'item-voted' : votedItem === item}">
-                <img [src]="getItemImagePath(item)" alt="{{item}}" (click)="vote(item)" class="game__vote-img">
-                <span class="game__vote-text">{{ item }}</span>
+            <li *ngFor="let item of items" [ngClass]="{'item-voted' : votedItem === item.display}">
+                <img [src]="getItemImagePath(item.display)" alt="{{item}}" (click)="vote(item.display)" class="game__vote-img">
+                <span class="game__vote-text">{{ item.display }}</span>
             </li>
         </ul>
     </div>
