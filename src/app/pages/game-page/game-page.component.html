@@ -4,10 +4,22 @@
     <section class="game__infos">
         <div class="game__cover--wrapper">
             <img src=" {{ game?.cover }} " class="game__cover--img" alt="{{game?.title}} cover">
-            <div class="game__rating--wrapper">
-                <span class="game__rating--note">{{game?.rating}}</span>
-                <app-rating [rating]="game?.rating"></app-rating>
-            </div>
+            @if (isGameAdded === true && isGameFinished === true && isConnected() === true) {
+                <div class="game__rating--wrapper note--empty">
+                        <span class="game__rating--note">Notez ce jeu</span>
+                        <app-rating [rating]="0"></app-rating>
+                </div>
+                } @else if(isConnected() === true && isGameAdded === true && isGameFinished === false) {
+                    <div class="game__rating--wrapper">
+                        <span class="game__rating--note">{{game?.rating}}</span>
+                        <app-rating [rating]="game?.rating"></app-rating>
+                    </div>
+                } @else {
+                    <div class="game__rating--wrapper">
+                        <span class="game__rating--note">{{game?.rating}}</span>
+                        <app-rating [rating]="game?.rating"></app-rating>
+                    </div>
+                }
             @if(isConnected() === true && isGameAdded === true && isGameFinished === false) {
                 <app-custom-button [class]="'btn'" [btnType]="'submit'" [text]="btnText" (click)="finishGame()"></app-custom-button>
             } @else if(isGameAdded === true && isGameFinished === true) {

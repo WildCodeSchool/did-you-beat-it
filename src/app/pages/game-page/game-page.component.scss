@@ -123,6 +123,16 @@ h2{
                 font-size: 1.5rem;
                 font-weight: 700;
             }
+
+            .game__rating--note{
+                margin-right: 5px;
+                font-size: 1.5rem;
+                font-weight: 700;
+            }
+        }
+
+        .note--empty{
+            flex-direction: column;
         }
     }
 }
