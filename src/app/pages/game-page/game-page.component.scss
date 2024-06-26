@@ -1,6 +1,6 @@
 @use '../../../import' as *;
 
-.game__infos, .game__comments, .game__recommandations {
+.game__infos, .game__comments, .game__recommandations, .game__vote {
     max-width: 1100px;
     width: 80%;
     margin: 0 auto;
@@ -24,7 +24,7 @@ h2{
             display: flex;
             align-items: center;
 
-            .game__infos--btn{
+            .game__infos--btn-plus{
                 margin-left: 20px; 
                 color: #fff;
                 background-color: $mainColor;
@@ -37,6 +37,23 @@ h2{
                 &:hover{
                     background-color: #fff;
                     color: $mainColor;
+                    cursor: pointer;
+                }
+            }
+            
+            .game__infos--btn-minus{
+                margin-left: 20px; 
+                color: $mainColor;
+                background-color: #fff;
+                font-size: 20px;
+                font-weight: 700;
+                height: 40px;
+                width: 40px;
+                border-radius: 50%;
+
+                &:hover{
+                    background-color: $mainColor;
+                    color: #fff;
                     cursor: pointer;
                 }
             }
@@ -106,9 +123,20 @@ h2{
                 font-size: 1.5rem;
                 font-weight: 700;
             }
+
+            .game__rating--note{
+                margin-right: 5px;
+                font-size: 1.5rem;
+                font-weight: 700;
+            }
+        }
+
+        .note--empty{
+            flex-direction: column;
         }
     }
 }
+
 
 .game__galery{
     width: 100%;
