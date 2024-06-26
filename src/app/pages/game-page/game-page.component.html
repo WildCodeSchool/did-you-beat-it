@@ -70,6 +70,15 @@
         <img class="modal-content" [src]="modalImage" alt="{{game?.title}} image">
     </div>
     <section class="game__comments">
+        @if(isConnected() === true && isGameAdded === true && isGameFinished === true) {
+            <div class="game__comment--writing">
+                <h2>Écrire un commentaire</h2>
+                <form action="post" class="comment__writing">
+                    <textarea name="comment" id="comment"></textarea>
+                    <app-custom-button [text]="btnform" [class]="'btn'" class="btn-form" [btnType]="'submit'"></app-custom-button>
+                </form>                
+            </div>
+        }
         <div class="game__comments--wrapper">
             <div class="game__comments--list">
                 <div class="game__comments--title__sort">

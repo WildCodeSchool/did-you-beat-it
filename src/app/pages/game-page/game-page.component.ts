@@ -12,6 +12,7 @@ import { CustomButtonComponent } from '../../components/custom-button/custom-but
 import { GameVoteComponent } from '../../components/game-vote/game-vote.component';
 
 
+
 @Component({
   selector: 'app-game-page',
   standalone: true,
@@ -29,6 +30,7 @@ export class GamePageComponent {
   class = 'game__infos--btn';
   isGameAdded: boolean = false;
   isGameFinished: boolean = false;
+  btnform = 'Envoyer';
   
   private gamesApiService = inject(GamesApiService);
   
