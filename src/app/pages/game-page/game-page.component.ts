@@ -10,13 +10,13 @@ import { GameRecommendationComponent } from '../../components/game-recommendatio
 import { RatingComponent } from '../../components/rating/rating.component';
 import { CustomButtonComponent } from '../../components/custom-button/custom-button.component';
 import { GameVoteComponent } from '../../components/game-vote/game-vote.component';
-import { CommentInputComponent } from '../../components/comment-input/comment-input.component';
+
 
 
 @Component({
   selector: 'app-game-page',
   standalone: true,
-  imports: [HomepageBannerComponent, RouterLink, NgFor, NgIf, GameRecommendationComponent, RatingComponent, NgStyle, CustomButtonComponent, GameVoteComponent, CommentInputComponent],
+  imports: [HomepageBannerComponent, RouterLink, NgFor, NgIf, GameRecommendationComponent, RatingComponent, NgStyle, CustomButtonComponent, GameVoteComponent],
   templateUrl: './game-page.component.html',
   styleUrl: './game-page.component.scss'
 })
@@ -30,6 +30,7 @@ export class GamePageComponent {
   class = 'game__infos--btn';
   isGameAdded: boolean = false;
   isGameFinished: boolean = false;
+  btnform = 'Envoyer';
   
   private gamesApiService = inject(GamesApiService);
   
