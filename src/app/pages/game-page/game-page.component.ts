@@ -10,12 +10,13 @@ import { GameRecommendationComponent } from '../../components/game-recommendatio
 import { RatingComponent } from '../../components/rating/rating.component';
 import { CustomButtonComponent } from '../../components/custom-button/custom-button.component';
 import { GameVoteComponent } from '../../components/game-vote/game-vote.component';
+import { CommentInputComponent } from '../../components/comment-input/comment-input.component';
 
 
 @Component({
   selector: 'app-game-page',
   standalone: true,
-  imports: [HomepageBannerComponent, RouterLink, NgFor, NgIf, GameRecommendationComponent, RatingComponent, NgStyle, CustomButtonComponent, GameVoteComponent],
+  imports: [HomepageBannerComponent, RouterLink, NgFor, NgIf, GameRecommendationComponent, RatingComponent, NgStyle, CustomButtonComponent, GameVoteComponent, CommentInputComponent],
   templateUrl: './game-page.component.html',
   styleUrl: './game-page.component.scss'
 })

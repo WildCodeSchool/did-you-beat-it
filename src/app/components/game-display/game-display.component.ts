@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { GameService } from '../../game.service';
+import { GameService } from '../../services/gameService/game.service';
 import { CommonModule } from '@angular/common';
 import { game } from '../../models/game';
 import { RouterLink } from '@angular/router';
