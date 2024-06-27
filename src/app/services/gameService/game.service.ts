@@ -16,7 +16,7 @@ export class GameService {
   constructor() { }
 
     getGames(): Observable<Game[]> {
-      const body = `fields name,cover.image_id,platforms.name, genres.name; where themes != (42) & category = 0 & (platforms = 48 | platforms = 167); limit ${this.LIMIT};`;
+      const body = `fields name,cover.image_id,platforms.name, genres.name; where themes != (42) & category = 0 & (platforms = (48,167)); limit ${this.LIMIT};`;
       const headers = new HttpHeaders({
         'Client-ID': environment.apiKey,
         'Authorization': environment.apiToken,
