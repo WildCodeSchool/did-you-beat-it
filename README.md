@@ -33,4 +33,4 @@ Run `ng serve --configuration=development` to launch your Angular application in
 To be able to access the IGDB API, we need to set up a proxy, refer to the doc -> https://api-docs.igdb.com/#cors-proxy
 
 ## Use the IGDB API
-To be able to use the IGDB API you must create an environment.development file to add the API key and Bearer token
+Don't forget to create the `environment.development.ts` file and copy all the environment variables with credentials there
