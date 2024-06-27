@@ -7,10 +7,9 @@
         <div class="select-item">
             <h3>Platforme</h3>
         <select [(ngModel)]="selectedPlatform" (change)="applyFilters()" class="selecteur">
-                <option value=""></option>
-                <option value="BlackBerry OS">BlackBerry OS</option>
-                <option value="Linux">Linux</option>  
-                <option value="Nintendo DS">Nintendo DS</option>  
+                <option value="">All Platforms</option>
+                <option *ngFor="let platform of platforms" [value]="platform">{{ platform }}</option>
+
             </select>
         </div>
         <div class="select-item">
@@ -27,10 +26,8 @@
         <div class="select-item">
             <h3>Genre</h3>
             <select [(ngModel)]="selectedGenre" (change)="applyFilters()" class="selecteur">
-                <option value=""></option>
-                <option value="Fighting">Fighting</option>
-                <option value="Shooter">Shooter</option>  
-                <option value="Point-and-click">Point-and-click</option>  
+                <option value="">All Genres</option>
+                <option *ngFor="let genre of genres" [value]="genre">{{ genre }}</option>
             </select>
         </div>
         <div class="select-item">
@@ -45,7 +42,7 @@
 <ul class="game-section">
     <li class="card-game" *ngFor="let game of filteredGames">
         <a [routerLink]="['/page-jeu']">
-            <img src="{{game.img}}" alt="gameImage" class="game-image">
+            <img *ngIf="getCoverUrl(game)" [src]="getCoverUrl(game)" [alt]="game.name">
             <h3 class="game-name">{{game.name}}</h3>
         </a>
     </li>
