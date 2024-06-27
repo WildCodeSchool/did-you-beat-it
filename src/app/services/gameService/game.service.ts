@@ -38,7 +38,7 @@ export class GameService {
     }
 
     getPlatforms(): Observable<any> {
-      const body = `fields name; where id = (48, 167);`;
+      const body = `fields name; where id = (48, 167,6,169,49,130);`;
       const headers = new HttpHeaders({
         'Client-ID': environment.apiKey,
         'Authorization': environment.apiToken,
