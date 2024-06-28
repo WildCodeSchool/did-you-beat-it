@@ -23,6 +23,7 @@ export class GameDisplayComponent {
   selectedYear: string = "";
   inputName:string ="";
   private gameService= inject(GameService);
+  gameDefaultCover = '../../../assets/pictures/default_cover.png'
 
   applyFilters() {
     this.filteredGames = this.games.filter(game => {
@@ -80,8 +81,8 @@ loadPlatforms() {
   );
 }  
 
-getCoverUrl(game: Game): string | undefined {
-  return game.cover ? `https://images.igdb.com/igdb/image/upload/t_cover_big/${game.cover}.jpg` : undefined;
+getCoverUrl(game: Game): string  {
+  return game.cover ? `https://images.igdb.com/igdb/image/upload/t_cover_big/${game.cover}.jpg` : this.gameDefaultCover;
 }
 
 }
