@@ -16,6 +16,7 @@
     color: #000000;
     height: 30px;
     width: 1146px;
+    padding-left: 0.5rem;
    
 }
 .input-with-icon {
@@ -25,7 +26,7 @@
 
     .icon-container {
         position: absolute;
-        right: 10px; // Position de l'icône dans l'input
+        right: 10px; 
         display: flex;
         align-items: center;
         justify-content: center;
