@@ -1,8 +1,14 @@
 <div class="game-filter">
     <h2 class="game-title">Liste des jeux</h2>
-    <!--div class="select-display">
-        <input class="filter-name">
-    </div-->
+    <div class="select-display" >
+        <div class="input-with-icon">
+        <input class="filter-name" placeholder="checher par nom..." [(ngModel)]="inputName" (input)="applyFilters()">
+        <span class="icon-container">
+            <img src="../../../assets/pictures/search-icon.png" alt="Valider" class="icon-image">
+        </span>
+        </div>
+    </div>
+
     <div class="select-display">
         <div class="select-item">
             <h3>Platforme</h3>

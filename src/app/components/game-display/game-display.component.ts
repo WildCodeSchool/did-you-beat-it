@@ -21,15 +21,17 @@ export class GameDisplayComponent {
   selectedScore: string = "";
   selectedGenre: string = "";
   selectedYear: string = "";
+  inputName:string ="";
   private gameService= inject(GameService);
 
   applyFilters() {
     this.filteredGames = this.games.filter(game => {
-      const matchesPlatform = this.selectedPlatform ? game.platform?.includes(this.selectedPlatform): true;
-       const matchesScore = this.selectedScore ? String(game.score) === this.selectedScore : true;
+      const matchesPlatform = this.selectedPlatform ? game.platform?.includes(this.selectedPlatform) : true;
+      const matchesScore = this.selectedScore ? String(game.score) === this.selectedScore : true;
       const matchesGenre = this.selectedGenre ? game.genre?.includes(this.selectedGenre) : true;
-       const matchesYear = this.selectedYear ? String(game.year) === this.selectedYear : true;
-      return matchesPlatform && matchesScore && matchesGenre && matchesYear;
+      const matchesYear = this.selectedYear ? String(game.year) === this.selectedYear : true;
+      const matchesName= this.inputName ? String(game.name).includes(this.inputName) : true;
+      return matchesPlatform && matchesScore && matchesGenre && matchesYear && matchesName;
     });
   }
   ngOnInit(): void {

@@ -13,8 +13,27 @@
 }
 .filter-name{
     background-color: white;
+    color: #000000;
     height: 30px;
     width: 1146px;
+   
+}
+.input-with-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    .icon-container {
+        position: absolute;
+        right: 10px; // Position de l'icône dans l'input
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .icon-image {
+            width: 15px;
+            height: 15px;
+        }
+    }
 }
 .select-item{
     display: flex;
