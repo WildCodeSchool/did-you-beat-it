@@ -11,8 +11,9 @@ export class Game {
     banner: string;
     screenshots: [];
     rating: number;
+    characters: [];
 
-    constructor(id: number, title: string, developer: string, publisher: string, platform: [], genres: [], releaseDate: string, description: string, cover: string, banner: string, screenshots: [], rating: number) {
+    constructor(id: number, title: string, developer: string, publisher: string, platform: [], genres: [], releaseDate: string, description: string, cover: string, banner: string, screenshots: [], rating: number, characters: []) {
         this.id = id;
         this.title = title;
         this.developer = developer;
@@ -25,5 +26,6 @@ export class Game {
         this.banner = banner;
         this.screenshots = screenshots;
         this.rating = rating;
+        this.characters = characters;
     }
 }
