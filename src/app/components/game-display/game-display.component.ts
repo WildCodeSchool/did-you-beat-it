@@ -31,7 +31,7 @@ export class GameDisplayComponent {
       const matchesScore = this.selectedScore ? String(game.score) === this.selectedScore : true;
       const matchesGenre = this.selectedGenre ? game.genre?.includes(this.selectedGenre) : true;
       const matchesYear = this.selectedYear ? String(game.year) === this.selectedYear : true;
-      const matchesName= this.inputName ? String(game.name).includes(this.inputName) : true;
+      const matchesName= this.inputName ? String(game.name).toLowerCase().includes(this.inputName.toLowerCase()) : true;
       return matchesPlatform && matchesScore && matchesGenre && matchesYear && matchesName;
     });
   }
