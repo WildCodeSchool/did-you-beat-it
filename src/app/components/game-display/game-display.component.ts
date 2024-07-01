@@ -28,7 +28,7 @@ export class GameDisplayComponent {
   applyFilters() {
     this.filteredGames = this.games.filter(game => {
       const matchesPlatform = this.selectedPlatform ? game.platform?.includes(this.selectedPlatform) : true;
-      const matchesScore = this.selectedScore ? String(game.score) === this.selectedScore : true;
+      const matchesScore = this.selectedScore ? String(game.rating) === this.selectedScore : true;
       const matchesGenre = this.selectedGenre ? game.genre?.includes(this.selectedGenre) : true;
       const matchesYear = this.selectedYear ? String(game.year) === this.selectedYear : true;
       const matchesName= this.inputName ? String(game.name).toLowerCase().includes(this.inputName.toLowerCase()) : true;
