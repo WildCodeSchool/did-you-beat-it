@@ -5,7 +5,11 @@ export class Game {
   genre?: string[];
   platform?: string[];
   summary?: string;
-  score?: number;
+  artworks?: string;
+  screenshots?: string[];
+  releaseDate?: string;
+  involved_companies?: string[];
+  rating?: number;
   year?: number;
 
   constructor(
@@ -15,7 +19,11 @@ export class Game {
     genre: string[] = [],
     platform: string[] = [],
     summary?: string,
-    score?: number,
+    artworks?: string,
+  screenshots?: string[],
+  releaseDate?: string,
+  involved_companies?: string[],
+  rating?: number,
     year?: number
   ) {
     this.id = id;
@@ -24,7 +32,11 @@ export class Game {
     this.genre = genre;
     this.platform = platform;
     this.summary = summary;
-    this.score = score;
+    this.artworks = artworks;
+    this.screenshots = screenshots;
+    this.releaseDate = releaseDate;
+    this.involved_companies = involved_companies;
+    this.rating = rating;
     this.year = year;
   }
 }

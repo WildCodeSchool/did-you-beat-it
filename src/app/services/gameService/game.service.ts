@@ -8,53 +8,54 @@ import { environment } from '../../../environments/environment.development';
 })
 export class GameService {
   private baseUrl: string = '/games';
-  private genreUrl : string = 'genres'
+  private genreUrl: string = 'genres'
   private LIMIT: number = 500;
 
-  private http= inject(HttpClient);
+  private http = inject(HttpClient);
 
   constructor() { }
 
-    getGames(): Observable<Game[]> {
-      const body = `fields name,cover.image_id,platforms.name, genres.name; where themes != (42) & category = 0 & (platforms = (48,167)); limit ${this.LIMIT};`;
-      const headers = new HttpHeaders({
-        'Client-ID': environment.apiKey,
-        'Authorization': environment.apiToken,
-        'Accept': 'application/json',
-        
-      });
-      return this.http.post<Game[]>(this.baseUrl, body, { headers : headers });
-    }
+  getGames(): Observable<Game[]> {
+    const body = `fields name,cover.image_id,platforms.name, genres.name; where themes != (42) & category = 0 & (platforms = (48,167)); limit ${this.LIMIT};`;
+    const headers = new HttpHeaders({
+      'Client-ID': environment.apiKey,
+      'Authorization': environment.apiToken,
+      'Accept': 'application/json',
 
-    getGenres(): Observable<any> {
-      const body = `fields name; limit ${this.LIMIT};`;
-      const headers = new HttpHeaders({
-        'Client-ID': environment.apiKey,
-        'Authorization': environment.apiToken,
-        'Accept': 'application/json',
-      });
-  
-      return this.http.post<any>('/genres', body, { headers : headers });
-    }
+    });
+    return this.http.post<Game[]>(this.baseUrl, body, { headers: headers });
+  }
 
-    getPlatforms(): Observable<any> {
-      const body = `fields name; where id = (48, 167,6,169,49,130);`;
-      const headers = new HttpHeaders({
-        'Client-ID': environment.apiKey,
-        'Authorization': environment.apiToken,
-        'Accept': 'application/json',
-      });
-  
-      return this.http.post<any>('/platforms', body, { headers : headers });
-    }
-  
-    getGameByName(name: string): Observable<Game[]> {
-      const queryParams = `fields name, summary, cover.image_id; where name = "${name}"; limit 1;`;
-      const   headers = new HttpHeaders({
-        'Client-ID': environment.apiKey,
-        'Authorization': environment.apiToken,
-        'Accept': 'application/json'
-      });
-      return this.http.post<Game[]>(this.baseUrl, queryParams, { headers });
-    }
+  getGenres(): Observable<any> {
+    const body = `fields name; limit ${this.LIMIT};`;
+    const headers = new HttpHeaders({
+      'Client-ID': environment.apiKey,
+      'Authorization': environment.apiToken,
+      'Accept': 'application/json',
+    });
+
+    return this.http.post<any>('/genres', body, { headers: headers });
+  }
+
+  getPlatforms(): Observable<any> {
+    const body = `fields name; where id = (48, 167,6,169,49,130);`;
+    const headers = new HttpHeaders({
+      'Client-ID': environment.apiKey,
+      'Authorization': environment.apiToken,
+      'Accept': 'application/json',
+    });
+
+    return this.http.post<any>('/platforms', body, { headers: headers });
+  }
+
+
+  getGameByName(name: string): Observable<Game[]> {
+    const body = `fields name, summary, cover.image_id, platforms.name, genres.name, artworks.image_id, screenshots.image_id, first_release_date, involved_companies.company.name; where name = "${name}"; limit 1;`;
+    const headers = new HttpHeaders({
+      'Client-ID': environment.apiKey,
+      'Authorization': environment.apiToken,
+      'Accept': 'application/json'
+    });
+    return this.http.post<Game[]>(this.baseUrl, body, { headers });
+  }
 }
