@@ -47,7 +47,7 @@
 </div>
 <ul class="game-section">
     <li class="card-game" *ngFor="let game of filteredGames">
-        <a [routerLink]="['/page-jeu']">
+        <a [routerLink]="['/page-jeu', game.name]">
             @if(getCoverUrl(game)){
                 <img [src]="getCoverUrl(game)" [alt]="game.name">
             } @else {
