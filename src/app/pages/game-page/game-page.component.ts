@@ -9,6 +9,7 @@ import { GameRecommendationComponent } from '../../components/game-recommendatio
 import { RatingComponent } from '../../components/rating/rating.component';
 import { CustomButtonComponent } from '../../components/custom-button/custom-button.component';
 import { GameVoteComponent } from '../../components/game-vote/game-vote.component';
+import { catchError } from 'rxjs';
 
 
 
@@ -31,6 +32,8 @@ export class GamePageComponent {
   isGameAdded: boolean = false;
   isGameFinished: boolean = false;
   btnform = 'Envoyer';
+  errorMessage = '';
+  gameDefaultCover = '../../../assets/pictures/default_cover.png'
   
   private gameService = inject(GameService);
   private route = inject(ActivatedRoute);
@@ -53,13 +56,12 @@ export class GamePageComponent {
             const involved_companies = gameData.involved_companies?.map((involvedCompany: any) => involvedCompany.company)
               ?.map((company: any) => company.name);
             const date = this.formatReleaseDate(gameData.first_release_date);
-
-            console.log(gameData);
             return new Game(id, name, cover_id, genres_name, platforms_name, summary, artworks_id, screenshots_id, date, involved_companies);
           })
         },
         error: (error) => {
-          console.error('Error:', error);
+          this.errorMessage = 'Échec du chargement du jeu';
+
         }
       });
     });
@@ -91,8 +93,8 @@ export class GamePageComponent {
   //   return this.game?.platform?.map(p => ({display: p})) || [];
   // }
 
-  getCoverUrl(game: Game): string | undefined {
-    return game.cover ? `https://images.igdb.com/igdb/image/upload/t_cover_big/${game.cover}.jpg` : undefined;
+  getCoverUrl(game: Game): string {
+    return game.cover ? `https://images.igdb.com/igdb/image/upload/t_cover_big/${game.cover}.jpg` :  this.gameDefaultCover;
   }
 
   getGenreNames(genres: any): string {
