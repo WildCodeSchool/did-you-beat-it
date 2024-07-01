@@ -17,4 +17,5 @@ export class ProfileHeaderComponent {
    @Input() username : string = '';
    @Input() isOnline : boolean = false;
    @Input() bio : string = '';
+   @Input() slug: string = '';
 }

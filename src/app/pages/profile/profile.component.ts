@@ -22,6 +22,7 @@ export class ProfileComponent {
   bio:string = "";
   bannerUrl:string = "";
   profilPictureUrl:string = "";
+  slug:string = "";
 
   ngOnInit():void {
       this.userService.getOneBySlug("marwa").subscribe(data => {
@@ -29,7 +30,8 @@ export class ProfileComponent {
         this.username = this.userData.username;
         this.bio = this.userData.biography;
         this.bannerUrl = this.userData.bannerPicture;
-        this.profilPictureUrl = this.userData.profilePicture
+        this.profilPictureUrl = this.userData.profilePicture;
+        this.slug = this.userData.slug
         console.log(this.userData) 
       })
   }
