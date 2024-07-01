@@ -53,7 +53,7 @@ export const routes: Routes = [
     component: AproposComponent,
   },
   {
-    path: 'page-jeu',
+    path: 'page-jeu/:name',
     component: GamePageComponent,
   },
   {
