@@ -1,6 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { User } from '../../models/user.model';
 
 
 @Injectable({
@@ -8,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class UsersService {
 
-  private apiUrl: string = "https://localhost:8080";
+  private apiUrl: string = "http://localhost:8080";
 
   private http:HttpClient = inject(HttpClient);
 
@@ -22,11 +23,11 @@ export class UsersService {
     return this.http.get(`${this.apiUrl}/users/${slug}`)
   }
 
-  createUser(user:any): Observable<any> {
+  createUser(user:User): Observable<any> {
     return this.http.post(`${this.apiUrl}/users`, user)
   }
 
-  updateUser(id:number, user:any): Observable<any> {
+  updateUser(id:number, user:User): Observable<any> {
     return this.http.put(`${this.apiUrl}/users/${id}`, user)
   }
 
