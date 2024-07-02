@@ -6,7 +6,7 @@
             </div>
         </div> 
         @for (user of users; track user.id) {
-            <app-profiles-admin [username]="user.username" [email]="user.email"></app-profiles-admin>
+            <app-profiles-admin [id]="user.id" [username]="user.username" [email]="user.email"></app-profiles-admin>
         }
         
     </div>

@@ -3,7 +3,6 @@
 .user-content {
     .user-row {
         display: flex;
-        
         justify-content: space-between;
         align-items: center;
         margin-bottom: 1rem;
@@ -11,6 +10,7 @@
         p {
             color: #fff;
             padding: 2%;
+            width: 12rem;
             
         }
 
@@ -21,6 +21,7 @@
             padding-left: 3%;
             padding-right: 3%;
             margin-left: auto;
+            cursor: pointer;
         }
     }
 

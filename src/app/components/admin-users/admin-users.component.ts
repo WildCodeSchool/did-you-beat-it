@@ -19,7 +19,6 @@ export class AdminUsersComponent {
   ngOnInit():void {
     this.userService.getAllUsers().subscribe(usersData => {
       this.users = usersData as User[];
-      console.log(this.users)
     })
   }
   
