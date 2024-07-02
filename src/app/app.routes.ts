@@ -29,7 +29,7 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'profil',
+    path: 'profil/:slug',
     component: ProfileComponent,
   },
   {

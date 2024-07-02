@@ -3,6 +3,7 @@ import { ProfileHeaderComponent } from '../../components/profile-header/profile-
 import { TabNavComponent } from '../../components/tab-nav/tab-nav.component';
 import { UsersService } from '../../services/users/users.service';
 import { User } from '../../models/user.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -14,6 +15,7 @@ import { User } from '../../models/user.model';
 export class ProfileComponent {
 
   private userService = inject(UsersService);
+  private route = inject(ActivatedRoute);
 
   public userData!: User;
 
@@ -25,15 +27,18 @@ export class ProfileComponent {
   slug:string = "";
 
   ngOnInit():void {
-      this.userService.getOneBySlug("marwa").subscribe(data => {
-        this.userData = data as User;
-        this.username = this.userData.username;
-        this.bio = this.userData.biography;
-        this.bannerUrl = this.userData.bannerPicture;
-        this.profilPictureUrl = this.userData.profilePicture;
-        this.slug = this.userData.slug
-        console.log(this.userData) 
-      })
+    this.route.params.subscribe(params => {
+      this.slug = params['slug'];
+    })
+
+    this.userService.getOneBySlug(this.slug).subscribe(data => {
+      this.userData = data as User;
+      this.username = this.userData.username;
+      this.bio = this.userData.biography;
+      this.bannerUrl = this.userData.bannerPicture;
+      this.profilPictureUrl = this.userData.profilePicture;
+      this.slug = this.userData.slug
+    })
   }
 
 }

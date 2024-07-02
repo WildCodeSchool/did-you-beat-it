@@ -1,7 +1,9 @@
 import { Component, inject } from '@angular/core';
-import { ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { RouterOutlet } from '@angular/router';
 import { EditInformationsComponent } from '../../components/edit-informations/edit-informations.component';
+import { LocalStorageService } from '../../services/local-storage/local-storage.service';
+
 
 @Component({
   selector: 'app-profile-edit',
@@ -12,13 +14,12 @@ import { EditInformationsComponent } from '../../components/edit-informations/ed
 })
 export class ProfileEditComponent {
 
-  private route = inject(ActivatedRoute);
-  slug: string = '';
+  private localStorage = inject(LocalStorageService)
+  slug!:string|null;
 
-  ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.slug = params['slug'];
-    })
+  ngOnInit():void {
+    this.slug = this.localStorage.getValue("slug")
   }
+
 
 }
