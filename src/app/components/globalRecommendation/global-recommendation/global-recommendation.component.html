@@ -4,7 +4,7 @@
     <div class="recommendation-sections">
         <section class="popular-games-section">
             <div class="section-title">
-                <h3>Jeux populaires </h3> 
+                <h3>Jeux populaires </h3>
                 <a [routerLink]="['/jeux']" class="see-more-recommendations">Voir plus</a>
             </div>
             <ul>
@@ -16,19 +16,20 @@
 
         <section class="future-releases-games-section">
             <div class="section-title">
-                <h3>Prochaines sorties </h3> 
+                <h3>Prochaines sorties </h3>
                 <a [routerLink]="['/jeux']" class="see-more-recommendations">Voir plus</a>
             </div>
             <ul>
-                <li><app-card-game-small></app-card-game-small></li>
-                <li><app-card-game-small></app-card-game-small></li>
-                <li><app-card-game-small></app-card-game-small></li>
+                @for(game of games; track game.id) {
+                <li><app-card-game-small [gameName]="game.name" [gameCover]="getCoverUrl(game)"
+                        [gameGenre]="getGenreNames(game.genre)" [release]="game.releaseDate"></app-card-game-small></li>
+                }
             </ul>
         </section>
 
         <section class="top-rated-games-section">
             <div class="section-title">
-                <h3>Les mieux notés </h3> 
+                <h3>Les mieux notés </h3>
                 <a [routerLink]="['/jeux']" class="see-more-recommendations">Voir plus</a>
             </div>
             <ul>
