@@ -1,7 +1,7 @@
 <div class="container">
     <div class="card">
         <h2>S'inscrire</h2>
-        <form #signUpForm="ngForm" (ngSubmit)="signUpForm.valid">
+        <form #signUpForm="ngForm" (ngSubmit)="signUpForm.valid && register()">
 
             <div class="form-group">
                 <input type="text" id="username" name="username" placeholder="Nom d'utilisateur"
