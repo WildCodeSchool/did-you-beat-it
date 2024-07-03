@@ -4,7 +4,7 @@
         <div class="game-infos">
             <h4>{{gameName}}</h4>
             <p>{{gameGenre}}</p>
-            <p>{{release}}</p>
+            <time [attr.datetime]="release">{{release}}</time>
         </div>
     </a>
 </article>
