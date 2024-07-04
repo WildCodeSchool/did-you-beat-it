@@ -1,9 +1,12 @@
-import { Component, inject } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CustomButtonComponent } from '../custom-button/custom-button.component';
 import { UploadProfileImagesService } from '../../services/upload-profile-images/upload-profile-images.service';
 import { FileData } from '../../models/file-data.model';
+import { UsersService } from '../../services/users/users.service';
+import { User } from '../../models/user.model';
+import { LocalStorageService } from '../../services/local-storage/local-storage.service';
 
 type updateForm = {
   username:string;
@@ -11,7 +14,7 @@ type updateForm = {
   biography:string,
   password:string;
   confirmPassword:string;
-  };
+};
 
 @Component({
   selector: 'app-edit-informations',
@@ -22,17 +25,25 @@ type updateForm = {
 })
 export class EditInformationsComponent {
 
-  private service = inject(UploadProfileImagesService);
+  private fileUploadService = inject(UploadProfileImagesService);
+  private userService = inject(UsersService);
+  private localStorage = inject(LocalStorageService);
+
+  public userData!: User;
 
   textButton: string = 'Sauvegarder';
 
-  update : updateForm = {
+  slug!:string|null;
+
+  updateUser : updateForm = {
     username : '',
     email : '',
     biography: '',
     password : '',
     confirmPassword : '',
   };
+
+  messageOnUpdate: string = '';
 
   bannerImg: string = "";
   profileImg: string = "";
@@ -45,21 +56,50 @@ export class EditInformationsComponent {
   profileData:FileData = new FileData(this.profileFile, "");
 
   onBannerSelected(event:any) {
-    this.bannerData = this.service.onFileSelected(event, this.bannerFile, this.status);
+    this.bannerData = this.fileUploadService.onFileSelected(event, this.bannerFile, this.status);
     return this.bannerData;
   }
 
-  onUploadBanner():void {
-    return this.service.onUpload(this.bannerData)
+  onUploadBanner(id: number):void {
+    id = this.userData.id;
+    return this.fileUploadService.onUpload(id, this.bannerData)
   }
 
   onProfileSelected(event:any) {
-    this.profileData = this.service.onFileSelected(event, this.profileFile, this.status);
+    this.profileData = this.fileUploadService.onFileSelected(event, this.profileFile, this.status);
     return this.profileData;
   }
 
-  onUploadProfile():void {
-    return this.service.onUpload(this.profileData)
+  onUploadProfile(id: number):void {
+    id = this.userData.id;
+    return this.fileUploadService.onUpload(id, this.profileData)
   }
 
+  onSubmitForm(id: number) {
+    this.userData.username = this.updateUser.username;
+    this.userData.email = this.updateUser.email;
+    this.userData.biography = this.updateUser.biography;
+    this.userData.password = this.updateUser.password; // condition if
+    this.userService.updateUser(id, this.userData).subscribe(data => {
+      this.userData = data;
+      console.log(this.userData)
+      this.localStorage.setValue('slug', this.userData.slug);
+      this.updateUser.password = '';
+      this.updateUser.confirmPassword = '';
+      this.messageOnUpdate = "Votre profil a bien été mis à jour"
+    })
+  }
+
+  ngOnInit():void {
+    this.slug = this.localStorage.getValue("slug")
+    this.userService.getOneBySlug(this.slug!).subscribe(data => {
+      this.userData = data as User;
+      this.updateUser.username = this.userData.username;
+      this.updateUser.email = this.userData.email;
+      this.updateUser.biography = this.userData.biography;
+      this.bannerImg = this.userData.bannerPicture;
+      this.profileImg = this.userData.profilePicture;
+      console.log(this.userData)
+    })
+  }
 }
