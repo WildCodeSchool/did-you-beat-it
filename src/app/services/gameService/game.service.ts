@@ -58,4 +58,16 @@ export class GameService {
     });
     return this.http.post<Game[]>(this.baseUrl, body, { headers });
   }
+
+  getUpcomingGames(): Observable<any> {
+    const currentTime = Math.floor(Date.now() / 1000);
+    const body = `fields game.name,game.cover.image_id, game.genres.name, date; where region = 1  & date > ${currentTime}; sort date asc; limit 3;`;
+
+    const headers = new HttpHeaders({
+      'Client-ID': environment.apiKey,
+      'Authorization': environment.apiToken,
+      'Accept': 'application/json'
+    });
+    return this.http.post<any>('/release_dates', body, { headers });
+  }
 }
