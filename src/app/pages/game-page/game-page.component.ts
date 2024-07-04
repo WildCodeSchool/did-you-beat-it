@@ -90,12 +90,11 @@ export class GamePageComponent {
     this.btnText = this.isGameFinished ? 'Terminé !' : 'Terminé ?';
   }
 
-  getPlatformsForVoting(platforms: string[] = []) : {display: string}[] {
-    console.log(platforms)
+  getPlatformsForVoting(platforms: string[] = []) :  string[] {
     if (!platforms || platforms.length === 0) {
-      return [{ display : 'No platforms found'}];
+      return [ 'No platforms found'];
     } else {
-      return platforms.map(p => ({display: p}));
+      return platforms;
     }
   }
 
