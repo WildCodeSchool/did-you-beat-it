@@ -43,7 +43,6 @@
             <div class="game__infos--details">
                 <div class="game__infos--details_release">
                     <p class="game__infos--details--release">{{ game?.releaseDate}} |</p>
-                    <!-- <p class="game__infos--details--developer"> {{ game?.developer }} |</p> -->
                     <p class="game__infos--details--publisher"> {{ game?.involved_companies }} </p>
                 </div>
                 <div class="game__infos--details_platforms">
@@ -58,11 +57,11 @@
             </p>
         </div>
     </section>
-    <!-- @if (isConnected() === true && isGameAdded === true && isGameFinished === true){
+    @if (isConnected() === true && isGameAdded === true && isGameFinished === true){
         <section class="game__vote">
-            <app-game-vote [title]="'Sur quelle plateforme ?'" [items]="platformsForVoting"></app-game-vote>
+            <app-game-vote [title]="'Sur quelle plateforme ?'" [items]="getPlatformsForVoting(game?.platform)"></app-game-vote>
         </section>
-    } -->
+    }
     <section class="game__galery">
         <div *ngFor="let screenshot of getScreenshotUrls(game)" class="game__galery--carousel">
             <img src="{{ screenshot }}" class="game__galery--img" alt="{{game?.name}} image" (click)="openModal(screenshot)">

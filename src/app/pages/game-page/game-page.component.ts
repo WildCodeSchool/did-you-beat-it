@@ -10,6 +10,7 @@ import { RatingComponent } from '../../components/rating/rating.component';
 import { CustomButtonComponent } from '../../components/custom-button/custom-button.component';
 import { GameVoteComponent } from '../../components/game-vote/game-vote.component';
 import { catchError } from 'rxjs';
+import { platform } from 'node:os';
 
 
 
@@ -89,9 +90,14 @@ export class GamePageComponent {
     this.btnText = this.isGameFinished ? 'Terminé !' : 'Terminé ?';
   }
 
-  // get platformsForVoting() {
-  //   return this.game?.platform?.map(p => ({display: p})) || [];
-  // }
+  getPlatformsForVoting(platforms: string[] = []) : {display: string}[] {
+    console.log(platforms)
+    if (!platforms || platforms.length === 0) {
+      return [{ display : 'No platforms found'}];
+    } else {
+      return platforms.map(p => ({display: p}));
+    }
+  }
 
   getCoverUrl(game: Game): string {
     return game.cover ? `https://images.igdb.com/igdb/image/upload/t_cover_big/${game.cover}.jpg` :  this.gameDefaultCover;
