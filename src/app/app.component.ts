@@ -14,9 +14,13 @@ import { LocalStorageService } from './services/local-storage/local-storage.serv
 export class AppComponent {
   title = 'angular-17-project-template';
 
-  private localStorage = inject(LocalStorageService);
+  private localStorageService = inject(LocalStorageService);
+  slug!:string|null;
 
   ngOnInit(): void {
-    this.localStorage.setValue('slug', 'marwa');
+    this.localStorageService.setValue('slug', 'marwa');
+    this.localStorageService.watchStorage().subscribe((data: string) => {
+      this.slug = data
+    })
   }
 }

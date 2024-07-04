@@ -80,7 +80,6 @@ export class EditInformationsComponent {
     const updateUser: UpdateUser = new UpdateUser(this.updateUser.username, this.updateUser.email, this.updateUser.biography, this.updateUser.password)
     this.userService.updateUser(id, updateUser).subscribe(data => {
       this.userData = data;
-      console.log(this.userData)
       this.localStorage.setValue('slug', this.userData.slug);
       this.updateUser.password = '';
       this.updateUser.confirmPassword = '';
@@ -97,7 +96,6 @@ export class EditInformationsComponent {
       this.updateUser.biography = this.userData.biography;
       this.bannerImg = this.userData.bannerPicture;
       this.profileImg = this.userData.profilePicture;
-      console.log(this.userData)
     })
   }
 }
