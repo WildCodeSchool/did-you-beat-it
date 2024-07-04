@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Game } from '../../models/game';
@@ -8,6 +8,7 @@ import { environment } from '../../../environments/environment.development';
 })
 export class GameService {
   private baseUrl: string = '/games';
+  private serveurBaseUrl = "http://localhost:8080/games"
   private genreUrl: string = 'genres'
   private LIMIT: number = 500;
 
@@ -69,5 +70,17 @@ export class GameService {
       'Accept': 'application/json'
     });
     return this.http.post<any>('/release_dates', body, { headers });
+  }
+
+  addGameToList(storedToken: string, gameID: any ): Observable<any> {
+      
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${storedToken}`,
+      'Accept': 'application/json'
+    });
+    const params = new HttpParams()
+    .set('gameId', gameID) 
+    return this.http.post<any>(`${this.serveurBaseUrl}/add`, params, {headers});
+
   }
 }

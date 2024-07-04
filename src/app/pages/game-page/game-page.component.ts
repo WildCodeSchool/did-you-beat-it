@@ -142,4 +142,21 @@ export class GamePageComponent {
     const date = new Date(timestamp * 1000); 
     return date.toLocaleDateString(); 
   }
+
+  addGameToUserList(game: any) {
+    const storedToken = localStorage.getItem('token');
+    if (storedToken != null) {
+      this.gameService.addGameToList(storedToken, game.id).subscribe(
+       
+        data => {
+          this.toggleGamePossessed()
+          alert(`${game.name} ajouté à votre liste`)
+        },
+        error => {
+          console.error('Erreur lors de la requête : ', error);
+       
+        }
+      );
+    }
+  }
 }
