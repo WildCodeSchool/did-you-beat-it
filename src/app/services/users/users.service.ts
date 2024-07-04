@@ -2,6 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../../models/user.model';
+import { UpdateUser } from '../../models/updateUser/update-user.model';
 
 
 @Injectable({
@@ -27,7 +28,7 @@ export class UsersService {
     return this.http.post(`${this.apiUrl}/users`, user)
   }
 
-  updateUser(id:number, user:User): Observable<any> {
+  updateUser(id:number, user:UpdateUser): Observable<any> {
     return this.http.put(`${this.apiUrl}/users/${id}`, user)
   }
 

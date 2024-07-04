@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, effect, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { RouterOutlet } from '@angular/router';
 import { EditInformationsComponent } from '../../components/edit-informations/edit-informations.component';
@@ -14,12 +14,15 @@ import { LocalStorageService } from '../../services/local-storage/local-storage.
 })
 export class ProfileEditComponent {
 
-  private localStorage = inject(LocalStorageService)
+  private localStorageService = inject(LocalStorageService)
   slug!:string|null;
 
   ngOnInit():void {
-    this.slug = this.localStorage.getValue("slug")
+    this.slug = this.localStorageService.getValue("slug")
+    this.localStorageService.watchStorage().subscribe((data: string) => {
+      this.slug = data
+    })
+    
   }
-
 
 }

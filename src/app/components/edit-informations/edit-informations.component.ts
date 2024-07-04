@@ -1,4 +1,4 @@
-import { Component, Input, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CustomButtonComponent } from '../custom-button/custom-button.component';
@@ -7,6 +7,7 @@ import { FileData } from '../../models/file-data.model';
 import { UsersService } from '../../services/users/users.service';
 import { User } from '../../models/user.model';
 import { LocalStorageService } from '../../services/local-storage/local-storage.service';
+import { UpdateUser } from '../../models/updateUser/update-user.model';
 
 type updateForm = {
   username:string;
@@ -76,11 +77,8 @@ export class EditInformationsComponent {
   }
 
   onSubmitForm(id: number) {
-    this.userData.username = this.updateUser.username;
-    this.userData.email = this.updateUser.email;
-    this.userData.biography = this.updateUser.biography;
-    this.userData.password = this.updateUser.password; // condition if
-    this.userService.updateUser(id, this.userData).subscribe(data => {
+    const updateUser: UpdateUser = new UpdateUser(this.updateUser.username, this.updateUser.email, this.updateUser.biography, this.updateUser.password)
+    this.userService.updateUser(id, updateUser).subscribe(data => {
       this.userData = data;
       console.log(this.userData)
       this.localStorage.setValue('slug', this.userData.slug);

@@ -13,14 +13,17 @@ import { LocalStorageService } from '../../services/local-storage/local-storage.
 })
 export class NavbarComponent {
 
-  private localStorage = inject(LocalStorageService);
+  private localStorageService = inject(LocalStorageService);
   slug!:string|null;
 
   isConnected: boolean = true;
   isAdmin: boolean = true;
   
   ngOnInit():void {
-    this.slug = this.localStorage.getValue("slug")
+    this.slug = this.localStorageService.getValue("slug")
+    this.localStorageService.watchStorage().subscribe((data: string) => {
+      this.slug = data
+    })
   }
 
   closeMenu() {

@@ -58,9 +58,9 @@
             <div class="form-group">
                 <h3>Nouveau mot de passe</h3>
                 <input type="password" id="password" name="password" placeholder="Mot de passe"
-                    [(ngModel)]="updateUser.password" required minlength="8"
+                    [(ngModel)]="updateUser.password" minlength="8"
                     pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,}$" #password="ngModel">
-                @if (password.errors && password.errors['required'] && password.touched) {
+                @if (password.errors && password.touched) {
                 <p [ngStyle]="{color: 'red'}">Le mot de passe est requis</p>
                 } @else if(password.errors && password.errors['pattern']) {
                 <p [ngStyle]="{color: 'red'}">
@@ -76,9 +76,9 @@
             <div class="form-group">
                 <h3>Confirmez votre nouveau mot de passe</h3>
                 <input type="password" id="confirm_password" name="confirm_password" class="confirm_password" [(ngModel)]="updateUser.confirmPassword"
-                    placeholder="Confirmez le mot de passe" required minlength="8"
+                    placeholder="Confirmez le mot de passe" minlength="8"
                     pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,16}$" #confirmPassword="ngModel">
-                @if (confirmPassword.errors && confirmPassword.errors['required'] && confirmPassword.touched) {
+                @if (confirmPassword.errors && confirmPassword.touched) {
                 <p [ngStyle]="{color: 'red'}">Veuillez confirmez le mot de passe</p>
                 } @else if(confirmPassword.errors && confirmPassword.errors['pattern'] ) {
                 <p [ngStyle]="{color: 'red'}">
