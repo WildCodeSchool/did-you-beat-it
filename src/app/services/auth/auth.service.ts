@@ -15,10 +15,8 @@ export class AuthService {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post<any>(`${this.baseUrl}/login`, body,{headers}).pipe(
       map(response => {
-        if (response && response.token) {
+        if (response) {
           localStorage.setItem('token', response.token);
-          localStorage.setItem('isOnline', 'true'); 
-          console.log(response)
           return response;
         }else {
           console.error('Invalid response from API during login.');

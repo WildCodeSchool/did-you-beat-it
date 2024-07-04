@@ -31,8 +31,7 @@ export class SignUpComponent {
 
   register() {
     this.authService.register(this.signUp.username, this.signUp.email, this.signUp.password, this.signUp.confirmPassword).subscribe(user => {
-      if(user) {
-        this.router.navigate(['connexion']);
-      }});
+        this.router.navigate(['/connexion']);
+      });
   }
 }

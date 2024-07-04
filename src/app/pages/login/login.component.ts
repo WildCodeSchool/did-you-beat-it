@@ -28,9 +28,8 @@ constructor(private authService: AuthService, private router: Router) { }
 
 login() :void {
   this.authService.login(this.newUser.email, this.newUser.password).subscribe(user => {
-    if(user) {
-      this.router.navigate(['home']);
-    }
+      this.router.navigate(['/home']);
+    
   });
 }
 }
