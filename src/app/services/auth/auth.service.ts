@@ -18,8 +18,6 @@ export class AuthService {
         if (response) {
           localStorage.setItem('token', response.token);
           return response;
-        }else {
-          console.error('Invalid response from API during login.');
         }
       }))
   }
