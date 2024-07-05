@@ -14,7 +14,7 @@ export class GameService {
   private LIMIT: number = 500;
 
   private headers: HttpHeaders = new HttpHeaders({
-    'Authorization': `Bearer ${this.token.getToken()}`
+    'Authorization': `${this.token.getToken()}`
   });;
   private headersIGDB: HttpHeaders = new HttpHeaders({
     'Client-ID': environment.apiKey,
