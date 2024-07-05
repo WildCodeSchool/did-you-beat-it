@@ -4,8 +4,8 @@
     <article id="game">
     <section class="game__infos">
         <div class="game__cover--wrapper">
-            @if(getCoverUrl(game)) {
-                <img [src]="getCoverUrl(game)" class="game__cover--img" alt="{{game?.name}} cover">
+            @if(game.cover) {
+                <img [src]="game.cover" class="game__cover--img" alt="{{game?.name}} cover">
 
             }
             @if (isGameAdded === true && isGameFinished === true && isConnected() === true) {
@@ -50,7 +50,7 @@
                 </div>
             </div> 
             <div class="game__infos--genre">
-                <li  class="game__infos--details--genre">{{ getGenreNames(game.genre) }}</li>
+                <li  class="game__infos--details--genre">{{ game.genre }}</li>
             </div>
             <p class="game__infos--description">
                 {{ game?.summary }}
