@@ -13,22 +13,21 @@ export class GameService {
   private genreUrl: string = 'genres'
   private LIMIT: number = 500;
 
-  private http = inject(HttpClient);
-  private token = inject(TokenService);
-  private tokenStored = localStorage.getItem('token');
-
-  private headers = new HttpHeaders({
-    'Authorization': `Bearer ${this.tokenStored}`
-  });
-
-  private headersIGDB = new HttpHeaders({
+  private headers: HttpHeaders = new HttpHeaders({
+    'Authorization': `Bearer ${this.token.getToken()}`
+  });;
+  private headersIGDB: HttpHeaders = new HttpHeaders({
     'Client-ID': environment.apiKey,
     'Authorization': environment.apiToken,
     'Accept': 'application/json',
 
   });
+  constructor(
+    private http: HttpClient,
+    private token: TokenService
+  ) {}
 
-  constructor() { }
+  gameDefaultCover = '../../../assets/pictures/default_cover.png'
 
   getGames(): Observable<Game[]> {
     const body = `fields name,cover.image_id,platforms.name, genres.name; where themes != (42) & category = 0 & (platforms = (48,167)); limit ${this.LIMIT};`;
@@ -77,5 +76,24 @@ export class GameService {
   getGameById(id: number): Observable<Game[]> {
     const body = `fields name, cover.image_id, genres.name, first_release_date; where id = ${id};`;
     return this.http.post<Game[]>('/games', body, { headers: this.headersIGDB });
+  }
+
+  getCoverUrl(cover: string | undefined): string {
+    return cover ? `https://images.igdb.com/igdb/image/upload/t_cover_big/${cover}.jpg` : this.gameDefaultCover;
+  }
+
+  getGenreNames(genres: string | string[]): string {
+    if (!genres || !Array.isArray(genres) || genres.length === 0) {
+      return 'No genre found';
+    } else if (genres.length === 1) {
+      return genres[0];
+    } else {
+      return genres.join(', ');
+    }
+  }
+  
+  formatReleaseDate(timestamp: number): string {
+    const date = new Date(timestamp * 1000);
+    return date.toLocaleDateString();
   }
 }
