@@ -1,9 +1,13 @@
-<app-homepage-banner [gameBannerUrl]="game?.banner ?? '' "></app-homepage-banner>
+@for (game of games; track game) {
+    <img class="gameBanner" [src]="getArtworkUrls(game)" alt="game.name">
 
-<article id="game">
+    <article id="game">
     <section class="game__infos">
         <div class="game__cover--wrapper">
-            <img src=" {{ game?.cover }} " class="game__cover--img" alt="{{game?.title}} cover">
+            @if(getCoverUrl(game)) {
+                <img [src]="getCoverUrl(game)" class="game__cover--img" alt="{{game?.name}} cover">
+
+            }
             @if (isGameAdded === true && isGameFinished === true && isConnected() === true) {
                 <div class="game__rating--wrapper note--empty">
                         <span class="game__rating--note">Notez ce jeu</span>
@@ -29,7 +33,7 @@
         </div>
         <div class="game__infos--wrapper">
             <div class="game__infos--titlebtn">
-                <h1 class="game__infos--title">{{ game?.title }}</h1>
+                <h1 class="game__infos--title">{{ game?.name }}</h1>
                 @if(isConnected() === true && isGameAdded === false) {
                     <button class="game__infos--btn-plus" (click)="toggleGamePossessed()">+</button>
                 } @else if(isConnected() === true && isGameAdded === true) {
@@ -39,35 +43,34 @@
             <div class="game__infos--details">
                 <div class="game__infos--details_release">
                     <p class="game__infos--details--release">{{ game?.releaseDate}} |</p>
-                    <p class="game__infos--details--developer"> {{ game?.developer }} |</p>
-                    <p class="game__infos--details--publisher"> {{ game?.publisher }} </p>
+                    <p class="game__infos--details--publisher"> {{ game?.involved_companies }} </p>
                 </div>
                 <div class="game__infos--details_platforms">
                     <li *ngFor="let platform of game?.platform" class="game__infos--details--platform"> {{ platform }} </li>
                 </div>
             </div> 
             <div class="game__infos--genre">
-                <li *ngFor="let genre of game?.genres" class="game__infos--details--genre"> {{genre}} </li>
+                <li  class="game__infos--details--genre">{{ getGenreNames(game.genre) }}</li>
             </div>
             <p class="game__infos--description">
-                {{ game?.description }}
+                {{ game?.summary }}
             </p>
         </div>
     </section>
     @if (isConnected() === true && isGameAdded === true && isGameFinished === true){
         <section class="game__vote">
-            <app-game-vote [title]="'Sur quelle plateforme ?'" [items]="platformsForVoting"></app-game-vote>
+            <app-game-vote [title]="'Sur quelle plateforme ?'" [items]="getPlatformsForVoting(game?.platform)"></app-game-vote>
         </section>
     }
     <section class="game__galery">
-        <div *ngFor="let screenshot of game?.screenshots" class="game__galery--carousel">
-            <img src="{{ screenshot }}" class="game__galery--img" alt="{{game?.title}} image" (click)="openModal(screenshot)">
+        <div *ngFor="let screenshot of getScreenshotUrls(game)" class="game__galery--carousel">
+            <img src="{{ screenshot }}" class="game__galery--img" alt="{{game?.name}} image" (click)="openModal(screenshot)">
         </div>
     </section>
 
     <div class="modal" [ngStyle]="{'display': modalOpen ? 'block' : 'none'}">
         <span class="close" (click)="closeModal()">&times;</span>
-        <img class="modal-content" [src]="modalImage" alt="{{game?.title}} image">
+        <img class="modal-content" [src]="modalImage" alt="{{game?.name}} image">
     </div>
     <section class="game__comments">
         @if(isConnected() === true && isGameAdded === true && isGameFinished === true) {
@@ -112,3 +115,8 @@
     </section>
 
 </article>
+}
+
+@if(errorMessage) {
+    {{errorMessage}}
+}
