@@ -3,6 +3,7 @@ import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Game } from '../../models/game';
 import { environment } from '../../../environments/environment.development';
+import { TokenService } from '../token/token.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -13,74 +14,68 @@ export class GameService {
   private LIMIT: number = 500;
 
   private http = inject(HttpClient);
+  private token = inject(TokenService);
+  private tokenStored = localStorage.getItem('token');
+
+  private headers = new HttpHeaders({
+    'Authorization': `Bearer ${this.tokenStored}`
+  });
+
+  private headersIGDB = new HttpHeaders({
+    'Client-ID': environment.apiKey,
+    'Authorization': environment.apiToken,
+    'Accept': 'application/json',
+
+  });
 
   constructor() { }
 
   getGames(): Observable<Game[]> {
     const body = `fields name,cover.image_id,platforms.name, genres.name; where themes != (42) & category = 0 & (platforms = (48,167)); limit ${this.LIMIT};`;
-    const headers = new HttpHeaders({
-      'Client-ID': environment.apiKey,
-      'Authorization': environment.apiToken,
-      'Accept': 'application/json',
-
-    });
-    return this.http.post<Game[]>(this.baseUrl, body, { headers: headers });
+    return this.http.post<Game[]>(this.baseUrl, body, { headers: this.headersIGDB });
   }
 
   getGenres(): Observable<any> {
     const body = `fields name; limit ${this.LIMIT};`;
-    const headers = new HttpHeaders({
-      'Client-ID': environment.apiKey,
-      'Authorization': environment.apiToken,
-      'Accept': 'application/json',
-    });
-
-    return this.http.post<any>('/genres', body, { headers: headers });
+    return this.http.post<any>('/genres', body, { headers: this.headersIGDB });
   }
 
   getPlatforms(): Observable<any> {
     const body = `fields name; where id = (48, 167,6,169,49,130);`;
-    const headers = new HttpHeaders({
-      'Client-ID': environment.apiKey,
-      'Authorization': environment.apiToken,
-      'Accept': 'application/json',
-    });
-
-    return this.http.post<any>('/platforms', body, { headers: headers });
+    return this.http.post<any>('/platforms', body, { headers: this.headersIGDB });
   }
 
 
   getGameByName(name: string): Observable<Game[]> {
     const body = `fields name, summary, cover.image_id, platforms.name, genres.name, artworks.image_id, screenshots.image_id, first_release_date, involved_companies.company.name; where name = "${name}"; limit 1;`;
-    const headers = new HttpHeaders({
-      'Client-ID': environment.apiKey,
-      'Authorization': environment.apiToken,
-      'Accept': 'application/json'
-    });
-    return this.http.post<Game[]>(this.baseUrl, body, { headers });
+    return this.http.post<Game[]>(this.baseUrl, body, { headers: this.headersIGDB });
   }
 
   getUpcomingGames(): Observable<any> {
     const currentTime = Math.floor(Date.now() / 1000);
     const body = `fields game.name,game.cover.image_id, game.genres.name, date; where region = 1  & date > ${currentTime}; sort date asc; limit 3;`;
-
-    const headers = new HttpHeaders({
-      'Client-ID': environment.apiKey,
-      'Authorization': environment.apiToken,
-      'Accept': 'application/json'
-    });
-    return this.http.post<any>('/release_dates', body, { headers });
+    return this.http.post<any>('/release_dates', body, {headers: this.headersIGDB });
   }
 
-  addGameToList(storedToken: string, gameID: any ): Observable<any> {
-      
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${storedToken}`,
-      'Accept': 'application/json'
-    });
+  addGameToList(storedToken: string, gameID: any): Observable<any> {
     const params = new HttpParams()
-    .set('gameId', gameID) 
-    return this.http.post<any>(`${this.serveurBaseUrl}/add`, params, {headers});
+      .set('gameId', gameID)
+    return this.http.post<any>(`${this.serveurBaseUrl}/add`, params, { headers: this.headers });
 
+  }
+
+  getListGames(): Observable<any[]> | undefined {
+    const tokenId = this.token.getIdInToken();
+    if (tokenId) {
+      const params = new HttpParams().set('user_id', tokenId);
+      return this.http.get<any[]>(`${this.serveurBaseUrl}`, { headers: this.headers, params });
+    } else {
+      return undefined;
+    }
+  }
+
+  getGameById(id: number): Observable<Game[]> {
+    const body = `fields name, cover.image_id, genres.name, first_release_date; where id = ${id};`;
+    return this.http.post<Game[]>('/games', body, { headers: this.headersIGDB });
   }
 }
