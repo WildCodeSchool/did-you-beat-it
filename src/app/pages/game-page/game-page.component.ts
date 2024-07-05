@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import {ActivatedRoute, RouterLink } from '@angular/router';
+import {ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { HomepageBannerComponent } from '../../components/homepage-banner/homepage-banner.component';
 import { Game } from '../../models/game';
 import { GameService } from '../../services/gameService/game.service';
@@ -9,8 +9,7 @@ import { GameRecommendationComponent } from '../../components/game-recommendatio
 import { RatingComponent } from '../../components/rating/rating.component';
 import { CustomButtonComponent } from '../../components/custom-button/custom-button.component';
 import { GameVoteComponent } from '../../components/game-vote/game-vote.component';
-import { catchError } from 'rxjs';
-import { platform } from 'node:os';
+
 
 
 
@@ -38,6 +37,7 @@ export class GamePageComponent {
   
   private gameService = inject(GameService);
   private route = inject(ActivatedRoute);
+  private redirectRoute = inject(Router);
   
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -143,7 +143,7 @@ export class GamePageComponent {
     return date.toLocaleDateString(); 
   }
 
-  addGameToUserList(game: any) {
+  addGameToUserList(game: Game) {
     const storedToken = localStorage.getItem('token');
     if (storedToken != null) {
       this.gameService.addGameToList(storedToken, game.id).subscribe(
@@ -153,8 +153,9 @@ export class GamePageComponent {
           alert(`${game.name} ajouté à votre liste`)
         },
         error => {
-          console.error('Erreur lors de la requête : ', error);
-       
+          if (error.status === 500) {
+            this.redirectRoute.navigate(["/connexion"]);
+          }
         }
       );
     }
