@@ -55,7 +55,7 @@ export class GameDisplayComponent {
     this.games = data.map(gameData => {
       const id = gameData.id;
       const name = gameData.name;
-      const cover_id = gameData.cover?.image_id;
+      const cover_id =  this.gameService.getCoverUrl(gameData.cover?.image_id);
       const genres_name = gameData.genres?.map((genre: any) => genre.name) || [];
       const platforms_name = gameData.platforms?.map((platform: any) => platform.name) || [];
       return new Game(id, name, cover_id, genres_name, platforms_name);
@@ -81,8 +81,6 @@ loadPlatforms() {
   );
 }  
 
-getCoverUrl(game: Game): string  {
-  return game.cover ? `https://images.igdb.com/igdb/image/upload/t_cover_big/${game.cover}.jpg` : this.gameDefaultCover;
-}
+
 
 }
