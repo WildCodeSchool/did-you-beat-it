@@ -13,6 +13,19 @@ type  Token = {
 export class TokenService {
 
   constructor() { }
+
+  getToken(): string | undefined {
+    const token = localStorage.getItem('token');
+    if(token) {
+      return token;
+    } else {
+      return undefined;
+    }
+ 
+  }
+  deleteToken(): void {
+    localStorage.removeItem('token');
+  }
   getIdInToken(): number | undefined {
     const storedToken = localStorage?.getItem('token');
     if (storedToken) {
