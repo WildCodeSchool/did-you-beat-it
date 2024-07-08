@@ -13,7 +13,7 @@
       <li *ngIf="isConnected == false"><a [routerLink]="['/connexion']" (click)="closeMenu()">Se connecter</a></li>
       <li *ngIf="isConnected == false"><a [routerLink]="['/inscription']" (click)="closeMenu()">S'inscrire</a></li>
       <li *ngIf="isConnected == true && isAdmin == true"><a [routerLink]="['/admin']" (click)="closeMenu()">Admin</a></li>
-      <li *ngIf="isConnected == true"><a [routerLink]="['/home']" (click)="closeMenu()">Déconnexion</a></li>
+      <li *ngIf="isConnected == true"><a [routerLink]="['/home']" (click)="logout()">Déconnexion</a></li>
     </ul>
 </nav>
 </header>

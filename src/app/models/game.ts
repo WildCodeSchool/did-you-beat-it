@@ -2,7 +2,7 @@ export class Game {
   id?: number;
   name?: string;
   cover?: string;
-  genre?: string[];
+  genre?: string;
   platform?: string[];
   summary?: string;
   artworks?: string;
@@ -16,7 +16,7 @@ export class Game {
     id?: number,
     name?: string,
     cover?: string,
-    genre: string[] = [],
+    genre?: string,
     platform: string[] = [],
     summary?: string,
     artworks?: string,
