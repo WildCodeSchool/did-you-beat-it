@@ -55,7 +55,10 @@ export class LastGameHomeComponent {
           const involved_companies = gameData.involved_companies?.map((involvedCompany: any) => involvedCompany.company)
             ?.map((company: any) => company.name);
           const date = this.gameService.formatReleaseDate(gameData.first_release_date);
-          this.games.push(new Game(id, name,cover_id, genres_name, platforms_name, summary, artworks_id, screenshots_id, date, involved_companies));
+          this.games.unshift(new Game(id, name, cover_id, genres_name, platforms_name, summary, artworks_id, screenshots_id, date, involved_companies));
+          if (this.games.length > 6) {
+            this.games.pop(); 
+          }
         });
       },
       error: (error) => {
