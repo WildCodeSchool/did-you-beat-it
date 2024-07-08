@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { jwtDecode } from "jwt-decode";
-type  Token = {
-  id:number;
-  sub:string;
-  iat:number;
-  exp:number;
-  }
+type Token = {
+  id: number;
+  sub: string;
+  iat: number;
+  exp: number;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -15,24 +15,25 @@ export class TokenService {
   constructor() { }
 
   getToken(): string | undefined {
-    const token = localStorage.getItem('token');
-    if(token) {
-      return token;
-    } else {
-      return undefined;
+    if (typeof localStorage !== 'undefined') {
+      return localStorage.getItem('token') || undefined;
     }
- 
+    return undefined;
   }
   deleteToken(): void {
     localStorage.removeItem('token');
   }
   getIdInToken(): number | undefined {
-    const storedToken = localStorage?.getItem('token');
-    if (storedToken) {
-      const decoded = jwtDecode<Token>(storedToken);
-
-      return decoded.id;
-    }
+    if (typeof localStorage !== 'undefined') {
+      const storedToken = localStorage?.getItem('token');
+      if (storedToken) {
+        const decoded = jwtDecode<Token>(storedToken);
+        return decoded.id;
+      } else {
+        return undefined;
+      }
+    } else {
     return undefined;
+    }
   }
 }
