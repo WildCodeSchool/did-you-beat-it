@@ -21,8 +21,8 @@
             </div>
             <ul>
                 @for(game of games; track game.id) {
-                <li><app-card-game-small [gameName]="game.name" [gameCover]="getCoverUrl(game)"
-                        [gameGenre]="getGenreNames(game.genre)" [release]="game.releaseDate"></app-card-game-small></li>
+                <li><app-card-game-small [gameName]="game.name" [gameCover]="game.cover"
+                        [gameGenre]="game.genre" [release]="game.releaseDate"></app-card-game-small></li>
                 }
             </ul>
         </section>
