@@ -9,5 +9,5 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
   styleUrl: './admin.component.scss'
 })
 export class AdminComponent {
-  
+
 }
