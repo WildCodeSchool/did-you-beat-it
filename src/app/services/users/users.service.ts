@@ -32,6 +32,10 @@ export class UsersService {
     return this.http.put(`${this.apiUrl}/users/${id}`, user)
   }
 
+  updateImage(id: number, url: string): Observable<any> {
+    return this.http.put(`${this.apiUrl}/users/${id}`, url)
+  }
+
   deleteUser(id:number): Observable<any> {
     return this.http.delete(`${this.apiUrl}/users/${id}`)
   }
