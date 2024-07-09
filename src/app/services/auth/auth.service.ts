@@ -12,7 +12,6 @@ export class AuthService {
   isLogin: boolean = false;
   isUserOnline = new BehaviorSubject<boolean>(this.isLogin);
   currentStatut = this.isUserOnline.asObservable();
-  storageKeys: string[] = [ ""];
   constructor(private http: HttpClient, private token: TokenService) {
 
 
@@ -38,6 +37,7 @@ export class AuthService {
   }
 
   logout() {
+    this.isUserOnline.next(false);
     localStorage.clear();
   }
 
