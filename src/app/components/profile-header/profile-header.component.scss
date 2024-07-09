@@ -6,7 +6,7 @@
 
 .container {
     position: relative;
-    min-height: calc(100vh - rem(50));
+    min-height: calc(100vh - 5.12rem);
 }
 
 .profile-banner-image {
@@ -38,8 +38,8 @@
 }
 
 .user-section {
-    margin: rem(20) rem(20) 0 auto;
-    width: 80%;
+    margin: 1.25rem auto;
+    max-width: 1000px;
     display: flex;
     flex-direction: column;
 }
