@@ -48,7 +48,7 @@ export class GamePageComponent {
     this.authService.isLoggedIn().subscribe(isLoggedIn => {
       this.isConnected = isLoggedIn;
     });
-    
+
     this.route.params.subscribe(params => {
       const name = params['name'];
 
@@ -149,7 +149,6 @@ export class GamePageComponent {
     const storedToken = localStorage.getItem('token');
     if (storedToken != null) {
       this.gameService.addGameToList(storedToken, game.id).subscribe(
-       
         data => {
           localStorage.setItem(`game_${game.id}`, 'true');
           game.isGameAdded = true;
