@@ -5,6 +5,7 @@ import { UsersService } from '../../services/users/users.service';
 import { User } from '../../models/user.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { TokenService } from '../../services/token/token.service';
 
 @Component({
   selector: 'app-profile',
@@ -16,6 +17,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class ProfileComponent {
 
   private userService = inject(UsersService);
+  private tokenService = inject(TokenService)
   private route = inject(ActivatedRoute);
   private router: Router = inject(Router)
 
@@ -29,6 +31,7 @@ export class ProfileComponent {
   slug:string = "";
 
   ngOnInit():void {
+    this.slug = this.tokenService.getSlugInToken() as string;
     this.route.params.subscribe(params => {
       this.slug = params['slug'];
     })

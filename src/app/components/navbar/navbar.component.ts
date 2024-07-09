@@ -16,6 +16,7 @@ import { AuthService } from '../../services/auth/auth.service';
 export class NavbarComponent {
 
   private localStorageService = inject(LocalStorageService);
+  private tokenService = inject(TokenService)
   slug?:string|null;
   
 
@@ -30,11 +31,11 @@ export class NavbarComponent {
  ngOnInit() {
    this.authService.isLoggedIn().subscribe((isLoggeIn) =>{
     this.isConnected = isLoggeIn;
-     
-    this.slug = this.localStorageService.getValue("slug")
-    this.localStorageService.watchStorage().subscribe((data: string) => {
-      this.slug = data
-    })
+    
+    this.slug = this.tokenService.getSlugInToken();
+    // this.localStorageService.watchStorage().subscribe((data: string) => {
+    //   this.slug = data
+    // })
   });
 }
   closeMenu() {
