@@ -89,13 +89,11 @@ export class EditInformationsComponent {
       this.updateUser.biography = this.userData.biography;
       this.bannerUrl = this.userData.bannerPicture !== null ? this.userData.bannerPicture : '';
       this.profilePictureUrl = this.userData.profilePicture;
-      console.log(this.bannerUrl)
-      console.log(this.userData)
-    } 
-  //   (error: HttpErrorResponse) => {
-  //     alert("Nous rencontrons un souci technique, veuillez réessayer dans quelques minutes")
-  //     this.router.navigate(["./home"])
-  // }
+    }, 
+     (error: HttpErrorResponse) => {
+       alert("Nous rencontrons un souci technique, veuillez réessayer dans quelques minutes")
+       this.router.navigate(["./home"])
+   }
   )
   }
 }
