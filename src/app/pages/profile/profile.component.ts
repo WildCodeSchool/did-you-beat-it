@@ -42,7 +42,6 @@ export class ProfileComponent {
         this.slug = this.userData.slug
       }, 
       (error: HttpErrorResponse) => {
-        console.log(error)
         alert("Nous rencontrons un souci technique, veuillez réessayer dans quelques minutes")
         this.router.navigate(["./home"])
     });

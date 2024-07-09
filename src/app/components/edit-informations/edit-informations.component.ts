@@ -101,7 +101,6 @@ export class EditInformationsComponent {
       this.profileImg = this.userData.profilePicture;
     }, 
     (error: HttpErrorResponse) => {
-      console.log(error)
       alert("Nous rencontrons un souci technique, veuillez réessayer dans quelques minutes")
       this.router.navigate(["./home"])
   })
