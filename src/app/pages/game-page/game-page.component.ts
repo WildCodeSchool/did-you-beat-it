@@ -9,6 +9,8 @@ import { GameRecommendationComponent } from '../../components/game-recommendatio
 import { RatingComponent } from '../../components/rating/rating.component';
 import { CustomButtonComponent } from '../../components/custom-button/custom-button.component';
 import { GameVoteComponent } from '../../components/game-vote/game-vote.component';
+import { TokenService } from '../../services/token/token.service';
+import { AuthService } from '../../services/auth/auth.service';
 
 
 
@@ -31,15 +33,22 @@ export class GamePageComponent {
   class = 'game__infos--btn';
   isGameAdded: boolean = false;
   isGameFinished: boolean = false;
+  isConnected: boolean = false;
   btnform = 'Envoyer';
   errorMessage = '';
   gameDefaultCover = '../../../assets/pictures/default_cover.png'
   
   private gameService = inject(GameService);
+  private authService = inject(AuthService);
+  private tokenService = inject(TokenService);
   private route = inject(ActivatedRoute);
   private redirectRoute = inject(Router);
   
   ngOnInit(): void {
+    this.authService.isLoggedIn().subscribe(isLoggedIn => {
+      this.isConnected = isLoggedIn;
+    });
+    
     this.route.params.subscribe(params => {
       const name = params['name'];
 
@@ -57,7 +66,9 @@ export class GamePageComponent {
             const involved_companies = gameData.involved_companies?.map((involvedCompany: any) => involvedCompany.company)
               ?.map((company: any) => company.name);
               const date = this.gameService.formatReleaseDate(gameData.first_release_date);
-              return new Game(id, name, cover_id, genres_name, platforms_name, summary, artworks_id, screenshots_id, date, involved_companies);
+              const isAdded = this.getAddedStatus(id);
+
+              return new Game(id, name, cover_id, genres_name, platforms_name, summary, artworks_id, screenshots_id, date, involved_companies,0,0, isAdded);
           })
         },
         error: (error) => {
@@ -77,9 +88,7 @@ export class GamePageComponent {
     this.modalOpen = false;
   }
 
-  isConnected(){
-    return true;
-  }
+
 
   toggleGamePossessed(){
     this.isGameAdded = !this.isGameAdded;
@@ -88,6 +97,13 @@ export class GamePageComponent {
   toggleGame(){
     this.isGameFinished = !this.isGameFinished;
     this.btnText = this.isGameFinished ? 'Terminé !' : 'Terminé ?';
+  }
+
+  getAddedStatus(gameId: number): boolean {
+    if (typeof localStorage !== 'undefined') {
+      return localStorage.getItem(`game_${gameId}`) === 'true';
+    }
+    return false;
   }
 
   getPlatformsForVoting(platforms: string[] = []) :  string[] {
@@ -135,7 +151,8 @@ export class GamePageComponent {
       this.gameService.addGameToList(storedToken, game.id).subscribe(
        
         data => {
-          this.toggleGamePossessed()
+          localStorage.setItem(`game_${game.id}`, 'true');
+          game.isGameAdded = true;
           alert(`${game.name} ajouté à votre liste`)
         },
         error => {
@@ -144,6 +161,26 @@ export class GamePageComponent {
           }
         }
       );
+    }
+  }
+
+  deleteGameToUserList(game:Game) {
+    const storedToken = this.tokenService.getToken();
+    if (storedToken != null) {
+      if(game.id) {
+        this.gameService.deleteGameInList(storedToken, game.id).subscribe(data => {
+          localStorage.setItem(`game_${game.id}`, 'false');
+          game.isGameAdded = false;
+          alert(`${game.name} à été supprimé  à votre liste`)
+        },
+        error => {
+          if (error.status === 500) {
+            this.redirectRoute.navigate(['/profil']);
+          }
+        }
+      );
+      }
+    
     }
   }
 }

@@ -62,6 +62,13 @@ export class GameService {
     return this.http.post<any>(`${this.serveurBaseUrl}/add`, params, { headers: this.headers });
 
   }
+  deleteGameInList(storedToken: string, gameId: number ): Observable<Game[]> {
+    if (!gameId) {
+      throw new Error('Game ID is required');
+    }
+    const params = new HttpParams().set('gameId', gameId) ;
+    return this.http.delete<Game[]>(`${this.serveurBaseUrl}`, { headers: this.headers, params });
+  }
 
   getListGames(): Observable<any[]> | undefined {
     const tokenId = this.token.getIdInToken();
