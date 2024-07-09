@@ -17,6 +17,7 @@ import { throwError } from 'rxjs';
 export class TabNavComponent implements OnInit {
   userGameId: number[] = [];
   games: Game[] = [];
+  errorMessage: string = ''; 
   currentSection: string = 'liste-des-jeux';
   private gameService = inject(GameService);
 
@@ -38,6 +39,9 @@ export class TabNavComponent implements OnInit {
         this.userGameId.map((id) => {
           this.getGamesById(id);
         });
+      },
+      (error) => {
+        this.errorMessage = 'Erreur lors du chargement des jeux de l\'utilisateur.'; 
       }
     );
   }
@@ -61,6 +65,9 @@ export class TabNavComponent implements OnInit {
           this.games.push(new Game(id, name,cover_id, genres_name, platforms_name, summary, artworks_id, screenshots_id, date, involved_companies));
         });
       },
+      error: (error) => {
+        this.errorMessage = `Erreur lors du chargement du jeu avec l'ID ${id}.`; 
+      }
     });
   }
 
