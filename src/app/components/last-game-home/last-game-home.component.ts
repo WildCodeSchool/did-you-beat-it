@@ -2,7 +2,6 @@ import { Component, inject } from '@angular/core';
 import { CardGameSmallComponent } from '../cardGameSmall/card-game-small/card-game-small.component';
 import { Game } from '../../models/game';
 import { GameService } from '../../services/gameService/game.service';
-import { error } from 'node:console';
 
 @Component({
   selector: 'app-last-game-home',
