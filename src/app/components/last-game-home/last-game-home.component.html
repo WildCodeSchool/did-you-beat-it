@@ -1,17 +1,30 @@
 <h2 class="column__title">Mes derniers jeux</h2>
 
+@if(!games.length) {
+        <p class="">Aucun jeu à afficher pour le moment.</p>}
+        @else {
 <section id="last_games--wrapper">
+
         <ul class="last__games--column">
                 <li class="last__game--item">
-                        @for( game of games; track game.id) {
+                     
+                         
+                                @for( game of games; track game.id) {
 
-                <li><app-card-game-small [gameName]="game.name" [gameCover]="game.cover" [gameGenre]="game.genre"
-                                [release]="game.releaseDate"></app-card-game-small></li>
-                }
+                                        <li><app-card-game-small [gameName]="game.name" [gameCover]="game.cover" [gameGenre]="game.genre"
+                                        [release]="game.releaseDate"></app-card-game-small></li>
+                                }
+                       
                 </li>
         </ul>
+
 </section>
+
 <a href="/" class="button__more">Voir plus</a>
+        }
+
+
+
 
 <div>
         @if(errorMessage) {
