@@ -16,8 +16,8 @@
         flex-direction: column;
         gap: 1rem;
         .banner-img, .profile-img{
-            width: 250px;
-            height: auto;
+            width: auto;
+            height: 250px;
             object-fit: contain;
         }
         input  {

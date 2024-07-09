@@ -46,21 +46,27 @@ export class EditInformationsComponent {
 
   messageOnUpdate: string = '';
 
-  bannerUrl?: string | null;
-  profilePictureUrl?: string | null;
+  bannerUrl: string = '';
+  profilePictureUrl: string = '';
 
   onUploadBanner(id: number):void {
-    id = this.userData?.id as number;
-    this.userService.updateImage(id, this.bannerUrl as string).subscribe(data => {
+    if (this.userData) {
+      id = this.userData.id as number;
+      this.userData.bannerPicture = this.bannerUrl
+      this.userService.updateImage(id, this.userData, "banner").subscribe(data => {
       this.bannerUrl = data
     })
+    }
   }
 
   onUploadProfile(id: number):void {
-    id = this.userData?.id as number;
-    this.userService.updateImage(id, this.profilePictureUrl as string).subscribe(data => {
+    if(this.userData) { 
+      id = this.userData.id as number;
+      this.userData.profilePicture = this.profilePictureUrl
+      this.userService.updateImage(id, this.userData, "profile").subscribe(data => {
       this.profilePictureUrl = data
     })
+    }
   }
 
   onSubmitForm(id: number) {
@@ -81,13 +87,15 @@ export class EditInformationsComponent {
       this.updateUser.username = this.userData.username;
       this.updateUser.email = this.userData.email;
       this.updateUser.biography = this.userData.biography;
-      this.bannerUrl = this.userData.bannerPicture;
+      this.bannerUrl = this.userData.bannerPicture !== null ? this.userData.bannerPicture : '';
       this.profilePictureUrl = this.userData.profilePicture;
       console.log(this.bannerUrl)
-    }, 
-    (error: HttpErrorResponse) => {
-      alert("Nous rencontrons un souci technique, veuillez réessayer dans quelques minutes")
-      this.router.navigate(["./home"])
-  })
+      console.log(this.userData)
+    } 
+  //   (error: HttpErrorResponse) => {
+  //     alert("Nous rencontrons un souci technique, veuillez réessayer dans quelques minutes")
+  //     this.router.navigate(["./home"])
+  // }
+  )
   }
 }
