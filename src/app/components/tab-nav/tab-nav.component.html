@@ -16,6 +16,10 @@
         </div>
         <!-- Afficher la liste des jeux ajoutés par l'utilisateur -->
         <div class="game">
+            @if(!games.length) {
+                <p class="">Aucun jeu à afficher pour le moment.</p>
+
+            } @else {
             <ul>
                 @for( game of games; track game.id) {
                     
@@ -23,6 +27,7 @@
                             [gameGenre]="game.genre" [release]="game.releaseDate"></app-card-game-small></li>
                 }
             </ul>
+        }
         </div>
     </div>
     } @else if(currentSection === 'statistiques') {
