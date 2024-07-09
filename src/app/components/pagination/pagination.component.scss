@@ -1,0 +1,21 @@
+.directory {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10px;
+  }
+  
+  .span {
+    cursor: pointer;
+    padding: 5px 10px;
+  }
+  
+  .span.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+  
+  .span.active {
+    font-weight: bold;
+    text-decoration: underline;
+  }
+  
