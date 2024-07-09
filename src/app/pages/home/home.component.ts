@@ -5,6 +5,7 @@ import { HomepageBannerComponent } from '../../components/homepage-banner/homepa
 
 import { GlobalRecommendationComponent } from '../../components/globalRecommendation/global-recommendation/global-recommendation.component';
 import { LastGameHomeComponent } from '../../components/last-game-home/last-game-home.component';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -14,9 +15,13 @@ import { LastGameHomeComponent } from '../../components/last-game-home/last-game
   styleUrl: './home.component.scss',
 })
 export class HomeComponent {
+  isConnected = false;
+  constructor(private authService: AuthService) {}
+  ngOnInit() {
+ this.authService.isLoggedIn().subscribe(isLoggedIn => {
+      this.isConnected = isLoggedIn;
+    });
+ }
 
-  isConnected(){
-    return !true;
-  }
 
 }

@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import {ActivatedRoute, RouterLink } from '@angular/router';
+import {ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { HomepageBannerComponent } from '../../components/homepage-banner/homepage-banner.component';
 import { Game } from '../../models/game';
 import { GameService } from '../../services/gameService/game.service';
@@ -9,6 +9,7 @@ import { GameRecommendationComponent } from '../../components/game-recommendatio
 import { RatingComponent } from '../../components/rating/rating.component';
 import { CustomButtonComponent } from '../../components/custom-button/custom-button.component';
 import { GameVoteComponent } from '../../components/game-vote/game-vote.component';
+
 
 
 
@@ -37,6 +38,7 @@ export class GamePageComponent {
   
   private gameService = inject(GameService);
   private route = inject(ActivatedRoute);
+  private redirectRoute = inject(Router);
   
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -46,17 +48,17 @@ export class GamePageComponent {
         next: (data: any[]) => {
           this.games = data.map(gameData => {
             const id = gameData.id;
-            const cover_id = gameData.cover?.image_id;
+            const cover_id =  this.gameService.getCoverUrl(gameData.cover?.image_id);
             const name = gameData.name;
             const summary = gameData.summary;
-            const genres_name = gameData.genres?.map((genre: any) => genre.name) || [];
+            const genres_name = this.gameService.getGenreNames(gameData.genres?.map((genre: any) => genre.name) || []);
             const platforms_name = gameData.platforms?.map((platform: any) => platform.name) || [];
             const artworks_id = gameData.artworks?.map((artwork: any) => artwork.image_id);
             const screenshots_id = gameData.screenshots?.map((screenshot: any) => screenshot.image_id);
             const involved_companies = gameData.involved_companies?.map((involvedCompany: any) => involvedCompany.company)
               ?.map((company: any) => company.name);
-            const date = this.formatReleaseDate(gameData.first_release_date);
-            return new Game(id, name, cover_id, genres_name, platforms_name, summary, artworks_id, screenshots_id, date, involved_companies);
+              const date = this.gameService.formatReleaseDate(gameData.first_release_date);
+              return new Game(id, name, cover_id, genres_name, platforms_name, summary, artworks_id, screenshots_id, date, involved_companies);
           })
         },
         error: (error) => {
@@ -123,19 +125,8 @@ export class GamePageComponent {
     }
   }
 
-  getCoverUrl(game: Game): string {
-    return game.cover ? `https://images.igdb.com/igdb/image/upload/t_cover_big/${game.cover}.jpg` :  this.gameDefaultCover;
-  }
 
-  getGenreNames(genres: any): string {
-    if (!genres || !Array.isArray(genres) || genres.length === 0) {
-      return 'No genre found';
-    } else if (genres.length === 1) {
-      return genres[0];
-    } else {
-      return genres.join(', ');
-    }
-  }
+
 
   getPlatformNames(platforms: string[] | undefined): string {
     if (!platforms || platforms.length === 0) {
@@ -163,8 +154,23 @@ export class GamePageComponent {
     return game.screenshots?.map(screenshotId => `https://images.igdb.com/igdb/image/upload/t_screenshot_big/${screenshotId}.jpg`) || [];
   }
 
-  formatReleaseDate(timestamp: number): string {
-    const date = new Date(timestamp * 1000); 
-    return date.toLocaleDateString(); 
+ 
+
+  addGameToUserList(game: Game) {
+    const storedToken = localStorage.getItem('token');
+    if (storedToken != null) {
+      this.gameService.addGameToList(storedToken, game.id).subscribe(
+       
+        data => {
+          this.toggleGamePossessed()
+          alert(`${game.name} ajouté à votre liste`)
+        },
+        error => {
+          if (error.status === 500) {
+            this.redirectRoute.navigate(["/connexion"]);
+          }
+        }
+      );
+    }
   }
 }
