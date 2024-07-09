@@ -6,7 +6,7 @@
                 <img [src]="bannerImg !==null ? bannerImg : './assets/pictures/pexels-jahoo-388415.jpg'" alt="bannerImg" class="banner-img">
                 <input type="file" class="banner-input" (change)="onBannerSelected($event)">
                 @if (bannerData.uploadedFile) {
-                    <app-custom-button [btnType]="'submit'" [text]="textButton" [class]="'btn'" (click)="onUploadBanner(userData.id)"></app-custom-button>
+                    <app-custom-button [btnType]="'submit'" [text]="textButton" [class]="'btn'" (click)="onUploadBanner(userData?.id!)"></app-custom-button>
                 }
             </div> 
         </div>
@@ -16,14 +16,14 @@
                 <img [src]="profileImg !==null ? profileImg : './assets/pictures/pexels-jahoo-388415.jpg'" alt="profileImg" class="profile-img">
                 <input type="file" class="profile-input" (change)="onProfileSelected($event)">
                 @if (profileData.uploadedFile) {
-                    <app-custom-button [btnType]="'submit'" [text]="textButton" [class]="'btn'" (click)="onUploadProfile(userData.id)"></app-custom-button>
+                    <app-custom-button [btnType]="'submit'" [text]="textButton" [class]="'btn'" (click)="onUploadProfile(userData?.id!)"></app-custom-button>
                 }
             </div> 
         </div>
     </div>
     <div class="modify-informations">
         <h2>Informations de l'utilisateur</h2>
-        <form >
+        <form #updateForm="ngForm" (ngSubmit)="updateForm.valid">
 
             <div class="form-group">
                 <h3>Nom d'utilisateur</h3>
@@ -94,7 +94,7 @@
                 <p class="update-message">{{ messageOnUpdate }}</p>
             }
             <div class="button">
-                <app-custom-button [btnType]="'submit'" [text]="textButton" [class]="'btn'" (click)="onSubmitForm(userData.id)"></app-custom-button>
+                <app-custom-button [btnType]="'submit'" [text]="textButton" [class]="'btn'" (click)="onSubmitForm(userData?.id!)"></app-custom-button>
             </div>
         </form>
     </div>

@@ -8,6 +8,8 @@ import { UsersService } from '../../services/users/users.service';
 import { User } from '../../models/user.model';
 import { LocalStorageService } from '../../services/local-storage/local-storage.service';
 import { UpdateUser } from '../../models/updateUser/update-user.model';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 type updateForm = {
   username:string;
@@ -29,12 +31,13 @@ export class EditInformationsComponent {
   private fileUploadService = inject(UploadProfileImagesService);
   private userService = inject(UsersService);
   private localStorage = inject(LocalStorageService);
+  private router: Router = inject(Router);
 
-  public userData!: User;
+  public userData?: User;
 
   textButton: string = 'Sauvegarder';
 
-  slug!:string|null;
+  slug?:string|null;
 
   updateUser : updateForm = {
     username : '',
@@ -62,7 +65,7 @@ export class EditInformationsComponent {
   }
 
   onUploadBanner(id: number):void {
-    id = this.userData.id;
+    id = this.userData?.id as number;
     return this.fileUploadService.onUpload(id, this.bannerData)
   }
 
@@ -72,7 +75,7 @@ export class EditInformationsComponent {
   }
 
   onUploadProfile(id: number):void {
-    id = this.userData.id;
+    id = this.userData?.id as number;
     return this.fileUploadService.onUpload(id, this.profileData)
   }
 
@@ -80,7 +83,7 @@ export class EditInformationsComponent {
     const updateUser: UpdateUser = new UpdateUser(this.updateUser.username, this.updateUser.email, this.updateUser.biography, this.updateUser.password)
     this.userService.updateUser(id, updateUser).subscribe(data => {
       this.userData = data;
-      this.localStorage.setValue('slug', this.userData.slug);
+      this.localStorage.setValue('slug', this.userData?.slug as string);
       this.updateUser.password = '';
       this.updateUser.confirmPassword = '';
       this.messageOnUpdate = "Votre profil a bien été mis à jour"
@@ -96,6 +99,11 @@ export class EditInformationsComponent {
       this.updateUser.biography = this.userData.biography;
       this.bannerImg = this.userData.bannerPicture;
       this.profileImg = this.userData.profilePicture;
-    })
+    }, 
+    (error: HttpErrorResponse) => {
+      console.log(error)
+      alert("Nous rencontrons un souci technique, veuillez réessayer dans quelques minutes")
+      this.router.navigate(["./home"])
+  })
   }
 }
