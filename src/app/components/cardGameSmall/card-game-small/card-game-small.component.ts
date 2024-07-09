@@ -11,7 +11,7 @@ import { RouterLink } from '@angular/router';
 })
 export class CardGameSmallComponent {
   @Input() gameName?: string = 'TITRE DU JEU TRES TRES LONG';
-  @Input() gameCover?: string = './assets/pictures/rdoudou.jpeg';
+  @Input() gameCover?: string = './assets/pictures/default_cover.png';
   @Input() gameGenre?: string = 'Genre';
   @Input() release?: string = 'Date de sortie'; 
 }

@@ -78,6 +78,8 @@ export class GamePageComponent {
         }
       });
     });
+
+    // this.getRecommandatedGames();
   }
 
   openModal(image: string) {
@@ -140,9 +142,6 @@ export class GamePageComponent {
       return platforms;
     }
   }
-
-
-
 
   getPlatformNames(platforms: string[] | undefined): string {
     if (!platforms || platforms.length === 0) {

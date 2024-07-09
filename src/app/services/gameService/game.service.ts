@@ -50,6 +50,11 @@ export class GameService {
     return this.http.post<Game[]>(this.baseUrl, body, { headers: this.headersIGDB });
   }
 
+  getGameBySameGenre(genre?: string): Observable<Game[]> {
+    const body = `fields name, cover.image_id, genres.name, first_release_date; where genres.name = "${genre}" & first_release_date != null; limit 3;`;
+    return this.http.post<Game[]>(this.baseUrl, body, { headers: this.headersIGDB });
+  }
+
   getUpcomingGames(): Observable<any> {
     const currentTime = Math.floor(Date.now() / 1000);
     const body = `fields game.name,game.cover.image_id, game.genres.name, date; where region = 1  & date > ${currentTime}; sort date asc; limit 3;`;

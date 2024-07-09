@@ -1,9 +1,9 @@
 <div class="recommendation-container">
     <section class="recommendation-sections">
         <ul>
-            <li><app-card-game-big></app-card-game-big></li>
-            <li><app-card-game-big></app-card-game-big></li>
-            <li><app-card-game-big></app-card-game-big></li>
+            @for(game of games; track game.id) {
+                <li><app-card-game-big [gameName]="game.name" [gameCover]="game.cover" [gameGenre]="game.genre" ></app-card-game-big></li>
+            }
         </ul>
     </section>
 </div>

@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { Game } from '../../models/game';
+
 
 @Component({
   selector: 'app-card-game-big',
@@ -9,5 +11,10 @@ import { RouterLink } from '@angular/router';
   styleUrl: './card-game-big.component.scss'
 })
 export class CardGameBigComponent {
-
+  games : Game[] = [];
+  gameDefaultCover = '../../../assets/pictures/default_cover.png'
+  
+  @Input() gameName?: string = 'Jeu recommandé';
+  @Input() gameCover?: string = '../../../assets/pictures/default_cover.png';
+  @Input() gameGenre?: string = 'Genre';
 }
