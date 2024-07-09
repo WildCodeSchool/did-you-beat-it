@@ -18,7 +18,7 @@ export class AppComponent {
   slug!:string|null;
 
   ngOnInit(): void {
-    this.localStorageService.setValue('slug', 'marwa');
+    // this.localStorageService.setValue('slug', 'marwa');
     this.localStorageService.watchStorage().subscribe((data: string) => {
       this.slug = data
     })
