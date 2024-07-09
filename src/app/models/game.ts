@@ -11,6 +11,7 @@ export class Game {
   involved_companies?: string[];
   rating?: number;
   year?: number;
+  isGameAdded: boolean = false;
 
   constructor(
     id?: number,
@@ -24,7 +25,8 @@ export class Game {
   releaseDate?: string,
   involved_companies?: string[],
   rating?: number,
-    year?: number
+    year?: number,
+    isGameAdded: boolean = false
   ) {
     this.id = id;
     this.name = name;
@@ -38,5 +40,6 @@ export class Game {
     this.involved_companies = involved_companies;
     this.rating = rating;
     this.year = year;
+    this.isGameAdded = isGameAdded;
   }
 }
