@@ -11,7 +11,7 @@ import { Component, Input } from '@angular/core';
 export class GameVoteComponent {
   @Input() 
   title : string = '';
-  @Input() items: { display: string }[] = [];
+  @Input() items: string [] = [];
 
   hasVoted: boolean = !false;
   votedItem: string | null = null;

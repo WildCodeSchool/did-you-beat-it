@@ -1,7 +1,7 @@
 <div class="container">
     <div class="card">
         <h2>S'inscrire</h2>
-        <form #signUpForm="ngForm" (ngSubmit)="signUpForm.valid">
+        <form #signUpForm="ngForm" (ngSubmit)="signUpForm.valid && register()">
 
             <div class="form-group">
                 <input type="text" id="username" name="username" placeholder="Nom d'utilisateur"
@@ -16,7 +16,7 @@
             </div>
 
             <div class="form-group">
-                <input type="text" id="email" name="email" placeholder="Email" [(ngModel)]="signUp.email" required
+                <input type="email" id="email" name="email" placeholder="Email" [(ngModel)]="signUp.email" required
                     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" #email="ngModel">
                 @if(email.errors && email.errors['required'] && email.touched) {
                 <p [ngStyle]="{color: 'red'}">L'email est requis</p>
@@ -26,7 +26,7 @@
             </div>
 
             <div class="form-group">
-                <input type="text" id="password" name="password" placeholder="Mot de passe"
+                <input type="password" id="password" name="password" placeholder="Mot de passe"
                     [(ngModel)]="signUp.password" required minlength="8"
                     pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$" #password="ngModel">
                 @if (password.errors && password.errors['required'] && password.touched) {
@@ -43,7 +43,7 @@
             </div>
 
             <div class="form-group">
-                <input type="text" id="confirm_password" name="confirm_password" [(ngModel)]="signUp.confirmPassword"
+                <input type="password" id="confirm_password" name="confirm_password" [(ngModel)]="signUp.confirmPassword"
                     placeholder="Confirmez le mot de passe" required minlength="8"
                     pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$" #confirmPassword="ngModel">
                 @if (confirmPassword.errors && confirmPassword.errors['required'] && confirmPassword.touched) {

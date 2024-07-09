@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { RouterLink } from '@angular/router';
 import { LocalStorageService } from '../../services/local-storage/local-storage.service';
+import { Router,RouterLink } from '@angular/router';
+import { TokenService } from '../../services/token/token.service';
+import { AuthService } from '../../services/auth/auth.service';
 
 
 @Component({
@@ -14,22 +16,36 @@ import { LocalStorageService } from '../../services/local-storage/local-storage.
 export class NavbarComponent {
 
   private localStorageService = inject(LocalStorageService);
-  slug!:string|null;
-
-  isConnected: boolean = true;
-  isAdmin: boolean = true;
+  slug?:string|null;
   
-  ngOnInit():void {
+
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) {}
+  
+  isConnected: boolean = false;
+  isAdmin: boolean =!true;
+  
+ ngOnInit() {
+   this.authService.isLoggedIn().subscribe((isLoggeIn) =>{
+    this.isConnected = isLoggeIn;
+     
     this.slug = this.localStorageService.getValue("slug")
     this.localStorageService.watchStorage().subscribe((data: string) => {
       this.slug = data
     })
-  }
-
+  });
+}
   closeMenu() {
     const menuToggle = document.getElementById('menu-toggle') as HTMLInputElement;
     if (menuToggle) {
       menuToggle.checked = false;
     }
   }
+logout() {
+  this.authService.logout();
+  this.isConnected = false;
+  this.router.navigate(['/connexion'])
+}
 }
