@@ -62,7 +62,7 @@
             <app-game-vote [title]="'Sur quelle plateforme ?'" [items]="getPlatformsForVoting(game?.platform)"></app-game-vote>
         </section>
     }
-    <section class="game__galery">
+    <section class="game__galery" id="carousel" (mousemove)="onMouseMove($event)">
         <div *ngFor="let screenshot of getScreenshotUrls(game)" class="game__galery--carousel">
             <img src="{{ screenshot }}" class="game__galery--img" alt="{{game?.name}} image" (click)="openModal(screenshot)">
         </div>

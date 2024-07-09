@@ -37,6 +37,7 @@ export class GamePageComponent {
   btnform = 'Envoyer';
   errorMessage = '';
   gameDefaultCover = '../../../assets/pictures/default_cover.png'
+  scrollAmount = 0;
   
   private gameService = inject(GameService);
   private authService = inject(AuthService);
@@ -83,17 +84,43 @@ export class GamePageComponent {
     this.modalOpen = true;
     this.modalImage = image;
   }
-
   closeModal() {
     this.modalOpen = false;
   }
 
 
 
+  scrollCarousel(direction: string): void {
+    const carousel = document.getElementById('carousel') as HTMLElement ;
+    const scrollSpeed = 5;
+    const maxScroll = carousel?.scrollWidth - carousel?.clientWidth;
+    if (direction === 'right') {
+      this.scrollAmount += scrollSpeed;
+      if (this.scrollAmount >= maxScroll) this.scrollAmount = maxScroll;
+    } else {
+      this.scrollAmount -= scrollSpeed;
+      if (this.scrollAmount <= 0) this.scrollAmount = 0;
+    }
+
+    carousel.scrollLeft = this.scrollAmount;
+  }
+
+  onMouseMove(event: MouseEvent): void {
+    const carousel = event.target as HTMLElement;
+    const rect = carousel.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const width = carousel.offsetWidth;
+
+    if (x < width / 3) {
+      this.scrollCarousel('left');
+    } else if (x > width * 2 / 3) {
+      this.scrollCarousel('right');
+    }
+  };
+
   toggleGamePossessed(){
     this.isGameAdded = !this.isGameAdded;
   }
-
   toggleGame(){
     this.isGameFinished = !this.isGameFinished;
     this.btnText = this.isGameFinished ? 'Terminé !' : 'Terminé ?';
