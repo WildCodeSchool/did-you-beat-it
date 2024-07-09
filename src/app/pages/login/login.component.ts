@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { CustomButtonComponent } from '../../components/custom-button/custom-button.component';
+import { AuthService } from '../../services/auth/auth.service';
 
 type loginForm = {
   email : string;
@@ -22,4 +23,14 @@ newUser: loginForm = {
   email: "",
   password: "",
 }
+constructor(private authService: AuthService, private router: Router) { }
+
+
+login() :void {
+  this.authService.login(this.newUser.email, this.newUser.password).subscribe(user => {
+      this.router.navigate(['/home']);
+    
+  });
 }
+}
+

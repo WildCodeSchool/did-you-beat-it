@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-homepage-banner',
@@ -8,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrl: './homepage-banner.component.scss'
 })
 export class HomepageBannerComponent {
+  @Input() gameBannerUrl: string | undefined;
+  defaultBannerUrl: string = '../../assets/banners/hades_banner.jpg';
 
+  constructor() {
+    this.gameBannerUrl = this.defaultBannerUrl;
+  }
 }

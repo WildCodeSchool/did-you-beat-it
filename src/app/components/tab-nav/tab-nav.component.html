@@ -17,12 +17,11 @@
         <!-- Afficher la liste des jeux ajoutés par l'utilisateur -->
         <div class="game">
             <ul>
-                <li><app-card-game-small></app-card-game-small></li>
-                <li><app-card-game-small></app-card-game-small></li>
-                <li><app-card-game-small></app-card-game-small></li>
-                <li><app-card-game-small></app-card-game-small></li>
-                <li><app-card-game-small></app-card-game-small></li>
-                <li><app-card-game-small></app-card-game-small></li>
+                @for( game of games; track game.id) {
+                    
+                        <li><app-card-game-small [gameName]="game.name" [gameCover]="game.cover"
+                            [gameGenre]="game.genre" [release]="game.releaseDate"></app-card-game-small></li>
+                }
             </ul>
         </div>
     </div>

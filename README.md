@@ -25,3 +25,12 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Important
+Run `ng serve --configuration=development` to launch your Angular application in development mode
+
+## Set up a proxy
+To be able to access the IGDB API, we need to set up a proxy, refer to the doc -> https://api-docs.igdb.com/#cors-proxy
+
+## Use the IGDB API
+Don't forget to create the `environment.development.ts` file and copy all the environment variables with credentials there

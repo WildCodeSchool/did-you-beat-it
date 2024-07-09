@@ -29,7 +29,7 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'profil',
+    path: 'profil/:slug',
     component: ProfileComponent,
   },
   {
@@ -53,7 +53,7 @@ export const routes: Routes = [
     component: AproposComponent,
   },
   {
-    path: 'page-jeu',
+    path: 'page-jeu/:name',
     component: GamePageComponent,
   },
   {

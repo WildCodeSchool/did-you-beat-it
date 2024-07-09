@@ -1,51 +1,87 @@
-<app-homepage-banner></app-homepage-banner>
+@for (game of games; track game) {
+    <img class="gameBanner" [src]="getArtworkUrls(game)" alt="game.name">
 
-<article id="game">
+    <article id="game">
     <section class="game__infos">
         <div class="game__cover--wrapper">
-            <img src=" {{ game?.cover }} " class="game__cover--img" alt="{{game?.title}} cover">
-            <div class="game__rating--wrapper">
-                <span class="game__rating--note">{{game?.rating}}</span>
-                <app-rating [rating]="game?.rating"></app-rating>
-            </div>
-            @if(isConnected() === true) {
-                <app-custom-button [class]="'btn'" [btnType]="'submit'" [text]="btnText"></app-custom-button>
+            @if(game.cover) {
+                <img [src]="game.cover" class="game__cover--img" alt="{{game?.name}} cover">
+
             }
+            @if (isGameAdded === true && isGameFinished === true && isConnected() === true) {
+                <div class="game__rating--wrapper note--empty">
+                        <span class="game__rating--note">Notez ce jeu</span>
+                        <app-rating [rating]="0"></app-rating>
+                </div>
+                } @else if(isConnected() === true && isGameAdded === true && isGameFinished === false) {
+                    <div class="game__rating--wrapper">
+                        <span class="game__rating--note">{{game?.rating}}</span>
+                        <app-rating [rating]="game?.rating"></app-rating>
+                    </div>
+                } @else {
+                    <div class="game__rating--wrapper">
+                        <span class="game__rating--note">{{game?.rating}}</span>
+                        <app-rating [rating]="game?.rating"></app-rating>
+                    </div>
+                }
+            @if(isConnected() === true && isGameAdded === true && isGameFinished === false) {
+                <app-custom-button [class]="'btn'" [btnType]="'submit'" [text]="btnText" (click)="toggleGame()"></app-custom-button>
+            } @else if(isGameAdded === true && isGameFinished === true) {
+                <app-custom-button [class]="'btn-finished'" [btnType]="'submit'" [text]="btnText" (click)="toggleGame()"></app-custom-button>
+            }
+        
         </div>
         <div class="game__infos--wrapper">
             <div class="game__infos--titlebtn">
-                <h1 class="game__infos--title">{{ game?.title }}</h1>
-                <button class="game__infos--btn">+</button>
+                <h1 class="game__infos--title">{{ game?.name }}</h1>
+                @if(isConnected() === true && isGameAdded === false) {
+                    <button class="game__infos--btn-plus" (click)="addGameToUserList(game)">+</button>
+                } @else if(isConnected() === true && isGameAdded === true) {
+                    <button class="game__infos--btn-minus" (click)="toggleGamePossessed()" >-</button>
+                }
             </div>
             <div class="game__infos--details">
                 <div class="game__infos--details_release">
                     <p class="game__infos--details--release">{{ game?.releaseDate}} |</p>
-                    <p class="game__infos--details--developer"> {{ game?.developer }} |</p>
-                    <p class="game__infos--details--publisher"> {{ game?.publisher }} </p>
+                    <p class="game__infos--details--publisher"> {{ game?.involved_companies }} </p>
                 </div>
                 <div class="game__infos--details_platforms">
                     <li *ngFor="let platform of game?.platform" class="game__infos--details--platform"> {{ platform }} </li>
                 </div>
             </div> 
             <div class="game__infos--genre">
-                <li *ngFor="let genre of game?.genres" class="game__infos--details--genre"> {{genre}} </li>
+                <li  class="game__infos--details--genre">{{ game.genre }}</li>
             </div>
             <p class="game__infos--description">
-                {{ game?.description }}
+                {{ game?.summary }}
             </p>
         </div>
     </section>
+    @if (isConnected() === true && isGameAdded === true && isGameFinished === true){
+        <section class="game__vote">
+            <app-game-vote [title]="'Sur quelle plateforme ?'" [items]="getPlatformsForVoting(game?.platform)"></app-game-vote>
+        </section>
+    }
     <section class="game__galery">
-        <div *ngFor="let screenshot of game?.screenshots" class="game__galery--carousel">
-            <img src="{{ screenshot }}" class="game__galery--img" alt="{{game?.title}} image" (click)="openModal(screenshot)">
+        <div *ngFor="let screenshot of getScreenshotUrls(game)" class="game__galery--carousel">
+            <img src="{{ screenshot }}" class="game__galery--img" alt="{{game?.name}} image" (click)="openModal(screenshot)">
         </div>
     </section>
 
     <div class="modal" [ngStyle]="{'display': modalOpen ? 'block' : 'none'}">
         <span class="close" (click)="closeModal()">&times;</span>
-        <img class="modal-content" [src]="modalImage" alt="{{game?.title}} image">
+        <img class="modal-content" [src]="modalImage" alt="{{game?.name}} image">
     </div>
     <section class="game__comments">
+        @if(isConnected() === true && isGameAdded === true && isGameFinished === true) {
+            <div class="game__comment--writing">
+                <h2>Écrire un commentaire</h2>
+                <form action="post" class="comment__writing">
+                    <textarea name="comment" id="comment"></textarea>
+                    <app-custom-button [text]="btnform" [class]="'btn'" class="btn-form" [btnType]="'submit'"></app-custom-button>
+                </form>                
+            </div>
+        }
         <div class="game__comments--wrapper">
             <div class="game__comments--list">
                 <div class="game__comments--title__sort">
@@ -79,3 +115,8 @@
     </section>
 
 </article>
+}
+
+@if(errorMessage) {
+    {{errorMessage}}
+}
