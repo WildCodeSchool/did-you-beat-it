@@ -8,6 +8,7 @@ import { LocalStorageService } from '../../services/local-storage/local-storage.
 import { UpdateUser } from '../../models/updateUser/update-user.model';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { TokenService } from '../../services/token/token.service';
 
 type updateForm = {
   username:string;
@@ -28,6 +29,7 @@ export class EditInformationsComponent {
 
   private userService = inject(UsersService);
   private localStorage = inject(LocalStorageService);
+  private tokenService = inject(TokenService)
   private router: Router = inject(Router);
 
   public userData?: User;
@@ -81,7 +83,7 @@ export class EditInformationsComponent {
   }
 
   ngOnInit():void {
-    this.slug = this.localStorage.getValue("slug")
+    this.slug = this.tokenService.getSlugInToken();
     this.userService.getOneBySlug(this.slug!).subscribe(data => {
       this.userData = data as User;
       this.updateUser.username = this.userData.username;
