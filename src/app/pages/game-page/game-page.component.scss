@@ -151,12 +151,13 @@ h2{
 
 .game__galery{
     width: 100%;
-    max-height: 400px;
+    max-height: 800px;
     display: flex;
     justify-content: space-between;
-    margin: 6rem 0;
+    margin: 6rem 0 0;
     overflow-x: hidden;
     scroll-behavior: smooth;
+    padding-bottom: 6rem;
     
     &--carousel{
         display: flex;
@@ -379,7 +380,7 @@ h2{
 
         .game__galery{
             flex-direction: column;
-            margin: 4rem 0;
+            margin: 4rem 0 0;
             padding: 0 1rem;
             max-width: 100%;
             display: grid;
@@ -456,13 +457,14 @@ h2{
 
     .game__infos{
         .game__infos--wrapper{
-            max-width: 500px;
+            max-width: 400px;
 
             .game__infos--details{
                 width: 100%;
+                flex-wrap: wrap;
 
                 .game__infos--details_release{
-                    flex-direction: column;
+                    flex-direction: row;
                 }
             }
 

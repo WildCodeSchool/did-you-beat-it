@@ -28,7 +28,7 @@ export class GamePageComponent {
   characters?: Character[];
   modalOpen = false;
   modalImage = '';
-  defaultArtwork = '../../assets/banners/hades_banner.jpg';
+  defaultArtwork = '../../assets/banners/default_banner.png';
   btnText = 'Terminé ?';
   class = 'game__infos--btn';
   isGameAdded: boolean = false;
