@@ -2,12 +2,14 @@ import { Component, inject } from '@angular/core';
 import { CardGameSmallComponent } from '../cardGameSmall/card-game-small/card-game-small.component';
 import { Game } from '../../models/game';
 import { GameService } from '../../services/gameService/game.service';
+import { TokenService } from '../../services/token/token.service';
+import { RouterLink } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-last-game-home',
   standalone: true,
-  imports: [CardGameSmallComponent],
+  imports: [CardGameSmallComponent, RouterLink],
   templateUrl: './last-game-home.component.html',
   styleUrl: './last-game-home.component.scss'
 })
@@ -15,11 +17,14 @@ export class LastGameHomeComponent {
   userGameId: number[] = [];
   games: Game[] = [];
   currentSection: string = 'liste-des-jeux';
-  errorMessage: string = ''; 
+  errorMessage: string = '';
+  slug?:string|null;
   private gameService = inject(GameService);
+  private tokenService = inject(TokenService);
 
 
   ngOnInit(): void {
+    this.slug = this.tokenService.getSlugInToken();
     this.getGames();
   }
 
