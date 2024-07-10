@@ -8,22 +8,7 @@
                 <img [src]="game.cover" class="game__cover--img" alt="{{game?.name}} cover">
 
             }
-            @if (game.isGameAdded  && isGameFinished === true && isConnected  === true) {
-                <div class="game__rating--wrapper note--empty">
-                        <span class="game__rating--note">Notez ce jeu</span>
-                        <app-rating [rating]="0"></app-rating>
-                </div>
-                } @else if(isConnected  === true && game.isGameAdded  && isGameFinished === false) {
-                    <div class="game__rating--wrapper">
-                        <span class="game__rating--note">{{game?.rating}}</span>
-                        <app-rating [rating]="game?.rating"></app-rating>
-                    </div>
-                } @else {
-                    <div class="game__rating--wrapper">
-                        <span class="game__rating--note">{{game?.rating}}</span>
-                        <app-rating [rating]="game?.rating"></app-rating>
-                    </div>
-                }
+            
             @if(isConnected  === true && game.isGameAdded  && isGameFinished === false) {
                 <app-custom-button [class]="'btn'" [btnType]="'submit'" [text]="btnText" (click)="toggleGame()"></app-custom-button>
             } @else if(game.isGameAdded   && isGameFinished === true) {
@@ -95,7 +80,7 @@
                             <p class="game__comments--list--comment--author">AxelPentaKill9</p>
                             <div class="game__comments--completion">
                                 <span class="game__comments--list--comment--stars">4</span>
-                                <app-rating [rating]="game?.rating"></app-rating>
+                                
                                 <p class="game__comments--list--comment--completion">| Complété sur PC</p>
                             </div>
                         </div>
