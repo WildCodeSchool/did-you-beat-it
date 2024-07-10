@@ -40,7 +40,7 @@ export class GlobalRecommendationComponent {
           return new Game(id, name, cover_id, genres_name, platforms_name, summary, artworks_id, screenshots_id, date, involved_companies);
         })
       }, error: (error) => {
-        this.errorMessage = 'Échec du chargement du jeu';
+        this.errorMessage = 'Échec du chargement des prochaines sorties';
 
       }
     })
