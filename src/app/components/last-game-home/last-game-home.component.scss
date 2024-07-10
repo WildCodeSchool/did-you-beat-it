@@ -37,8 +37,8 @@ a{
 
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
     .last__games--column{
-        display: flex;
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
         row-gap: 40px;
         margin-bottom: 2rem;
 
