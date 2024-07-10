@@ -4,7 +4,7 @@ import { CardGameSmallComponent } from '../cardGameSmall/card-game-small/card-ga
 import { FilterComponent } from '../filter/filter.component';
 import { GameService } from '../../services/gameService/game.service';
 import { Game } from '../../models/game';
-import { throwError } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
 
 
 @Component({
@@ -40,7 +40,7 @@ export class TabNavComponent implements OnInit {
           this.getGamesById(id);
         });
       },
-      (error) => {
+      (error: HttpErrorResponse) => {
         this.errorMessage = 'Erreur lors du chargement des jeux de l\'utilisateur.'; 
       }
     );

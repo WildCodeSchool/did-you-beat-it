@@ -4,12 +4,14 @@ import { CommonModule } from '@angular/common';
 import { Game } from '../../models/game';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { HttpErrorResponse } from '@angular/common/http';
+import { PaginationComponent } from '../pagination/pagination.component';
 @Component({
-  selector: 'app-game-display',
-  standalone: true,
-  imports: [CommonModule,RouterLink,FormsModule],
-  templateUrl: './game-display.component.html',
-  styleUrl: './game-display.component.scss'
+    selector: 'app-game-display',
+    standalone: true,
+    templateUrl: './game-display.component.html',
+    styleUrl: './game-display.component.scss',
+    imports: [CommonModule, RouterLink, FormsModule, PaginationComponent]
 })
 export class GameDisplayComponent {
   games:Game[]=[];
@@ -22,8 +24,13 @@ export class GameDisplayComponent {
   selectedGenre: string = "";
   selectedYear: string = "";
   inputName:string ="";
+  errorMessage : string = ""; 
+  elementsPerPage: number = 12;
+  totalPages: number = Math.ceil(this.games.length / this.elementsPerPage);
+  currentPage: number = 1;
   private gameService= inject(GameService);
-  gameDefaultCover = '../../../assets/pictures/default_cover.png'
+  gameDefaultCover = '../../../assets/pictures/default_cover.png';
+
 
   applyFilters() {
     this.filteredGames = this.games.filter(game => {
@@ -61,14 +68,19 @@ export class GameDisplayComponent {
       return new Game(id, name, cover_id, genres_name, platforms_name);
     });
     this.filteredGames = this.games; 
-  })
+  }, (error: HttpErrorResponse) => {
+    this.errorMessage = 'Échec du chargement des jeux'; 
+  }
+)
 }
 
 loadGenres() {
   this.gameService.getGenres().subscribe(
     (genres: any[]) => {
       this.genres = genres.map(genre => genre.name);
-    },
+    }, (error: HttpErrorResponse) => {
+      this.errorMessage = 'Échec du chargement des genres de jeux'; 
+    }
   );
 }  
 
@@ -77,10 +89,22 @@ loadPlatforms() {
     (plateform: any[]) => {
       this.platforms = plateform.map(plateform => plateform.name);
 
-    },
+    }, (error: HttpErrorResponse) => {
+      this.errorMessage = 'Échec du chargement des platformes'; 
+    }
   );
 }  
 
 
 
+onPageChange(page: number) {
+  this.currentPage = page;
+  this.displayGames(page);
+}
+
+displayGames(page: number) {
+  const startIndex = (page - 1) * this.elementsPerPage;
+    const endIndex = page * this.elementsPerPage;
+    this.filteredGames = this.games.slice(startIndex, endIndex);
+}
 }

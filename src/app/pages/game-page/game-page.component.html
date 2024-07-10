@@ -8,28 +8,11 @@
             <img [src]="game.cover" class="game__cover--img" alt="{{game?.name}} cover">
 
             }
-            @if (game.isGameAdded && isGameFinished === true && isConnected === true) {
-            <div class="game__rating--wrapper note--empty">
-                <span class="game__rating--note">Notez ce jeu</span>
-                <app-rating [rating]="0"></app-rating>
-            </div>
-            } @else if(isConnected === true && game.isGameAdded && isGameFinished === false) {
-            <div class="game__rating--wrapper">
-                <span class="game__rating--note">{{game?.rating}}</span>
-                <app-rating [rating]="game?.rating"></app-rating>
-            </div>
-            } @else {
-            <div class="game__rating--wrapper">
-                <span class="game__rating--note">{{game?.rating}}</span>
-                <app-rating [rating]="game?.rating"></app-rating>
-            </div>
-            }
-            @if(isConnected === true && game.isGameAdded && isGameFinished === false) {
-            <app-custom-button [class]="'btn'" [btnType]="'submit'" [text]="btnText"
-                (click)="toggleGame()"></app-custom-button>
-            } @else if(game.isGameAdded && isGameFinished === true) {
-            <app-custom-button [class]="'btn-finished'" [btnType]="'submit'" [text]="btnText"
-                (click)="toggleGame()"></app-custom-button>
+            
+            @if(isConnected  === true && game.isGameAdded  && isGameFinished === false) {
+                <app-custom-button [class]="'btn'" [btnType]="'submit'" [text]="btnText" (click)="toggleGame()"></app-custom-button>
+            } @else if(game.isGameAdded   && isGameFinished === true) {
+                <app-custom-button [class]="'btn-finished'" [btnType]="'submit'" [text]="btnText" (click)="toggleGame()"></app-custom-button>
             }
 
         </div>
@@ -77,6 +60,48 @@
         <span class="close" (click)="closeModal()">&times;</span>
         <img class="modal-content" [src]="modalImage" alt="{{game?.name}} image">
     </div>
+    <section class="game__comments">
+        @if(isConnected  === true && game.isGameAdded  && isGameFinished === true) {
+            <div class="game__comment--writing">
+                <h2>Écrire un commentaire</h2>
+                <form action="post" class="comment__writing">
+                    <textarea name="comment" id="comment"></textarea>
+                    <app-custom-button [text]="btnform" [class]="'btn'" class="btn-form" [btnType]="'submit'"></app-custom-button>
+                </form>                
+            </div>
+        }
+        <div class="game__comments--wrapper">
+            <div class="game__comments--list">
+                <div class="game__comments--title__sort">
+                    <h2>Commentaires</h2>
+                    <button class="game__comments--sorting">v Les plus récents - Tri</button>
+                </div> 
+                <div class="game__comments--list--comment">
+                    <div class="game__comments--author--infos">
+                        <img src="../../../assets/pictures/profile_comment.png" alt="author avatar" class="game__comments--author--img">
+                        <div class="game__comments--author--details">
+                            <p class="game__comments--list--comment--author">AxelPentaKill9</p>
+                            <div class="game__comments--completion">
+                                <span class="game__comments--list--comment--stars">4</span>
+                                
+                                <p class="game__comments--list--comment--completion">| Complété sur PC</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="game__comments--list--comment--text">The narrative here is really, really good. Now that I've played 3, 4 and 5 I'm really surprised by just how strong the stories for these games are. I was a bit incredulous when I heard that the Persona series usually involves high school students but I've really come to appreciate the depth that Atlus brings to these characters and their stories...</p>
+                    <hr/>
+                </div>
+                <button class="game__comments--list--morebtn">Voir plus de commentaires</button>
+            </div>
+        </div>
+    </section>
+    <section class="game__recommandations">
+        <h2>Recommandations</h2>
+        <div class="game__recommandations--wrapper">
+            <app-game-recommendation></app-game-recommendation>
+        </div>
+    </section>
+
 </article>
 }
 

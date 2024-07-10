@@ -15,12 +15,13 @@ p{
     margin-bottom: 2rem;
     font-size: 32px;
 }
-#last_games--wrapper{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-column-gap: 4rem;
+#last_games--wrapper ul{
     margin-bottom: 2em;
-
+}
+.last__games--column {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap : 3rem;
 }
 
 a{
@@ -34,7 +35,18 @@ a{
     cursor: pointer;
 }
 
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+    .last__games--column{
+        display: flex;
+        flex-direction: column;
+        row-gap: 40px;
+        margin-bottom: 2rem;
 
+        .last__game--item{
+            margin-bottom: 1rem;
+        }
+    }
+}
 @media screen and (max-width: 768px){
     h2{
         font-size: 34px;

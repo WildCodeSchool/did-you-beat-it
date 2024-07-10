@@ -4,6 +4,7 @@ import { Game } from '../../models/game';
 import { GameService } from '../../services/gameService/game.service';
 import { TokenService } from '../../services/token/token.service';
 import { RouterLink } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-last-game-home',
@@ -37,7 +38,7 @@ export class LastGameHomeComponent {
           this.getGamesById(id);
         });
       },
-      (error) => {
+      (error: HttpErrorResponse) => {
         this.errorMessage = 'Erreur lors du chargement des jeux de l\'utilisateur.'; 
       }
     );
