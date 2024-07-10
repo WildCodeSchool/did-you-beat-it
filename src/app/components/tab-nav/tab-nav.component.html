@@ -9,7 +9,11 @@
     </nav>
 
     @if (currentSection === 'liste-des-jeux') {
-
+        <div>
+            @if(errorMessage) {
+            <p>{{ errorMessage }}</p>
+            }
+    </div>
     <div class="content_list_game">
         <div class="filter">
             <app-filter></app-filter>

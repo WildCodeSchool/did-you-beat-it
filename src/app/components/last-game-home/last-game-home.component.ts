@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { CardGameSmallComponent } from '../cardGameSmall/card-game-small/card-game-small.component';
 import { Game } from '../../models/game';
 import { GameService } from '../../services/gameService/game.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-last-game-home',
@@ -32,7 +33,7 @@ export class LastGameHomeComponent {
           this.getGamesById(id);
         });
       },
-      (error) => {
+      (error: HttpErrorResponse) => {
         this.errorMessage = 'Erreur lors du chargement des jeux de l\'utilisateur.'; 
       }
     );

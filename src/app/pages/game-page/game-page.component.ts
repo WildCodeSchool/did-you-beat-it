@@ -11,6 +11,7 @@ import { CustomButtonComponent } from '../../components/custom-button/custom-but
 import { GameVoteComponent } from '../../components/game-vote/game-vote.component';
 import { TokenService } from '../../services/token/token.service';
 import { AuthService } from '../../services/auth/auth.service';
+import { LocalStorageService } from '../../services/local-storage/local-storage.service';
 
 
 
@@ -34,12 +35,14 @@ export class GamePageComponent {
   isGameAdded: boolean = false;
   isGameFinished: boolean = false;
   isConnected: boolean = false;
+  slug: string = "";
   btnform = 'Envoyer';
   errorMessage = '';
   gameDefaultCover = '../../../assets/pictures/default_cover.png'
   scrollAmount = 0;
   
   private gameService = inject(GameService);
+  private localStorageService = inject(LocalStorageService);
   private authService = inject(AuthService);
   private tokenService = inject(TokenService);
   private route = inject(ActivatedRoute);
@@ -179,7 +182,12 @@ export class GamePageComponent {
         data => {
           localStorage.setItem(`game_${game.id}`, 'true');
           game.isGameAdded = true;
-          alert(`${game.name} ajouté à votre liste`)
+          alert(`${game.name} ajouté à votre liste`);
+          if (this.slug !== undefined) {
+            this.slug = this.localStorageService.getValue("slug") ?? '';
+            this.redirectRoute.navigate(["/profil", this.slug ])
+          }
+         
         },
         error => {
           if (error.status === 500) {
@@ -201,7 +209,10 @@ export class GamePageComponent {
         },
         error => {
           if (error.status === 500) {
-            this.redirectRoute.navigate(['/profil']);
+            if (this.slug !== undefined) {
+              this.slug = this.localStorageService.getValue("slug") ?? '';
+              this.redirectRoute.navigate(["/profil", this.slug ])
+            }
           }
         }
       );

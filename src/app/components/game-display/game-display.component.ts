@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { Game } from '../../models/game';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { HttpErrorResponse } from '@angular/common/http';
 @Component({
   selector: 'app-game-display',
   standalone: true,
@@ -22,8 +23,10 @@ export class GameDisplayComponent {
   selectedGenre: string = "";
   selectedYear: string = "";
   inputName:string ="";
+  errorMessage : string = ""; 
   private gameService= inject(GameService);
-  gameDefaultCover = '../../../assets/pictures/default_cover.png'
+  gameDefaultCover = '../../../assets/pictures/default_cover.png';
+
 
   applyFilters() {
     this.filteredGames = this.games.filter(game => {
@@ -61,14 +64,19 @@ export class GameDisplayComponent {
       return new Game(id, name, cover_id, genres_name, platforms_name);
     });
     this.filteredGames = this.games; 
-  })
+  }, (error: HttpErrorResponse) => {
+    this.errorMessage = 'Échec du chargement des jeux'; 
+  }
+)
 }
 
 loadGenres() {
   this.gameService.getGenres().subscribe(
     (genres: any[]) => {
       this.genres = genres.map(genre => genre.name);
-    },
+    }, (error: HttpErrorResponse) => {
+      this.errorMessage = 'Échec du chargement des genres de jeux'; 
+    }
   );
 }  
 
@@ -77,7 +85,9 @@ loadPlatforms() {
     (plateform: any[]) => {
       this.platforms = plateform.map(plateform => plateform.name);
 
-    },
+    }, (error: HttpErrorResponse) => {
+      this.errorMessage = 'Échec du chargement des platformes'; 
+    }
   );
 }  
 

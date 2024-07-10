@@ -45,11 +45,13 @@
         </div>
     </div>
 </div>
+<div>
+    @if(errorMessage) {<p>{{ errorMessage }}</p>}
+</div>
 <ul class="game-section">
     <li class="card-game" *ngFor="let game of filteredGames">
         <a [routerLink]="['/page-jeu', game.name]">
             @if(game.cover){
-
                 <img [src]="game.cover" [alt]="game.name">
             } @else {
                 <img [src]="gameDefaultCover" [alt]="game.name">}

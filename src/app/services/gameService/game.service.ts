@@ -97,7 +97,7 @@ export class GameService {
 
   getGenreNames(genres: string | string[]): string {
     if (!genres || !Array.isArray(genres) || genres.length === 0) {
-      return 'No genre found';
+      return 'Aucun genre trouvé';
     } else if (genres.length === 1) {
       return genres[0];
     } else {
