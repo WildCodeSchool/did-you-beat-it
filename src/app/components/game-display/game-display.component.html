@@ -57,3 +57,9 @@
         </a>
     </li>
 </ul>
+
+<app-pagination
+  [totalPages]="games.length"
+  [currentPage]="currentPage"
+  (pageChange)="onPageChange($event)">
+</app-pagination>
