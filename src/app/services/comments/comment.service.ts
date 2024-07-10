@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Commentary } from '../../models/commentary.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +15,8 @@ export class CommentService {
     return this.http.get(`${this.gameApi}/comments/${gameId}`)
   }
 
-  addComment(gameId: string, comment: string): Observable<any>{
-    return this.http.post(`${this.gameApi}/comments/${gameId}`, {comment})
+  addComment(comment: Commentary): Observable<any>{
+    return this.http.post(`${this.gameApi}/comments`, {comment})
   }
 
   deleteComment(gameId: string, commentId: string): Observable<any>{

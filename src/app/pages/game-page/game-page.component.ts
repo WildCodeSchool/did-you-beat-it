@@ -11,6 +11,9 @@ import { CustomButtonComponent } from '../../components/custom-button/custom-but
 import { GameVoteComponent } from '../../components/game-vote/game-vote.component';
 import { TokenService } from '../../services/token/token.service';
 import { AuthService } from '../../services/auth/auth.service';
+import { CommentService } from '../../services/comments/comment.service';
+import { Commentary } from '../../models/commentary.model';
+import { UsersService } from '../../services/users/users.service';
 
 
 
@@ -38,9 +41,12 @@ export class GamePageComponent {
   errorMessage = '';
   gameDefaultCover = '../../../assets/pictures/default_cover.png'
   scrollAmount = 0;
+  commentary = '';
   
   private gameService = inject(GameService);
   private authService = inject(AuthService);
+  private commentService = inject(CommentService);
+  private userService = inject(UsersService);
   private tokenService = inject(TokenService);
   private route = inject(ActivatedRoute);
   private redirectRoute = inject(Router);
@@ -78,6 +84,8 @@ export class GamePageComponent {
         }
       });
     });
+
+    
   }
 
   openModal(image: string) {
@@ -87,8 +95,6 @@ export class GamePageComponent {
   closeModal() {
     this.modalOpen = false;
   }
-
-
 
   scrollCarousel(direction: string): void {
     const carousel = document.getElementById('carousel') as HTMLElement ;
@@ -141,9 +147,6 @@ export class GamePageComponent {
     }
   }
 
-
-
-
   getPlatformNames(platforms: string[] | undefined): string {
     if (!platforms || platforms.length === 0) {
       return 'No platforms found';
@@ -169,8 +172,6 @@ export class GamePageComponent {
   getScreenshotUrls(game: Game): string[] {
     return game.screenshots?.map(screenshotId => `https://images.igdb.com/igdb/image/upload/t_screenshot_big/${screenshotId}.jpg`) || [];
   }
-
- 
 
   addGameToUserList(game: Game) {
     const storedToken = localStorage.getItem('token');
@@ -208,5 +209,15 @@ export class GamePageComponent {
       }
     
     }
+  }
+
+
+
+  addComment(game: Game) {
+    const user = this.userService.getOneBySlug(this.tokenService.getSlugInToken())
+    const createComment: Commentary = new Commentary(this.commentary, game.id, user)
+    this.commentService.addComment(createComment).subscribe(data => {
+      this.commentary = data;
+    })
   }
 }
