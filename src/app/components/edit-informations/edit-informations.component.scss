@@ -16,19 +16,13 @@
         flex-direction: column;
         gap: 1rem;
         .banner-img, .profile-img{
-            width: 250px;
-            height: auto;
+            width: auto;
+            height: 250px;
+            object-fit: contain;
         }
-        input[type=file]::file-selector-button {
-            padding: rem(10) rem(20);
-            font-size: rem(14);
-            font-family: $defaultFont ;
-            font-weight: 500;
-            border: none;
-            color: white;
-            background-color: $mainColor;
-            border-radius: rem(10);
-            width: 150px;
+        input  {
+            background-color: $cardColor;
+            height: 2rem;
         }
     }
 }

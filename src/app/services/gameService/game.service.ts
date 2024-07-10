@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Injectable, inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Game } from '../../models/game';
 import { environment } from '../../../environments/environment.development';
@@ -13,19 +13,16 @@ export class GameService {
   private genreUrl: string = 'genres'
   private LIMIT: number = 500;
 
-  private headers: HttpHeaders = new HttpHeaders({
-    'Authorization': `${this.token.getToken()}`
-  });;
+
   private headersIGDB: HttpHeaders = new HttpHeaders({
     'Client-ID': environment.apiKey,
     'Authorization': environment.apiToken,
     'Accept': 'application/json',
-
   });
   constructor(
     private http: HttpClient,
     private token: TokenService
-  ) {}
+  ) { }
 
   gameDefaultCover = '../../../assets/pictures/default_cover.png'
 
@@ -53,21 +50,37 @@ export class GameService {
   getUpcomingGames(): Observable<any> {
     const currentTime = Math.floor(Date.now() / 1000);
     const body = `fields game.name,game.cover.image_id, game.genres.name, date; where region = 1  & date > ${currentTime}; sort date asc; limit 3;`;
-    return this.http.post<any>('/release_dates', body, {headers: this.headersIGDB });
+    return this.http.post<any>('/release_dates', body, { headers: this.headersIGDB });
   }
 
   addGameToList(storedToken: string, gameID: any): Observable<any> {
     const params = new HttpParams()
       .set('gameId', gameID)
-    return this.http.post<any>(`${this.serveurBaseUrl}/add`, params, { headers: this.headers });
+    const headers: HttpHeaders = new HttpHeaders({
+      'Authorization': `${this.token.getToken()}`
+    });;
+    return this.http.post<any>(`${this.serveurBaseUrl}/add`, params, { headers: headers });
 
+  }
+  deleteGameInList(storedToken: string, gameId: number): Observable<Game[]> {
+    const headers: HttpHeaders = new HttpHeaders({
+      'Authorization': `${this.token.getToken()}`
+    });;
+    if (!gameId) {
+      throw new Error('Game ID is required');
+    }
+    const params = new HttpParams().set('gameId', gameId);
+    return this.http.delete<Game[]>(`${this.serveurBaseUrl}`, { headers: headers, params });
   }
 
   getListGames(): Observable<any[]> | undefined {
+    const headers: HttpHeaders = new HttpHeaders({
+      'Authorization': `${this.token.getToken()}`
+    });;
     const tokenId = this.token.getIdInToken();
     if (tokenId) {
       const params = new HttpParams().set('user_id', tokenId);
-      return this.http.get<any[]>(`${this.serveurBaseUrl}`, { headers: this.headers, params });
+      return this.http.get<any[]>(`${this.serveurBaseUrl}`, { headers: headers, params });
     } else {
       return undefined;
     }
@@ -91,7 +104,7 @@ export class GameService {
       return genres.join(', ');
     }
   }
-  
+
   formatReleaseDate(timestamp: number): string {
     const date = new Date(timestamp * 1000);
     return date.toLocaleDateString();

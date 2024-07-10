@@ -1,9 +1,7 @@
-import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CustomButtonComponent } from '../custom-button/custom-button.component';
-import { UploadProfileImagesService } from '../../services/upload-profile-images/upload-profile-images.service';
-import { FileData } from '../../models/file-data.model';
 import { UsersService } from '../../services/users/users.service';
 import { User } from '../../models/user.model';
 import { LocalStorageService } from '../../services/local-storage/local-storage.service';
@@ -28,7 +26,6 @@ type updateForm = {
 })
 export class EditInformationsComponent {
 
-  private fileUploadService = inject(UploadProfileImagesService);
   private userService = inject(UsersService);
   private localStorage = inject(LocalStorageService);
   private router: Router = inject(Router);
@@ -49,34 +46,27 @@ export class EditInformationsComponent {
 
   messageOnUpdate: string = '';
 
-  bannerImg: string = "";
-  profileImg: string = "";
-
-  status: "initial" | "uploading" | "success" | "fail" = "initial";
-  bannerFile: File | null = null;
-  profileFile: File | null = null;
-
-  bannerData:FileData = new FileData(this.bannerFile, "");
-  profileData:FileData = new FileData(this.profileFile, "");
-
-  onBannerSelected(event:any) {
-    this.bannerData = this.fileUploadService.onFileSelected(event, this.bannerFile, this.status);
-    return this.bannerData;
-  }
+  bannerUrl: string = '';
+  profilePictureUrl: string = '';
 
   onUploadBanner(id: number):void {
-    id = this.userData?.id as number;
-    return this.fileUploadService.onUpload(id, this.bannerData)
-  }
-
-  onProfileSelected(event:any) {
-    this.profileData = this.fileUploadService.onFileSelected(event, this.profileFile, this.status);
-    return this.profileData;
+    if (this.userData) {
+      id = this.userData.id as number;
+      this.userData.bannerPicture = this.bannerUrl
+      this.userService.updateImage(id, this.userData, "banner").subscribe(data => {
+      this.bannerUrl = data
+    })
+    }
   }
 
   onUploadProfile(id: number):void {
-    id = this.userData?.id as number;
-    return this.fileUploadService.onUpload(id, this.profileData)
+    if(this.userData) { 
+      id = this.userData.id as number;
+      this.userData.profilePicture = this.profilePictureUrl
+      this.userService.updateImage(id, this.userData, "profile").subscribe(data => {
+      this.profilePictureUrl = data
+    })
+    }
   }
 
   onSubmitForm(id: number) {
@@ -97,12 +87,13 @@ export class EditInformationsComponent {
       this.updateUser.username = this.userData.username;
       this.updateUser.email = this.userData.email;
       this.updateUser.biography = this.userData.biography;
-      this.bannerImg = this.userData.bannerPicture;
-      this.profileImg = this.userData.profilePicture;
+      this.bannerUrl = this.userData.bannerPicture !== null ? this.userData.bannerPicture : '';
+      this.profilePictureUrl = this.userData.profilePicture;
     }, 
-    (error: HttpErrorResponse) => {
-      alert("Nous rencontrons un souci technique, veuillez réessayer dans quelques minutes")
-      this.router.navigate(["./home"])
-  })
+     (error: HttpErrorResponse) => {
+       alert("Nous rencontrons un souci technique, veuillez réessayer dans quelques minutes")
+       this.router.navigate(["./home"])
+   }
+  )
   }
 }

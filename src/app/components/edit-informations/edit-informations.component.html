@@ -2,22 +2,20 @@
     <div class="modify-images">
         <div class="modify-banner">
             <h2>Bannière</h2>
-            <div class="image">   
-                <img [src]="bannerImg !==null ? bannerImg : './assets/pictures/pexels-jahoo-388415.jpg'" alt="bannerImg" class="banner-img">
-                <input type="file" class="banner-input" (change)="onBannerSelected($event)">
-                @if (bannerData.uploadedFile) {
+            <div class="image"> 
+                <img [src]="userData?.bannerPicture ? userData?.bannerPicture : './assets/pictures/pexels-ian-panelo-8227166.jpg'" alt="bannerImg" class="banner-img">
+                <input type="text" id="bannerUrl" name="bannerUrl" class="banner-url" [(ngModel)]="bannerUrl"
+                    placeholder="Coller ici l'url de votre image">
                     <app-custom-button [btnType]="'submit'" [text]="textButton" [class]="'btn'" (click)="onUploadBanner(userData?.id!)"></app-custom-button>
-                }
             </div> 
         </div>
         <div class="modify-profile-picture">
             <h2>Photo de profil</h2>
             <div class="image">   
-                <img [src]="profileImg !==null ? profileImg : './assets/pictures/pexels-jahoo-388415.jpg'" alt="profileImg" class="profile-img">
-                <input type="file" class="profile-input" (change)="onProfileSelected($event)">
-                @if (profileData.uploadedFile) {
+                <img [src]="userData?.profilePicture ? userData?.profilePicture : './assets/pictures/spidey.jpg'" alt="profileImg" class="profile-img">
+                <input type="text" id="profilePictureUrl" name="profilePictureUrl" class="profile-picture-url" [(ngModel)]="profilePictureUrl"
+                    placeholder="Coller ici l'url de votre image">
                     <app-custom-button [btnType]="'submit'" [text]="textButton" [class]="'btn'" (click)="onUploadProfile(userData?.id!)"></app-custom-button>
-                }
             </div> 
         </div>
     </div>
