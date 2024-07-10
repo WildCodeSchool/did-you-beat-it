@@ -6,12 +6,14 @@
     display: flex;
     flex-direction: row;
     padding-top: 1rem;
+    max-width: 400px;
 }
 
 .game-image-small-card {
-    height: 140px;
-    min-width: 140px;
-    object-fit: fill;
+    height: 200px;
+    min-width: 160px;
+    max-width: 200px;
+    object-fit: cover;
 }
 
 .game-infos {
@@ -27,6 +29,10 @@
         font-size: 18px;
         font-weight: 400;
         padding-top: 0.5rem;
+    }
+
+    .release-date{
+        font-weight: 500;
     }
 }
 

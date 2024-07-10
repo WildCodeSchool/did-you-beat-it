@@ -49,7 +49,7 @@ export class GameService {
 
   getUpcomingGames(): Observable<any> {
     const currentTime = Math.floor(Date.now() / 1000);
-    const body = `fields game.name,game.cover.image_id, game.genres.name, date; where region = 1  & date > ${currentTime}; sort date asc; limit 3;`;
+    const body = `fields game.name,game.cover.image_id, game.genres.name, date; where region = 1  & date > ${currentTime}; sort date asc; limit 9;`;
     return this.http.post<any>('/release_dates', body, { headers: this.headersIGDB });
   }
 
