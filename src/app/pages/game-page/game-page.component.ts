@@ -12,6 +12,7 @@ import { GameVoteComponent } from '../../components/game-vote/game-vote.componen
 import { TokenService } from '../../services/token/token.service';
 import { AuthService } from '../../services/auth/auth.service';
 import { LocalStorageService } from '../../services/local-storage/local-storage.service';
+import { UsersService } from '../../services/users/users.service';
 
 
 
@@ -35,13 +36,14 @@ export class GamePageComponent {
   isGameAdded: boolean = false;
   isGameFinished: boolean = false;
   isConnected: boolean = false;
-  slug: string = "";
+  slug: string |undefined;
   btnform = 'Envoyer';
   errorMessage = '';
   gameDefaultCover = '../../../assets/pictures/default_cover.png'
   scrollAmount = 0;
   
   private gameService = inject(GameService);
+  private userService = inject(UsersService);
   private localStorageService = inject(LocalStorageService);
   private authService = inject(AuthService);
   private tokenService = inject(TokenService);
@@ -52,6 +54,7 @@ export class GamePageComponent {
     this.authService.isLoggedIn().subscribe(isLoggedIn => {
       this.isConnected = isLoggedIn;
     });
+    this.getUserSlug()
 
     this.route.params.subscribe(params => {
       const name = params['name'];
@@ -108,6 +111,7 @@ export class GamePageComponent {
     carousel.scrollLeft = this.scrollAmount;
   }
 
+
   onMouseMove(event: MouseEvent): void {
     const carousel = event.target as HTMLElement;
     const rect = carousel.getBoundingClientRect();
@@ -146,7 +150,6 @@ export class GamePageComponent {
 
 
 
-
   getPlatformNames(platforms: string[] | undefined): string {
     if (!platforms || platforms.length === 0) {
       return 'No platforms found';
@@ -174,6 +177,22 @@ export class GamePageComponent {
   }
 
  
+  getUserSlug() {
+    this.slug = this.tokenService.getSlugInToken(); 
+    if (this.slug) {
+      this.userService.getOneBySlug(this.slug).subscribe(
+        userData => {
+          this.slug = userData.slug; 
+        },
+        error => {
+          this.errorMessage = "Erreur lors de la récupération du slug de l'utilisateur.";    
+        }
+      );
+    } else {
+      this.errorMessage = "Slug non trouvé"
+
+    }
+  }
 
   addGameToUserList(game: Game) {
     const storedToken = localStorage.getItem('token');
@@ -183,12 +202,8 @@ export class GamePageComponent {
           localStorage.setItem(`game_${game.id}`, 'true');
           game.isGameAdded = true;
           alert(`${game.name} ajouté à votre liste`);
-          if (this.slug !== undefined) {
-            this.slug = this.localStorageService.getValue("slug") ?? '';
-            this.redirectRoute.navigate(["/profil", this.slug ])
-          }
-         
-        },
+          this.redirectRoute.navigate(['/profil', this.slug]);
+},
         error => {
           if (error.status === 500) {
             this.redirectRoute.navigate(["/connexion"]);
@@ -209,10 +224,7 @@ export class GamePageComponent {
         },
         error => {
           if (error.status === 500) {
-            if (this.slug !== undefined) {
-              this.slug = this.localStorageService.getValue("slug") ?? '';
-              this.redirectRoute.navigate(["/profil", this.slug ])
-            }
+            this.redirectRoute.navigate(['/profil', this.slug]);
           }
         }
       );
