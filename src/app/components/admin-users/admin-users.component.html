@@ -2,46 +2,14 @@
     <div class="user-container">
         <div class="user-header">
             <div class="user-title">
-                <h2>Derniers Utilisateurs Inscrit</h2>
+                <h2>Derniers Utilisateurs Inscrits</h2>
             </div>
         </div> 
-        <div class="user-content">
-            <div class="user-row">
-                <p>Nom d'utilisateurs</p>
-                <p>Email</p>
-                <p>Date d'inscription</p>
-                <button class="delete-button">Supprimer</button>
-            </div>
-            <hr class="user-divider"/>
-        </div>
-        <div class="user-content">
-            <div class="user-row">
-                <p>Nom d'utilisateurs</p>
-                <p>Email</p>
-                <p>Date d'inscription</p>
-                <button class="delete-button">Supprimer</button>
-            </div>
-            <hr class="user-divider"/>
-        </div>
-        <div class="user-content">
-            <div class="user-row">
-                <p>Nom d'utilisateurs</p>
-                <p>Email</p>
-                <p>Date d'inscription</p>
-                <button class="delete-button">Supprimer</button>
-            </div>
-            <hr class="user-divider"/>
-        </div>
-        <div class="user-content">
-            <div class="user-row">
-                <p>Nom d'utilisateurs</p>
-                <p>Email</p>
-                <p>Date d'inscription</p>
-                <button class="delete-button">Supprimer</button>
-            </div>
-            <hr class="user-divider"/>
-        </div>
+        @for (user of users; track user.id) {
+            <app-profiles-admin [id]="user.id" [username]="user.username" [email]="user.email"></app-profiles-admin>
+        }
+        
     </div>
 </section>
 
-<div class="directory"> < 1 2 3 4 5 ... > </div>
+

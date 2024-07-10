@@ -45,14 +45,23 @@
         </div>
     </div>
 </div>
+<div>
+    @if(errorMessage) {<p>{{ errorMessage }}</p>}
+</div>
 <ul class="game-section">
     <li class="card-game" *ngFor="let game of filteredGames">
-        <a [routerLink]="['/page-jeu']">
-            @if(getCoverUrl(game)){
-                <img [src]="getCoverUrl(game)" [alt]="game.name">
+        <a [routerLink]="['/page-jeu', game.name]">
+            @if(game.cover){
+                <img [src]="game.cover" [alt]="game.name">
             } @else {
                 <img [src]="gameDefaultCover" [alt]="game.name">}
             <h3 class="game-name">{{game.name}}</h3>
         </a>
     </li>
 </ul>
+
+<app-pagination
+  [totalPages]="games.length"
+  [currentPage]="currentPage"
+  (pageChange)="onPageChange($event)">
+</app-pagination>

@@ -6,12 +6,14 @@
     display: flex;
     flex-direction: row;
     padding-top: 1rem;
+    max-width: 400px;
 }
 
 .game-image-small-card {
-    height: 140px;
-    width: 140px;
-    object-fit: fill;
+    height: 200px;
+    min-width: 160px;
+    max-width: 200px;
+    object-fit: cover;
 }
 
 .game-infos {
@@ -28,6 +30,10 @@
         font-weight: 400;
         padding-top: 0.5rem;
     }
+
+    .release-date{
+        font-weight: 500;
+    }
 }
 
 @media screen and (max-width: 768px){
@@ -38,7 +44,7 @@
 
 @media screen and (min-width: 769px) and (max-width: 1024px){
     .game-image-small-card {
-        height: 100px;
+        height: 200px;
         width: 100px;
     }
     .game-infos {

@@ -16,6 +16,7 @@ import { AdminComponent } from './pages/admin/admin.component';
 import { AdminCommentsComponent } from './components/admin-comments/admin-comments.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { AdminUsersComponent } from './components/admin-users/admin-users.component';
+import { authGuard } from './core/auth.guard';
 
 
 export const routes: Routes = [
@@ -29,8 +30,9 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'profil',
+    path: 'profil/:slug',
     component: ProfileComponent,
+    canActivate: [authGuard]
   },
   {
     path: 'connexion',
@@ -53,7 +55,7 @@ export const routes: Routes = [
     component: AproposComponent,
   },
   {
-    path: 'page-jeu',
+    path: 'page-jeu/:name',
     component: GamePageComponent,
   },
   {
@@ -64,7 +66,8 @@ export const routes: Routes = [
       {path:'notifications', component: EditNotificationsComponent},
       {path:'securite', component: EditSecurityComponent},
       {path: '', redirectTo: '/edition/profil', pathMatch: 'full'},
-    ]
+    ],
+    canActivate: [authGuard]
   },
   {
     path: 'admin',

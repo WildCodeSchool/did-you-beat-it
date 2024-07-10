@@ -1,10 +1,10 @@
 <article class="card-game">
-    <a [routerLink]="['/page-jeu']" class="card-game__wrapper">
-        <img src="./assets/pictures/rdoudou.jpeg" alt="gameImage" class="game-image-small-card">
+    <a [routerLink]="['/page-jeu', gameName]" class="card-game__wrapper">
+        <img [src]="gameCover" [alt]="gameName" class="game-image-small-card">
         <div class="game-infos">
-            <h4>TITRE DU JEU TRES TRES LONG</h4>
-            <p>Genre</p>
-            <p>Date de sortie</p>
+            <h4>{{gameName}}</h4>
+            @if(gameGenre) { <p>{{gameGenre}}</p> } @else { <p>Genre inconnu</p> } 
+            <time class="release-date" [attr.datetime]="release">{{release}}</time>
         </div>
     </a>
 </article>
