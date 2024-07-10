@@ -3,6 +3,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { RouterOutlet } from '@angular/router';
 import { EditInformationsComponent } from '../../components/edit-informations/edit-informations.component';
 import { LocalStorageService } from '../../services/local-storage/local-storage.service';
+import { TokenService } from '../../services/token/token.service';
 
 
 @Component({
@@ -15,10 +16,11 @@ import { LocalStorageService } from '../../services/local-storage/local-storage.
 export class ProfileEditComponent {
 
   private localStorageService = inject(LocalStorageService)
-  slug!:string|null;
+  private tokenService = inject(TokenService)
+  slug?:string|null;
 
   ngOnInit():void {
-    this.slug = this.localStorageService.getValue("slug")
+    this.slug = this.tokenService.getSlugInToken();
     this.localStorageService.watchStorage().subscribe((data: string) => {
       this.slug = data
     })

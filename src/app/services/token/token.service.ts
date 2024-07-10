@@ -5,6 +5,7 @@ type Token = {
   sub: string;
   iat: number;
   exp: number;
+  slug: string;
 }
 
 @Injectable({
@@ -36,4 +37,19 @@ export class TokenService {
     return undefined;
     }
   }
+
+  getSlugInToken(): string | undefined {
+    if (typeof localStorage !== 'undefined') {
+      const storedToken = localStorage?.getItem('token');
+      if (storedToken) {
+        const decoded = jwtDecode<Token>(storedToken);
+        return decoded.slug;
+      } else {
+        return undefined;
+      }
+    } else {
+    return undefined;
+    }
+  }
+
 }

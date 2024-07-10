@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { LocalStorageService } from '../../services/local-storage/local-storage.service';
 import { Router,RouterLink } from '@angular/router';
 import { TokenService } from '../../services/token/token.service';
 import { AuthService } from '../../services/auth/auth.service';
@@ -15,7 +14,7 @@ import { AuthService } from '../../services/auth/auth.service';
 })
 export class NavbarComponent {
 
-  private localStorageService = inject(LocalStorageService);
+  private tokenService = inject(TokenService)
   slug?:string|null;
   
 
@@ -30,11 +29,8 @@ export class NavbarComponent {
  ngOnInit() {
    this.authService.isLoggedIn().subscribe((isLoggeIn) =>{
     this.isConnected = isLoggeIn;
-     
-    this.slug = this.localStorageService.getValue("slug")
-    this.localStorageService.watchStorage().subscribe((data: string) => {
-      this.slug = data
-    })
+    
+    this.slug = this.tokenService.getSlugInToken();
   });
 }
   closeMenu() {
