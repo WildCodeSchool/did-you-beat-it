@@ -188,9 +188,6 @@ export class GamePageComponent {
           this.errorMessage = "Erreur lors de la récupération du slug de l'utilisateur.";    
         }
       );
-    } else {
-      this.errorMessage = "Slug non trouvé"
-
     }
   }
 
