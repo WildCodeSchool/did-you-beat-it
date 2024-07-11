@@ -5,12 +5,13 @@ import { FilterComponent } from '../filter/filter.component';
 import { GameService } from '../../services/gameService/game.service';
 import { Game } from '../../models/game';
 import { HttpErrorResponse } from '@angular/common/http';
+import { RouterLink } from '@angular/router';
 
 
 @Component({
   selector: 'app-tab-nav',
   standalone: true,
-  imports: [CommonModule, FilterComponent, CardGameSmallComponent],
+  imports: [CommonModule, FilterComponent, CardGameSmallComponent, RouterLink],
   templateUrl: './tab-nav.component.html',
   styleUrl: './tab-nav.component.scss'
 })
