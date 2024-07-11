@@ -6,6 +6,7 @@ import { User } from '../../models/user.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { TokenService } from '../../services/token/token.service';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -17,6 +18,7 @@ import { TokenService } from '../../services/token/token.service';
 export class ProfileComponent {
 
   private userService = inject(UsersService);
+  private authService = inject(AuthService);
   private tokenService = inject(TokenService)
   private route = inject(ActivatedRoute);
   private router: Router = inject(Router)
@@ -24,13 +26,17 @@ export class ProfileComponent {
   public userData?: User;
 
   username:string = "";
-  isOnline:boolean = true;
+  isOnline:boolean = false;
   bio:string = "";
   bannerUrl:string = "";
   profilPictureUrl:string = "";
   slug:string = "";
 
   ngOnInit():void {
+    this.authService.isLoggedIn().subscribe(isLoggedIn => {
+      this.isOnline = isLoggedIn;
+    });
+
     this.slug = this.tokenService.getSlugInToken() as string;
     this.route.params.subscribe(params => {
       this.slug = params['slug'];
