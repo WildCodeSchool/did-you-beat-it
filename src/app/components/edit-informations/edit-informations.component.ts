@@ -56,7 +56,7 @@ export class EditInformationsComponent {
       id = this.userData.id as number;
       this.userData.bannerPicture = this.bannerUrl
       this.userService.updateImage(id, this.userData, "banner").subscribe(data => {
-      this.bannerUrl = data
+        this.bannerUrl = data.bannerPicture
     })
     }
   }
@@ -66,7 +66,7 @@ export class EditInformationsComponent {
       id = this.userData.id as number;
       this.userData.profilePicture = this.profilePictureUrl
       this.userService.updateImage(id, this.userData, "profile").subscribe(data => {
-      this.profilePictureUrl = data
+      this.profilePictureUrl = data.profilePicture
     })
     }
   }

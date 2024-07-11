@@ -1,5 +1,6 @@
 import { Component, Input, inject } from '@angular/core';
 import { UsersService } from '../../../services/users/users.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profiles-admin',
@@ -15,10 +16,11 @@ export class ProfilesAdminComponent {
   @Input() email: string = "";
 
   private userService = inject(UsersService)
+  private router:Router = inject(Router)
 
   deleteUser(): void {
     this.userService.deleteUser(this.id).subscribe(data => {
-      console.log(data)
+      this.router.navigate(["./admin/utilisateurs"])
     })
   }
 

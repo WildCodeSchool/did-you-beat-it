@@ -75,7 +75,7 @@ export class GamePageComponent {
               const date = this.gameService.formatReleaseDate(gameData.first_release_date);
               const isAdded = this.getAddedStatus(id);
 
-              return new Game(id, name, cover_id, genres_name, platforms_name, summary, artworks_id, screenshots_id, date, involved_companies,0,0, isAdded);
+              return new Game(id, name, cover_id, genres_name, platforms_name, 0, summary, artworks_id, screenshots_id, date, involved_companies,0, isAdded);
           })
         },
         error: (error) => {
