@@ -16,6 +16,7 @@ import { PaginationComponent } from '../pagination/pagination.component';
 export class GameDisplayComponent {
   games:Game[]=[];
   filteredGames: Game[] = [];
+  displayedGames: Game[] = [];
   genres: string[] = [];
   platforms: string[] = [];
   years: number[] = [];
@@ -26,7 +27,7 @@ export class GameDisplayComponent {
   inputName:string ="";
   errorMessage : string = ""; 
   elementsPerPage: number = 12;
-  totalPages: number = Math.ceil(this.games.length / this.elementsPerPage);
+  totalPages: number = 0;
   currentPage: number = 1;
   private gameService= inject(GameService);
   gameDefaultCover = '../../../assets/pictures/default_cover.png';
@@ -41,6 +42,9 @@ export class GameDisplayComponent {
       const matchesName= this.inputName ? String(game.name).toLowerCase().includes(this.inputName.toLowerCase()) : true;
       return matchesPlatform && matchesScore && matchesGenre && matchesYear && matchesName;
     });
+    
+    this.totalPages = Math.ceil(this.filteredGames.length / this.elementsPerPage);
+    this.displayGames(this.currentPage);
   }
   ngOnInit(): void {
     this.loadGames();
@@ -65,9 +69,13 @@ export class GameDisplayComponent {
       const cover_id =  this.gameService.getCoverUrl(gameData.cover?.image_id);
       const genres_name = gameData.genres?.map((genre: any) => genre.name) || [];
       const platforms_name = gameData.platforms?.map((platform: any) => platform.name) || [];
-      return new Game(id, name, cover_id, genres_name, platforms_name);
+      const year = this.gameService.getYear(gameData.first_release_date);
+      return new Game(id, name, cover_id, genres_name, platforms_name, year);
     });
-    this.filteredGames = this.games; 
+    
+    this.filteredGames = this.games;
+    this.totalPages = Math.ceil(this.filteredGames.length / this.elementsPerPage);
+    this.displayGames(this.currentPage); 
   }, (error: HttpErrorResponse) => {
     this.errorMessage = 'Échec du chargement des jeux'; 
   }
@@ -99,12 +107,13 @@ loadPlatforms() {
 
 onPageChange(page: number) {
   this.currentPage = page;
+  this.displayedGames = this.filteredGames;
   this.displayGames(page);
 }
 
 displayGames(page: number) {
   const startIndex = (page - 1) * this.elementsPerPage;
-    const endIndex = page * this.elementsPerPage;
-    this.filteredGames = this.games.slice(startIndex, endIndex);
+  const endIndex = page * this.elementsPerPage;
+  this.displayedGames = this.filteredGames.slice(startIndex, endIndex);
 }
 }
