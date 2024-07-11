@@ -37,7 +37,8 @@ export class GlobalRecommendationComponent {
           const involved_companies = gameData.involved_companies?.map((involvedCompany: any) => involvedCompany.company)
           ?.map((company: any) => company.name);
           const date = this.gameService.formatReleaseDate(gameData.date);
-          return new Game(id, name, cover_id, genres_name, platforms_name, summary, artworks_id, screenshots_id, date, involved_companies);
+          const year = this.gameService.getYear(gameData.year);
+          return new Game(id, name, cover_id, genres_name, platforms_name, year, summary, artworks_id, screenshots_id, date, involved_companies);
         })
       }, error: (error) => {
         this.errorMessage = 'Échec du chargement des prochaines sorties';

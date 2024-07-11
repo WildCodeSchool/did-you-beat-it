@@ -19,13 +19,13 @@ export class Game {
     cover?: string,
     genre?: string,
     platform: string[] = [],
+    year?: number,
     summary?: string,
     artworks?: string,
-  screenshots?: string[],
-  releaseDate?: string,
-  involved_companies?: string[],
-  rating?: number,
-    year?: number,
+    screenshots?: string[],
+    releaseDate?: string,
+    involved_companies?: string[],
+    rating?: number,
     isGameAdded: boolean = false
   ) {
     this.id = id;

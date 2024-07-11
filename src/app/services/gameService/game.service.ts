@@ -27,7 +27,7 @@ export class GameService {
   gameDefaultCover = '../../../assets/pictures/default_cover.png'
 
   getGames(): Observable<Game[]> {
-    const body = `fields name,cover.image_id,platforms.name, genres.name; where themes != (42) & category = 0 & (platforms = (48,167)); limit ${this.LIMIT};`;
+    const body = `fields name,first_release_date,cover.image_id,platforms.name, genres.name; where themes != (42) & category = 0 & (platforms = (48,167)); limit ${this.LIMIT};`;
     return this.http.post<Game[]>(this.baseUrl, body, { headers: this.headersIGDB });
   }
 
@@ -109,4 +109,10 @@ export class GameService {
     const date = new Date(timestamp * 1000);
     return date.toLocaleDateString();
   }
+
+  getYear(timestamp: number): number {
+    const date = new Date(timestamp * 1000);
+    return date.getFullYear();
+  }
+
 }
